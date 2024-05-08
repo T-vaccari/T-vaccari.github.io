@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="5115f57a-ab7d-42ba-89da-539fda961ae1" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +27,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JavaScript Debug.index.html.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -51,7 +55,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1715149191656</updated>
-      <workItem from="1715149192748" duration="305000" />
+      <workItem from="1715149192748" duration="1249000" />
     </task>
     <servers />
   </component>
