@@ -4,84 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tommaso's Portfolio</title>
-    <style>
-        /* Stili di base */
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #e0e0e0;
-            color: #2c3e50;
-        }
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        nav {
-            display: flex;
-            justify-content: space-around;
-            background-color: #34495e;
-            padding: 10px 0;
-        }
-        nav a {
-            color: #ecf0f1;
-            padding: 10px 15px;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-        nav a:hover {
-            background-color: #2c3e50;
-            border-radius: 5px;
-        }
-        section {
-            padding: 20px;
-            margin: 40px auto;
-            max-width: 800px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-radius: 8px;
-        }
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #34495e;
-            padding-bottom: 10px;
-        }
-        .profile-pic {
-            display: block;
-            margin: 20px auto;
-            max-width: 150px;
-            border-radius: 50%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .project {
-            margin-bottom: 20px;
-        }
-        .project img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-        .skills ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .skills ul li {
-            background-color: #f9f9f9;
-            margin: 10px 0;
-            padding: 12px;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        footer {
-            text-align: center;
-            padding: 15px 0;
-            background-color: #2c3e50;
-            color: #ecf0f1;
-        }
-    </style>
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
 
@@ -91,24 +14,36 @@
 
 <nav>
     <!-- Collegamenti di navigazione -->
-    <a href="#chi-sono">Chi Sono</a>
+    <a href="#Biography">Biography</a>
     <!--
     <a href="#progetti">Progetti</a>
     <a href="#competenze">Competenze</a>
     <a href="#esperienza-lavorativa">Esperienza Lavorativa</a>
     -->
-    <a href="#formazione">Formazione</a>
+    <a href="#Education">Education</a>
 
-    <a href="#contatti">Contatti</a>
+    <a href="#contacts">Contacts</a>
+
+    <a href = docs/Loca.pdf >CV</a>
 
 </nav>
 
-<section id="chi-sono">
-    <h2>Chi Sono</h2>
+<img src="Immgs/IMG_4406.jpeg" alt=" Photo" class="profile-pic">
+
+<section id="Biography">
+    <h2>Biography</h2>
     <!-- Inserisci qui la tua foto -->
     <!--<img src="img.jpeg" alt="Foto di Tommaso" class="profile-pic"> -->
-    <p>Sono uno studente di Ingegneria Informatica al Politecnico di Milano. Sono molto appassionato del mondo tech in
-        generale e ho scelto questo percorso per approfondire le mie conoscenze e competenze nel campo dell'informatica.</p>
+    <p>
+        I am a Computer Engineering student at the Politecnico di Milano, currently about to start my second year. 
+        I am characterized by a strong curiosity, especially in the tech field, and I enjoy expanding my knowledge,
+         particularly through reading books.
+
+        Since the beginning of my academic journey, I have developed a passion for programming. 
+        I have experience with various programming languages, including Python, Java, and C++,
+        and I am constantly exploring new tools and methodologies to improve my skills.
+
+    </p>
 </section>
 
 <!-- Sezione Progetti commentata per futuro utilizzo -->
@@ -152,21 +87,38 @@
 
 <!-- Sezione Formazione commentata per futuro utilizzo -->
 
-<section id="formazione">
-    <h2>Formazione</h2>
-    <p>Sto attualmente frequentando la facoltà di Ingegneria Informatica al Politecnico di Milano.
-    Oltre agli studi accademici, ho approfondito per passione personale diversi ambiti del mondo tech, ampliando
-        le mie competenze e conoscenze.</p>
+<section id="Education">
+    <h2>Education</h2>
+    <p>
+        <ul>
+            <li><strong>Politecnico di Milano</strong>, Milan, Italy<br>
+                Bachelor of Science in Software Engineering (expected 2026)<br>
+                Currently in the second year of studies.
+            </li>
+            <li><strong>Liceo Scientifico</strong>, Ferrara, Italy<br>
+                Graded in June 2023, with 100/100
+            </li>
+
+            
+        </ul>
+    </p>
 </section>
 
 
-<section id="contatti">
-    <h2>Contatti</h2>
-    <p>Puoi contattarmi via email a: <a href="mailto:tommaso.vaccari@mail.polimi.it">tommaso.vaccari@mail.polimi.it</a></p>
+<section id="Contacts">
+    <h2>Contacts</h2>
+    <p>
+        Linkedin: <a href="https://www.linkedin.com/in/tommaso-vaccari-97b36b298/" target="_blank" id="linkedin-link">Tommaso Vaccari</a>
+        
+    </p>
+    <p>
+        GitHub: <a href="https://github.com/T-vaccari" target="_blank" id="linkedin-link">T-vaccari</a>
+    </p>
+    <p>You can reach me via email at: <a href="mailto:tommaso.vaccari@mail.polimi.it">tommaso.vaccari@mail.polimi.it</a></p>
 </section>
 
 <footer>
-    <p>&copy; 2024 Tommaso's Portfolio. Tutti i diritti riservati.</p>
+    <p>&copy; 2024 Tommaso's Portfolio. All rights reserved.</p>
 </footer>
 
 </body>
