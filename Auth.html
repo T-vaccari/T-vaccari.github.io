@@ -13,7 +13,6 @@
 </header>
 
 <nav>
-    <!-- Collegamenti di navigazione -->
     <a href="#Biography">Biography</a>
     <a href="#Education">Education</a>
     <a href="#contacts">Contacts</a>
@@ -48,13 +47,11 @@
     <p>You can reach me via email at: <a href="mailto:tommaso.vaccari@mail.polimi.it">tommaso.vaccari@mail.polimi.it</a></p>
 </section>
 
-<!-- Hidden content that requires authentication -->
 <section id="hidden-content" style="display:none;">
     <h2>Hidden Content</h2>
     <p>This content is only visible to authenticated users.</p>
 </section>
 
-<!-- Login Form -->
 <section id="login-form">
     <h2>Login</h2>
     <input type="email" id="login-email" placeholder="Email">
@@ -63,13 +60,13 @@
     <p>Don't have an account? <a href="#" onclick="showRegisterForm()">Register here</a></p>
 </section>
 
-<!-- Register Form -->
 <section id="register-form" style="display:none;">
     <h2>Register</h2>
     <input type="email" id="register-email" placeholder="Email">
     <input type="password" id="register-password" placeholder="Password">
     <button onclick="register()">Register</button>
     <p>Already have an account? <a href="#" onclick="showLoginForm()">Login here</a></p>
+    <div id="register-error"></div>
 </section>
 
 <footer>
@@ -109,7 +106,10 @@
                 showLoginForm();
             })
             .catch((error) => {
-                console.error('Error registering:', error);
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error('Error registering:', errorCode, errorMessage);
+                document.getElementById('register-error').innerText = `Error: ${errorMessage}`;
             });
     }
 
@@ -127,7 +127,9 @@
                 document.getElementById('register-form').style.display = 'none';
             })
             .catch((error) => {
-                console.error('Error signing in:', error);
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error('Error signing in:', errorCode, errorMessage);
             });
     }
 
@@ -167,3 +169,4 @@
 
 </body>
 </html>
+
