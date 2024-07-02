@@ -58,6 +58,8 @@
     <input type="password" id="login-password" placeholder="Password">
     <button onclick="login()">Login</button>
     <p>Don't have an account? <a href="#" onclick="showRegisterForm()">Register here</a></p>
+    <div id="login-success" style="color: green; display: none;">Login successful!</div>
+    <div id="login-error" style="color: red;"></div>
 </section>
 
 <section id="register-form" style="display:none;">
@@ -66,7 +68,7 @@
     <input type="password" id="register-password" placeholder="Password">
     <button onclick="register()">Register</button>
     <p>Already have an account? <a href="#" onclick="showLoginForm()">Login here</a></p>
-    <div id="register-error"></div>
+    <div id="register-error" style="color: red;"></div>
 </section>
 
 <footer>
@@ -81,13 +83,13 @@
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
-      apiKey: "AIzaSyA1DexPJBZ...",
-      authDomain: "my-website-e21b9.firebaseapp.com",
-      projectId: "my-website-e21b9",
-      storageBucket: "my-website-e21b9.appspot.com",
-      messagingSenderId: "338895083162",
-      appId: "1:338895083162:web:c873b814cd907ac731b123",
-      measurementId: "G-Z09DCP3TL8"
+        apiKey: "AIzaSyA1DexPJBZ...",
+        authDomain: "my-website-e21b9.firebaseapp.com",
+        projectId: "my-website-e21b9",
+        storageBucket: "my-website-e21b9.appspot.com",
+        messagingSenderId: "338895083162",
+        appId: "1:338895083162:web:c873b814cd907ac731b123",
+        measurementId: "G-Z09DCP3TL8"
     };
 
     // Initialize Firebase
@@ -125,11 +127,15 @@
                 document.getElementById('hidden-content').style.display = 'block';
                 document.getElementById('login-form').style.display = 'none';
                 document.getElementById('register-form').style.display = 'none';
+                document.getElementById('login-success').style.display = 'block';
+                document.getElementById('login-error').style.display = 'none';
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.error('Error signing in:', errorCode, errorMessage);
+                document.getElementById('login-error').innerText = `Error: ${errorMessage}`;
+                document.getElementById('login-success').style.display = 'none';
             });
     }
 
@@ -139,9 +145,13 @@
             document.getElementById('hidden-content').style.display = 'block';
             document.getElementById('login-form').style.display = 'none';
             document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-success').style.display = 'block';
+            document.getElementById('login-error').style.display = 'none';
         } else {
             document.getElementById('hidden-content').style.display = 'none';
             document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-success').style.display = 'none';
         }
     });
 
