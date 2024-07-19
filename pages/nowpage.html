@@ -1,0 +1,40 @@
+---
+title: now page
+layout: default
+
+---
+<header>
+    <h1>What I am doing now?</h1>
+</header>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the last modified date of the document
+        var lastModified = document.lastModified;
+        // Format the last modified date
+        var formattedDate = new Date(lastModified).toLocaleDateString();
+        // Set the text content of the element with id "lastUpdate"
+        document.getElementById("lastUpdate").textContent = formattedDate;
+    });
+</script>
+<body>
+    <section id="Now">
+        <h2>Now Page, Last updated: <span id="lastUpdate"></span></h2>
+        <p>Here is what I am currently working on:</p>
+        <div class="bullet-point-block">
+
+            <ul>
+            
+            <li>Learning Neural Networks</li>
+            
+            <li>Setting up <a href="https://pi-hole.net" target="_blank">Pihole</a> on a Raspberry</li>
+
+            <li>Reading, Reading, Reading...</li>
+            
+            
+            
+            </ul>
+            
+        </div>
+    </section>
+</body>
+</html>

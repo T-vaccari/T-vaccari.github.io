@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <!-- Usa il filtro `relative_url` per gestire il percorso del CSS -->
+    <link rel="stylesheet" href="{{ '/assets/styles/main.css' | relative_url }}">
+</head>
+<body>
+
+<header>
+    <h1>Tommaso's Portfolio</h1>
+</header>
+
+<nav>
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <!--<a href="{{ '/about.html' | relative_url }}">About</a> -->
+    <!--<a href="{{ '/contact.html' | relative_url }}">Contact</a> -->
+    <a href="{{ '/docs/TommasoVaccari_CV.pdf' | relative_url }}">CV</a>
+    <a href="{{ 'pages/nowpage.html' | relative_url }}">Now Page</a>
+    <a href="{{ 'pages/projectspage.html' | relative_url }}">Projects</a>
+</nav>
+
+<main>
+    <!-- Questo è il segnaposto per il contenuto delle pagine Markdown -->
+    {{ content }}
+</main>
+<footer>
+    <div class="footer-content">
+      
+      <p><a href="mailto:tommaso.vaccari@mail.polimi.it">tommaso.vaccari@mail.polimi.it</a></p>
+      <p><a href="https://github.com/T-vaccari"><img src="/assets/immages/github-mark-white.png" alt="GitHub" class="icon"> T-vaccari</a></p>
+      
+      <p>&copy; 2024 Tommaso's Portfolio. All rights reserved.</p>
+    </div>
+</footer>
+  
+
+   
+
+
+</body>
+</html>
