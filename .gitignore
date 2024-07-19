@@ -5,3 +5,36 @@ _site
 vendor
 
 
+# Directory generate da Jekyll
+_site/
+
+# File di configurazione locali
+.jekyll-metadata
+
+# Dipendenze Ruby
+vendor/bundle/
+vendor/cache/
+vendor/gems/
+vendor/ruby/
+
+# File di log
+*.log
+
+# File temporanei e di backup
+*.swp
+*.swo
+*~
+# Se usi macOS
+.DS_Store
+# Se usi Windows
+Thumbs.db
+ehthumbs.db
+
+# File di configurazione per strumenti di sviluppo
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Altri file temporanei
+*.tmp
