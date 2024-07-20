@@ -75,85 +75,7 @@ footer {
     color: #ecf0f1;
 }
 
-/* Media Queries 
-.container {
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-Per schermi piccoli (smartphone in verticale) 
-@media (max-width: 480px) {
-    nav {
-        flex-direction: column;
-        align-items: center;
-    }
-    nav a {
-        padding: 10px;
-    }
-    section {
-        margin: 20px;
-        padding: 10px;
-    }
-    .profile-pic {
-        max-width: 120px;
-    }
-    h2 {
-        font-size: 1.5em;
-    }
-    .skills ul li {
-        font-size: 0.9em;
-    }
-}
 
- Per schermi medi (tablet e piccoli laptop) 
-@media (min-width: 481px) and (max-width: 768px) {
-    nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-    nav a {
-        padding: 8px 12px;
-    }
-    section {
-        margin: 30px;
-        padding: 15px;
-    }
-    .profile-pic {
-        max-width: 130px;
-    }
-    h2 {
-        font-size: 1.75em;
-    }
-    .skills ul li {
-        font-size: 1em;
-    }
-}
-
-Per schermi grandi (desktop e laptop grandi) 
-@media (min-width: 769px) {
-    nav {
-        flex-direction: row;
-    }
-    nav a {
-        padding: 10px 15px;
-    }
-    section {
-        margin: 40px auto;
-        padding: 20px;
-    }
-    .profile-pic {
-        max-width: 150px;
-    }
-    h2 {
-        font-size: 2em;
-    }
-    .skills ul li {
-        font-size: 1.1em;
-    }
-}
-    */
 .footer-content {
     text-align: center;
     color: white;
@@ -181,4 +103,68 @@ margin: 5px 0;
     margin-right: 5px;
 }
       
-    
+.post-listing {
+    text-align: center; 
+    margin-bottom: 20px; 
+    padding: 15px 20px; 
+}
+  
+.post-listing h2 {
+    font-size: 1.5em; 
+    margin-bottom: 5px;
+}
+  
+.post-listing h2 a {
+    color: #2c3e50; 
+    text-decoration: none; 
+    font-weight: bold; 
+}
+  
+  /* Horizontal line under the title */
+.post-listing h2:after {
+    content: "";
+    display: inline-block; /* Change to inline-block for same width as title */
+    height: 1px; /* Set the height of the line */
+    background-color: #ddd; /* Set the line color */
+    margin-top: 10px; /* Add space above the line */
+    margin-bottom: 20px; /* Add space below the line */
+}
+  
+  
+  
+  
+
+  
+
+/* Post container */
+.post-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+  
+  /* Post title */
+.post-title {
+    color: #2c3e50;
+    border-bottom: 2px solid #34495e;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+  
+  /* Post date */
+.date {
+    font-size: 0.8em;
+    color: #999;
+    margin-bottom: 20px;
+}
+  
+  /* Post content */
+.post-content {
+    line-height: 1.6;
+    text-align: justify; /* Adjust this to your preference: left, center, justify, etc. */
+}
+  
