@@ -4,7 +4,7 @@ _site
 .jekyll-metadata
 vendor
 
-.obsidian/
+
 # Directory generate da Jekyll
 _site/
 
