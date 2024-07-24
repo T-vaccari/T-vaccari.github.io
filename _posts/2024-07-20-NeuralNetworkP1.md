@@ -11,7 +11,7 @@ In this post, I would like to introduce how neural networks are built under the 
 
 # Overview of Neural Networks
 
-Before starting to deep dive into neural network I would like to roughly remember to the reader what is the main goal and how it's reached. Neural networks (NNs) are a class of machine learning models inspired by the structure and function of the human brain. The primary objective of a neural network is to learn a mapping from input data to desired output values by adjusting its parameters through a process of optimization.
+Before starting to dive deep into neural networks I would like to roughly remind to the reader what is the main goal and how its reached. Neural networks (NNs) are a class of machine learning models inspired by the structure and function of the human brain. The primary objective of a neural network is to learn a mapping from input data to desired output values by adjusting its parameters through a process of optimization.
 
 ## 1. Goal of neural networks
 The central aim of a neural network is to learn how to produce accurate outputs when given specific inputs. This process involves training the network on a dataset, where each data point consists of an input and a corresponding target output. For instance, in a classification problem, the input might be an image, and the target output would be the label of the object in the image. Or maybe in a regression problem we want to train our model to answer the question how much?.
@@ -32,7 +32,7 @@ Backward Pass: Calculating the gradients of the loss function with respect to ea
 Once the gradients are computed, they are used by the optimization algorithm (often gradient descent or its variants) to update the network's parameters. The network parameters are adjusted in the direction that reduces the loss function. This process is iterated over multiple epochs (passes through the entire dataset) until the loss function converges to a minimum value or sufficiently small error.
 
 Roughly speaking this is the process that we want to follow for achieving our goal.
-With the foundational concepts established, we will now delve into the detailed steps required to build a neural network. Firstly, we need to create a class that represents data within our neural network. This class must track the origin of each data value, including the operations and values used to compute it, in order to facilitate accurate gradient calculation during backpropagation. We are goin to call the class for representing data *Value* class.
+With the foundational concepts established, we will now delve into the detailed steps required to build a neural network. Firstly, we need to create a class that represents data within our neural network. This class must track the origin of each data value, including the operations and values used to compute it, in order to facilitate accurate gradient calculation during backpropagation. We are going to call the class for representing data *Value* class.
 
 
 # Breakdown of the code for the Value class
@@ -45,7 +45,7 @@ class Value:
     def __init__(self, data, _children = (), _op = '' ):
         
         self.data = data
-        self._previuosly = set(_children)
+        self._previosly = set(_children)
         self._operations = _op
         self.grad = 0.0
         self._backward = lambda : None
@@ -57,7 +57,7 @@ class Value:
 
   Here we initialize the value objects with it's own attribute. Let's breakdown each attribute :
   - self.data = data, saves the value of the object
-  - self._previuosly = set(_children), saves in a set the children of it's value, that means that we save what values generated this value. Thanks to the set we can avoid duplicates
+  - self._previosly = set(_children), saves in a set the children of it's value, that means that we save what values generated this value. Thanks to the set we can avoid duplicates
   - self._operations = _op, we keep track of what operation generated this value
   - self.grad = 0.0 , we initially set it to zero, then we are going to modify it accordingly to the rules of backpropagation, we store it in this attribute
   - self._backward = lambda : None , we need to store here the function that provide to us the gradient, we set it initially to a lambda None because it dipends on the operation that generated this Value object.
@@ -161,7 +161,7 @@ $$
 \frac{d}{dx} \tanh(x) = 1 - \tanh^2(x)
 $$
 
-Now we implement the expnonential method for being able of using tanh: 
+Now we implement the expnential method for being able of using tanh: 
 
 ```python
 class Value:
@@ -211,7 +211,7 @@ Thanks to the implementation of the Value object, we are able to construct a com
 
 To compute the gradients, we begin by focusing on the final Value object, which typically results from a loss function in a neural network. Since we are interested in the gradient of this final Value with respect to itself, we initialize its gradient (self.grad) to 1. This initialization signifies that the gradient of the final Value with respect to itself is 1.
 
-Following this, we execute the backward pass by invoking the _backward function for each Value object. This process starts with the final Value and proceeds backward through the computation graph to the initial Value objects. This reverse traversal ensures that the gradient for each Value is computed correctly based on the chain rule of differentiation, allowing us to accumulate the gradients appropriately.
+Following this, we execute the backward ipass by invoking the _backward function for each Value object. This process starts with the final Value and proceeds backward through the computation graph to the initial Value objects. This reverse traversal ensures that the gradient for each Value is computed correctly based on the chain rule of differentiation, allowing us to accumulate the gradients appropriately.
 
 We've now looked at the basics of how a neural network works. This simple approach helps us understand the core concepts behind its operation.
 Now it's time to create a very simple net.
@@ -219,7 +219,7 @@ Now it's time to create a very simple net.
 ## Creating a Neural Network
 Now we will look more deeply on how to create a net by little steps.
 ### Create one artifical neuron
-Now we can create an [artifcial neuron](https://en.wikipedia.org/wiki/Artificial_neuron) with two inputs.
+Now we can create an [artificial neuron](https://en.wikipedia.org/wiki/Artificial_neuron) with two inputs.
 This is an example of how does a neuron work : 
 ```python
     #Inputs x1,x1
@@ -395,7 +395,7 @@ In this piece of code we train our net following this step :
    We update the parameters in the direction that minimize the loss function using a learning rate of 0.1
 
 # Conclusion
-In this first part we built the foundamental for the understading of neural network. In the next part we are goin to see how to affine our techniques.
+In this first part we built the foundamental for the understading of neural networks. In the next part we are going to see how to affine our techniques.
 
 
 
