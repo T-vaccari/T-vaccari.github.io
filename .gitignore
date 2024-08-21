@@ -1,37 +1,5 @@
-
+_site
 .sass-cache
-.jekyll-cache
 .jekyll-metadata
-vendor
+Gemfile.lock
 
-
-
-
-# File di configurazione locali
-.jekyll-metadata
-
-# Dipendenze Ruby
-vendor/bundle/
-vendor/cache/
-vendor/gems/
-vendor/ruby/
-
-# File di log
-*.log
-
-# File temporanei e di backup
-*.swp
-*.swo
-*~
-# Se usi macOS
-.DS_Store
-+
-
-
-.vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
-
-
-*.tmp
