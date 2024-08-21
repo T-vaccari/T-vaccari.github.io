@@ -37,7 +37,7 @@ There are many reasons I chose Google Docs and Google Sheets for this app:
 
 The Google Sheet must be structured as follows: Email, DOCUMENT ID, SHEET ID, and a flag to receive the newsletter.
 
-<img src="{{ site.baseurl }}/assets/images/IMG_123.PNG" alt="Google Sheets">
+<img src="/assets/images/IMG_123.PNG" alt="Google Sheets">
 
 The function `start_vocab_app()` retrieves recipient details, including their vocabulary document and tracking sheet IDs. It then uses the provided Google Sheets API to extract this data and determine which subscribers should receive the newsletter.
 
