@@ -26,15 +26,13 @@ vendor/ruby/
 *~
 # Se usi macOS
 .DS_Store
-# Se usi Windows
-Thumbs.db
-ehthumbs.db
++
 
-# File di configurazione per strumenti di sviluppo
+
 .vscode/
 .idea/
 *.sublime-project
 *.sublime-workspace
 
-# Altri file temporanei
+
 *.tmp
