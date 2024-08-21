@@ -38,8 +38,8 @@ There are many reasons I chose Google Docs and Google Sheets for this app:
 ### 1. Fetching Recipients and Their Vocabulary Database from Google Sheets
 
 The Google Sheet must be structured as follows: Email, DOCUMENT ID, SHEET ID, and a flag to receive the newsletter.
-![My helpful screenshot](/assets/images/IMG_123.png)
 
+![Sheet](/assets/images/IMG_123.png)
 
 The function `start_vocab_app()` retrieves recipient details, including their vocabulary document and tracking sheet IDs. It then uses the provided Google Sheets API to extract this data and determine which subscribers should receive the newsletter.
 
@@ -80,7 +80,7 @@ def start_vocab_app():
 
 The app reads vocabulary words from a specific Google Doc using the Google Docs API. Each line in the document is formatted as a word and its meaning separated by \|\|\| (I used it for parsing pursuits).Here is how it mus look like to work with the script :
 
-<img src="/assets/images/IMG_124.PNG" alt="sheet">
+![DOC](/assets/images/IMG_124.png)
 
 Here’s the part of the code that reads the words and returns the one that are selected randomly :
 
