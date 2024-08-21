@@ -8,6 +8,7 @@ In today’s post, I’d like to share a simple app I developed to improve my En
 
 I decided to create this tool because I’m actively learning English and wanted an automated way to refresh and expand my vocabulary. Since I have experience with Python and APIs, I took the opportunity to integrate Google Docs and Google Sheets APIs to store and manage vocabulary words and user data.
 
+You can see the code in my [github repo](https://github.com/T-vaccari/VocabularyNewsletter)
 ## Overview of the app
 
 Core Components:
