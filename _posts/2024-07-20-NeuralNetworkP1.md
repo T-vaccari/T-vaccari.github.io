@@ -4,41 +4,49 @@ title: "Neural Network : Part One"
 categories: jekyll update
 ---
 
-# Introduction
+## Introduction
 
 In this post, I would like to introduce how neural networks are built under the hood. I will explore the essential components and mechanisms that enable neural networks to learn and make predictions. By the end of this article, you should have a clearer understanding of how these powerful models work under the hood.
 
-
-# Overview of Neural Networks
+## Overview of Neural Networks
 
 Before starting to dive deep into neural networks I would like to roughly remind to the reader what is the main goal and how its reached. Neural networks (NNs) are a class of machine learning models inspired by the structure and function of the human brain. The primary objective of a neural network is to learn a mapping from input data to desired output values by adjusting its parameters through a process of optimization.
 
-## 1. Goal of neural networks
+### 1. Goal of neural networks
+
 The central aim of a neural network is to learn how to produce accurate outputs when given specific inputs. This process involves training the network on a dataset, where each data point consists of an input and a corresponding target output. For instance, in a classification problem, the input might be an image, and the target output would be the label of the object in the image. Or maybe in a regression problem we want to train our model to answer the question how much?.
 
-## 2. Training Process
+### 2. Training Process
 
-### 2.1 Feeding data into the net and comparison of the output
+#### 2.1 Feeding data into the net and comparison of the output
+
 During training, the network is provided with a set of input data and its corresponding target outputs. The network makes predictions based on the input data, which are then compared to the target outputs. This comparison is crucial for evaluating how well the network is performing.
-### 2.2 Loss Function
+
+#### 2.2 Loss Function
+
 To quantify the difference between the network's predictions and the target outputs, we use a loss function (or cost function). The loss function measures the prediction error. Common loss functions include Mean Squared Error for regression tasks and Cross-Entropy Loss for classification tasks. A lower value of the loss function indicates better performance of the network.
-### 2.3 Optimization via backpropagation
+
+#### 2.3 Optimization via backpropagation
+
 The goal of training is to minimize the loss function, which involves finding the optimal set of parameters (weights and biases) for the network. To achieve this, we use an optimization algorithm that adjusts the parameters to reduce the loss.
-Backpropagation is the method used to compute the gradients of the loss function with respect to the network's parameters. 
+Backpropagation is the method used to compute the gradients of the loss function with respect to the network's parameters.
 It involves:
 Forward Pass: Computing the predictions of the network and the loss.
 Backward Pass: Calculating the gradients of the loss function with respect to each parameter using the chain rule of calculus.
-### 2.4 Gradient Descent
+
+#### 2.4 Gradient Descent
+
 Once the gradients are computed, they are used by the optimization algorithm (often gradient descent or its variants) to update the network's parameters. The network parameters are adjusted in the direction that reduces the loss function. This process is iterated over multiple epochs (passes through the entire dataset) until the loss function converges to a minimum value or sufficiently small error.
 
 Roughly speaking this is the process that we want to follow for achieving our goal.
 With the foundational concepts established, we will now delve into the detailed steps required to build a neural network. Firstly, we need to create a class that represents data within our neural network. This class must track the origin of each data value, including the operations and values used to compute it, in order to facilitate accurate gradient calculation during backpropagation. We are going to call the class for representing data *Value* class.
 
+## Breakdown of the code for the Value class
 
-# Breakdown of the code for the Value class
 Now I will start to implement in code what we have seen in the foundational concepts about NN.
 
-## Building the basic item of the class and the attribute of the object
+### Building the basic item of the class and the attribute of the object
+
 ``` python
 class Value: 
     
@@ -56,16 +64,16 @@ class Value:
 ```
 
   Here we initialize the value objects with it's own attribute. Let's breakdown each attribute :
-  - self.data = data, saves the value of the object
-  - self._previosly = set(_children), saves in a set the children of it's value, that means that we save what values generated this value. Thanks to the set we can avoid duplicates
-  - self._operations = _op, we keep track of what operation generated this value
-  - self.grad = 0.0 , we initially set it to zero, then we are going to modify it accordingly to the rules of backpropagation, we store it in this attribute
-  - self._backward = lambda : None , we need to store here the function that provide to us the gradient, we set it initially to a lambda None because it dipends on the operation that generated this Value object.
 
+- self.data = data, saves the value of the object
+- self._previosly = set(_children), saves in a set the children of it's value, that means that we save what values generated this value. Thanks to the set we can avoid duplicates
+- self._operations =_op, we keep track of what operation generated this value
+- self.grad = 0.0 , we initially set it to zero, then we are going to modify it accordingly to the rules of backpropagation, we store it in this attribute
+- self._backward = lambda : None , we need to store here the function that provide to us the gradient, we set it initially to a lambda None because it dipends on the operation that generated this Value object.
 
 The __repr__ method is used to print the value object.
 So for example if we want to generate a value object we can do as follow :
-   
+
 ``` python
 
     a = Value(3)
@@ -74,7 +82,7 @@ So for example if we want to generate a value object we can do as follow :
 
 ```
 
-## Building the basic operation and the relative backward function for value object
+### Building the basic operation and the relative backward function for value object
 
 ```python
 class Value : 
@@ -94,7 +102,7 @@ class Value :
 ```
 
 Here we have the code for the __add__ method.
-Simply in this method  we create an out Value object featured by a new value and a set of children(the two Value object that originated it) and then we append the operation that originated that new Value object. Then from the foundamental of calculus we know that the gradient of the two children due to this operation can be calculated as shown in the code. For much more detail watch gradient explained [here](https://en.wikipedia.org/wiki/Gradient). Let's watch how does the add function behave : 
+Simply in this method  we create an out Value object featured by a new value and a set of children(the two Value object that originated it) and then we append the operation that originated that new Value object. Then from the foundamental of calculus we know that the gradient of the two children due to this operation can be calculated as shown in the code. For much more detail watch gradient explained [here](https://en.wikipedia.org/wiki/Gradient). Let's watch how does the add function behave :
 
 ``` python
     a = Value(3)
@@ -149,19 +157,20 @@ class Value:
         return out
 
 ```
-From calculus we know that tanh is defined as : 
+
+From calculus we know that tanh is defined as :
 
 $$
 \tanh(x) = \frac{e^{2x} - 1}{e^{2x} + 1}
 $$
 
-Then we can implement the backward function knowing that : 
+Then we can implement the backward function knowing that :
 
 $$
 \frac{d}{dx} \tanh(x) = 1 - \tanh^2(x)
 $$
 
-Now we implement the expnential method for being able of using tanh: 
+Now we implement the expnential method for being able of using tanh:
 
 ```python
 class Value:
@@ -178,12 +187,12 @@ class Value:
 
 ```
 
-
 We have now implemented most of the basic operations for our Value object. The final step is to implement a backward method. This method will be responsible for calling the backward functions of each object in the proper order.
 
 ## Building the backward method
 
-Here's the code for the function : 
+Here's the code for the function :
+
 ```python
 class Value : 
 
@@ -207,6 +216,7 @@ class Value :
 
 
 ```
+
 Thanks to the implementation of the Value object, we are able to construct a computation graph that captures the entire history of how a Value object was derived. This graph is formed by following the _previously set of each Value object, which tracks all the predecessor values involved in its computation.
 
 To compute the gradients, we begin by focusing on the final Value object, which typically results from a loss function in a neural network. Since we are interested in the gradient of this final Value with respect to itself, we initialize its gradient (self.grad) to 1. This initialization signifies that the gradient of the final Value with respect to itself is 1.
@@ -216,11 +226,15 @@ Following this, we execute the backward ipass by invoking the _backward function
 We've now looked at the basics of how a neural network works. This simple approach helps us understand the core concepts behind its operation.
 Now it's time to create a very simple net.
 
-## Creating a Neural Network
+### Creating a Neural Network
+
 Now we will look more deeply on how to create a net by little steps.
-### Create one artifical neuron
+
+#### Create one artifical neuron
+
 Now we can create an [artificial neuron](https://en.wikipedia.org/wiki/Artificial_neuron) with two inputs.
-This is an example of how does a neuron work : 
+This is an example of how does a neuron work :
+
 ```python
     #Inputs x1,x1
     x1 = Value(1.0)
@@ -241,6 +255,7 @@ This is an example of how does a neuron work :
 ```
 
 o is the output of our neuron. The next step is to define a the class Neuron, here's the code:
+
 ```python
 
 class Neuron:
@@ -267,8 +282,10 @@ class Neuron:
 
 
 ```
+
 Here we define the class Neuron, in the __init__ method we create the weights based on the number of input(nin) and then we create the bias Value.
 When we call the Neuron it performs the activation based on the input and gives in output the result. Here's an example of usage
+
 ```python
 x = [1,2,3]
 a = Neuron(3)
@@ -277,10 +294,11 @@ print(a(x))
 
 ```
 
-### Create a layer
+#### Create a layer
+
 The next step is to create a layer made of neuron, here's the code:
 
-```python 
+```python
 
 class Layer:
   
@@ -306,8 +324,9 @@ class Layer:
 In the __init__ method we initialize a layer specifing the number of input for each neuron(nin) and the number of ouput for the layer(nout).
 When we call it, the __call__ method push the input to every neuron and return the out of every neuron.
 
-### Create the multilayer perceptron
-The final step is to create an[ MLP fully connected](https://en.wikipedia.org/wiki/Multilayer_perceptron), here's the code : 
+#### Create the multilayer perceptron
+
+The final step is to create an[MLP fully connected](https://en.wikipedia.org/wiki/Multilayer_perceptron), here's the code :
 
 ```python
 
@@ -342,8 +361,11 @@ net(x)
 
 
 ```
+
 Now we are ready to train the net that we have built.
-### Creating the dataset
+
+#### Creating the dataset
+
 To start we can manually create a very easy dataset and the desired target :
 
 ```python
@@ -357,10 +379,12 @@ ys = [2.0, -4.0, -3.0, 2.0]
 
 
 ```
+
 So when we feed to our net the first list we want to obtain as a result the firs element of the ys list.
 Now all we need is a loss function that can tell us how good are the output of our net.
 When we have our loss function we can call the backpropagation on it(remember that is a Value object so we can do it) and then we can slighly adjust the parameters according to what minimize the loss function.
 Now we can implement it :
+
 ```python
 for k in range(20):
   
@@ -385,22 +409,16 @@ for k in range(20):
     print(k, loss.data)
   
 ```
+
 In this piece of code we train our net following this step :
 
 1. Forward pass
-   We feed to the net the dataset and then we save the output of the net. Then we evaluate the loss using [MSE function](https://en.wikipedia.org/wiki/Mean_squared_error). 
+   We feed to the net the dataset and then we save the output of the net. Then we evaluate the loss using [MSE function](https://en.wikipedia.org/wiki/Mean_squared_error).
 2. Backward Pass
    We reset all the gradient of all parameters and then we compute the new grad of each parameter calling backward on the loss function.
 3. Update
    We update the parameters in the direction that minimize the loss function using a learning rate of 0.1
 
-# Conclusion
+## Conclusion
+
 In this first part we built the foundamental for the understading of neural networks. In the next part we are going to see how to affine our techniques.
-
-
-
-
-
-
-
-

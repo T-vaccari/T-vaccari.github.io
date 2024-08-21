@@ -126,7 +126,12 @@ footer {
     margin-top: 15px;
     margin-bottom: 25px;
 }
-
+.post-content img {
+    max-width: 90% ; /* Adjust the width as needed */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
 /* Base Styling for Code Blocks */
 .highlight pre {
     background-color: #282c34; /* Dark background for code blocks */
