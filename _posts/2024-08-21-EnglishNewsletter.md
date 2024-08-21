@@ -38,14 +38,7 @@ There are many reasons I chose Google Docs and Google Sheets for this app:
 ### 1. Fetching Recipients and Their Vocabulary Database from Google Sheets
 
 The Google Sheet must be structured as follows: Email, DOCUMENT ID, SHEET ID, and a flag to receive the newsletter.
-![Image]({{"assets/images/IMG_123.PNG", | relative_url }})
-<img src="/assets/images/IMG_123.PNG" alt="Google Sheets">
-<img src="assets/images/IMG_123.PNG" alt="Google Sheets">
-![Image](/assets/images/IMG_123.PNG)
-![Image](assets/images/IMG_123.PNG)
-![Image]({{ "/assets/images/IMG_123.PNG" | relative_url }})
-![Image]({{ "/assets/images/IMG_123.PNG" | relative_url }})
-<img src="{{ "/assets/images/IMG_123.PNG" | relative_url }}" alt="Descrizione dell'immagine">
+![My helpful screenshot](/assets/images/IMG_123.png)
 
 
 The function `start_vocab_app()` retrieves recipient details, including their vocabulary document and tracking sheet IDs. It then uses the provided Google Sheets API to extract this data and determine which subscribers should receive the newsletter.
