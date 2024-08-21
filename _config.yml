@@ -3,7 +3,7 @@ email: tommaso.vaccari@mail.polimi.it
 description: >- # this means to ignore newlines until "baseurl:"
   Tommaso Vaccari's Portfolio
 baseurl: "" # the subpath of your site, e.g. /blog
-
+url: "https://T-vaccari.github.io"
 
 github_username:  T-vaccari
 highlighter: rouge
