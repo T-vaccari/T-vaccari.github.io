@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Network : Part One</title>
+    <!-- Usa il filtro `relative_url` per gestire il percorso del CSS -->
+    <link rel="stylesheet" href="/assets/styles/main.css">
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<header>
+    <h1>Tommaso's Portfolio</h1>
+</header>
+
+<nav>
+    <a href="/">Home</a>
+    <!--<a href="/about.html">About</a> -->
+    <!--<a href="/contact.html">Contact</a> -->
+    <a href="/docs/TommasoVaccari_CV.pdf">CV</a>
+    <a href="/pages/nowpage.html">Now Page</a>
+    <a href="/pages/projectspage.html">Projects</a>
+    <a href="/pages/blogpages.html">Blog</a>
+</nav>
+
+<main>
+    <!-- Questo è il segnaposto per il contenuto delle pagine Markdown -->
+    <!DOCTYPE html>
+<html lang="en">
+
+<!--<header><h1>Post</h1></header> -->
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<body>
+  <section class="post-container">
+    <h1 class="post-title">Neural Network : Part One</h1>
+    <p class="date">20 Jul 2024</p>
+    <div class="post-content">
+      <h2 id="introduction">Introduction</h2>
+
+<p>In this post, I would like to introduce how neural networks are built under the hood. I will explore the essential components and mechanisms that enable neural networks to learn and make predictions. By the end of this article, you should have a clearer understanding of how these powerful models work under the hood.</p>
+
+<h2 id="overview-of-neural-networks">Overview of Neural Networks</h2>
+
+<p>Before starting to dive deep into neural networks I would like to roughly remind to the reader what is the main goal and how its reached. Neural networks (NNs) are a class of machine learning models inspired by the structure and function of the human brain. The primary objective of a neural network is to learn a mapping from input data to desired output values by adjusting its parameters through a process of optimization.</p>
+
+<h3 id="1-goal-of-neural-networks">1. Goal of neural networks</h3>
+
+<p>The central aim of a neural network is to learn how to produce accurate outputs when given specific inputs. This process involves training the network on a dataset, where each data point consists of an input and a corresponding target output. For instance, in a classification problem, the input might be an image, and the target output would be the label of the object in the image. Or maybe in a regression problem we want to train our model to answer the question how much?.</p>
+
+<h3 id="2-training-process">2. Training Process</h3>
+
+<h4 id="21-feeding-data-into-the-net-and-comparison-of-the-output">2.1 Feeding data into the net and comparison of the output</h4>
+
+<p>During training, the network is provided with a set of input data and its corresponding target outputs. The network makes predictions based on the input data, which are then compared to the target outputs. This comparison is crucial for evaluating how well the network is performing.</p>
+
+<h4 id="22-loss-function">2.2 Loss Function</h4>
+
+<p>To quantify the difference between the network’s predictions and the target outputs, we use a loss function (or cost function). The loss function measures the prediction error. Common loss functions include Mean Squared Error for regression tasks and Cross-Entropy Loss for classification tasks. A lower value of the loss function indicates better performance of the network.</p>
+
+<h4 id="23-optimization-via-backpropagation">2.3 Optimization via backpropagation</h4>
+
+<p>The goal of training is to minimize the loss function, which involves finding the optimal set of parameters (weights and biases) for the network. To achieve this, we use an optimization algorithm that adjusts the parameters to reduce the loss.
+Backpropagation is the method used to compute the gradients of the loss function with respect to the network’s parameters.
+It involves:
+Forward Pass: Computing the predictions of the network and the loss.
+Backward Pass: Calculating the gradients of the loss function with respect to each parameter using the chain rule of calculus.</p>
+
+<h4 id="24-gradient-descent">2.4 Gradient Descent</h4>
+
+<p>Once the gradients are computed, they are used by the optimization algorithm (often gradient descent or its variants) to update the network’s parameters. The network parameters are adjusted in the direction that reduces the loss function. This process is iterated over multiple epochs (passes through the entire dataset) until the loss function converges to a minimum value or sufficiently small error.</p>
+
+<p>Roughly speaking this is the process that we want to follow for achieving our goal.
+With the foundational concepts established, we will now delve into the detailed steps required to build a neural network. Firstly, we need to create a class that represents data within our neural network. This class must track the origin of each data value, including the operations and values used to compute it, in order to facilitate accurate gradient calculation during backpropagation. We are going to call the class for representing data <em>Value</em> class.</p>
+
+<h2 id="breakdown-of-the-code-for-the-value-class">Breakdown of the code for the Value class</h2>
+
+<p>Now I will start to implement in code what we have seen in the foundational concepts about NN.</p>
+
+<h3 id="building-the-basic-item-of-the-class-and-the-attribute-of-the-object">Building the basic item of the class and the attribute of the object</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Value</span><span class="p">:</span> 
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">_children</span> <span class="o">=</span> <span class="p">(),</span> <span class="n">_op</span> <span class="o">=</span> <span class="sh">''</span> <span class="p">):</span>
+        
+        <span class="n">self</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">_previosly</span> <span class="o">=</span> <span class="nf">set</span><span class="p">(</span><span class="n">_children</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">_operations</span> <span class="o">=</span> <span class="n">_op</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">grad</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">_backward</span> <span class="o">=</span> <span class="k">lambda</span> <span class="p">:</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="sh">"</span><span class="s">Value(data=</span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">data</span><span class="si">}</span><span class="s">)</span><span class="sh">"</span>
+
+</code></pre></div></div>
+
+<p>Here we initialize the value objects with it’s own attribute. Let’s breakdown each attribute :</p>
+
+<ul>
+  <li>self.data = data, saves the value of the object</li>
+  <li>self._previosly = set(_children), saves in a set the children of it’s value, that means that we save what values generated this value. Thanks to the set we can avoid duplicates</li>
+  <li>self._operations =_op, we keep track of what operation generated this value</li>
+  <li>self.grad = 0.0 , we initially set it to zero, then we are going to modify it accordingly to the rules of backpropagation, we store it in this attribute</li>
+  <li>self._backward = lambda : None , we need to store here the function that provide to us the gradient, we set it initially to a lambda None because it dipends on the operation that generated this Value object.</li>
+</ul>
+
+<p>The <strong>repr</strong> method is used to print the value object.
+So for example if we want to generate a value object we can do as follow :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    <span class="n">a</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="o">&gt;&gt;&gt;</span> <span class="nc">Value</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h3 id="building-the-basic-operation-and-the-relative-backward-function-for-value-object">Building the basic operation and the relative backward function for value object</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Value</span> <span class="p">:</span> 
+    <span class="p">...</span> <span class="c1">#Code seen before
+</span>
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">other</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">other</span><span class="p">),</span> <span class="sh">'</span><span class="s">+</span><span class="sh">'</span><span class="p">)</span>
+    
+        <span class="k">def</span> <span class="nf">_backward</span><span class="p">():</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">grad</span> <span class="o">+=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">out</span><span class="p">.</span><span class="n">grad</span>
+            <span class="n">other</span><span class="p">.</span><span class="n">grad</span> <span class="o">+=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">out</span><span class="p">.</span><span class="n">grad</span>
+        <span class="n">out</span><span class="p">.</span><span class="n">_backward</span> <span class="o">=</span> <span class="n">_backward</span>
+    
+        <span class="k">return</span> <span class="n">out</span>
+
+    
+</code></pre></div></div>
+
+<p>Here we have the code for the <strong>add</strong> method.
+Simply in this method  we create an out Value object featured by a new value and a set of children(the two Value object that originated it) and then we append the operation that originated that new Value object. Then from the foundamental of calculus we know that the gradient of the two children due to this operation can be calculated as shown in the code. For much more detail watch gradient explained <a href="https://en.wikipedia.org/wiki/Gradient">here</a>. Let’s watch how does the add function behave :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">a</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="o">&gt;&gt;&gt;</span> <span class="nc">Value</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">_previously</span><span class="p">)</span>
+    <span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="nc">Value</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="mi">3</span><span class="p">),</span><span class="nc">Value</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">_operation</span><span class="p">)</span>
+    <span class="o">&gt;&gt;&gt;</span> <span class="sh">'</span><span class="s">+</span><span class="sh">'</span>
+
+</code></pre></div></div>
+
+<p>Now let’s look a the code for the <strong>mul</strong> method :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Value</span> <span class="p">:</span>
+    <span class="p">...</span> <span class="c1">#Code seen before
+</span>
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">other</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">other</span><span class="p">),</span> <span class="sh">'</span><span class="s">*</span><span class="sh">'</span><span class="p">)</span>
+        
+        <span class="k">def</span> <span class="nf">_backward</span><span class="p">():</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">grad</span> <span class="o">+=</span> <span class="n">other</span><span class="p">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">out</span><span class="p">.</span><span class="n">grad</span>
+            <span class="n">other</span><span class="p">.</span><span class="n">grad</span> <span class="o">+=</span> <span class="n">self</span><span class="p">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">out</span><span class="p">.</span><span class="n">grad</span>
+        <span class="n">out</span><span class="p">.</span><span class="n">_backward</span> <span class="o">=</span> <span class="n">_backward</span>
+        
+        <span class="k">return</span> <span class="n">out</span>
+
+</code></pre></div></div>
+
+<p>In the <strong>add</strong> method, we create a new Value object with a new value and a set of children, which are the two Value objects that originated this result. We also append the operation that produced this new Value object. The backward function is designed to compute the gradient according to calculus rules.</p>
+
+<p>Note that we use the += operator when updating the .grad attribute. This is because we want to accumulate the gradient. For example, if the Value object is involved in multiple operations, the gradient should reflect all these operations, making the gradient cumulative.
+Generally this is the process that we follow to create new method for operation for thi class. For the purpose of creating a neural network we need also a function that can work for us as an <a href="https://en.wikipedia.org/wiki/Activation_function">activation function</a>.
+In this case we add the tanh function for this scope</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Value</span><span class="p">:</span>
+   <span class="p">...</span> <span class="c1">#Code seen before
+</span>    <span class="k">def</span> <span class="nf">tanh</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">data</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">math</span><span class="p">.</span><span class="nf">exp</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">math</span><span class="p">.</span><span class="nf">exp</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">out</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="p">),</span><span class="sh">'</span><span class="s">tanh</span><span class="sh">'</span><span class="p">)</span>
+    
+        <span class="k">def</span> <span class="nf">_backward</span><span class="p">():</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">grad</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">out</span><span class="p">.</span><span class="n">grad</span>
+        <span class="n">out</span><span class="p">.</span><span class="n">_backward</span> <span class="o">=</span> <span class="n">_backward</span>
+        
+        <span class="k">return</span> <span class="n">out</span>
+
+</code></pre></div></div>
+
+<p>From calculus we know that tanh is defined as :</p>
+
+\[\tanh(x) = \frac{e^{2x} - 1}{e^{2x} + 1}\]
+
+<p>Then we can implement the backward function knowing that :</p>
+
+\[\frac{d}{dx} \tanh(x) = 1 - \tanh^2(x)\]
+
+<p>Now we implement the expnential method for being able of using tanh:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Value</span><span class="p">:</span>
+    <span class="p">...</span><span class="c1">#Code seen before
+</span>    <span class="k">def</span> <span class="nf">exp</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">data</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="n">math</span><span class="p">.</span><span class="nf">exp</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="p">),</span> <span class="sh">'</span><span class="s">exp</span><span class="sh">'</span><span class="p">)</span>
+        
+        <span class="k">def</span> <span class="nf">_backward</span><span class="p">():</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">grad</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">out</span><span class="p">.</span><span class="n">grad</span> 
+        <span class="n">out</span><span class="p">.</span><span class="n">_backward</span> <span class="o">=</span> <span class="n">_backward</span>
+        
+        <span class="k">return</span> <span class="n">out</span>
+
+</code></pre></div></div>
+
+<p>We have now implemented most of the basic operations for our Value object. The final step is to implement a backward method. This method will be responsible for calling the backward functions of each object in the proper order.</p>
+
+<h2 id="building-the-backward-method">Building the backward method</h2>
+
+<p>Here’s the code for the function :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Value</span> <span class="p">:</span> 
+
+    <span class="p">...</span> <span class="c1">#Code seen before
+</span>
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+    
+        <span class="n">topo</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">visited</span> <span class="o">=</span> <span class="nf">set</span><span class="p">()</span>
+        <span class="k">def</span> <span class="nf">build_topo</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+                <span class="n">visited</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">v</span><span class="p">.</span><span class="n">_previously</span><span class="p">:</span>
+                <span class="nf">build_topo</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+                <span class="n">topo</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="nf">build_topo</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+        
+        <span class="n">self</span><span class="p">.</span><span class="n">grad</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nf">reversed</span><span class="p">(</span><span class="n">topo</span><span class="p">):</span>
+            <span class="n">node</span><span class="p">.</span><span class="nf">_backward</span><span class="p">()</span>
+
+
+</code></pre></div></div>
+
+<p>Thanks to the implementation of the Value object, we are able to construct a computation graph that captures the entire history of how a Value object was derived. This graph is formed by following the _previously set of each Value object, which tracks all the predecessor values involved in its computation.</p>
+
+<p>To compute the gradients, we begin by focusing on the final Value object, which typically results from a loss function in a neural network. Since we are interested in the gradient of this final Value with respect to itself, we initialize its gradient (self.grad) to 1. This initialization signifies that the gradient of the final Value with respect to itself is 1.</p>
+
+<p>Following this, we execute the backward ipass by invoking the _backward function for each Value object. This process starts with the final Value and proceeds backward through the computation graph to the initial Value objects. This reverse traversal ensures that the gradient for each Value is computed correctly based on the chain rule of differentiation, allowing us to accumulate the gradients appropriately.</p>
+
+<p>We’ve now looked at the basics of how a neural network works. This simple approach helps us understand the core concepts behind its operation.
+Now it’s time to create a very simple net.</p>
+
+<h3 id="creating-a-neural-network">Creating a Neural Network</h3>
+
+<p>Now we will look more deeply on how to create a net by little steps.</p>
+
+<h4 id="create-one-artifical-neuron">Create one artifical neuron</h4>
+
+<p>Now we can create an <a href="https://en.wikipedia.org/wiki/Artificial_neuron">artificial neuron</a> with two inputs.
+This is an example of how does a neuron work :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1">#Inputs x1,x1
+</span>    <span class="n">x1</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+    <span class="c1">#Weights w1,w2
+</span>    <span class="n">w1</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="mf">6.0</span><span class="p">)</span>
+    <span class="n">w2</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="o">-</span><span class="mf">4.0</span><span class="p">)</span>
+    <span class="c1"># bias of the neuron
+</span>    <span class="n">b</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="mf">9.8</span><span class="p">)</span>
+    <span class="c1"># x1*w1 + x2*w2 + b
+</span>    <span class="n">x1w1</span> <span class="o">=</span> <span class="n">x1</span><span class="o">*</span><span class="n">w1</span>
+    <span class="n">x2w2</span> <span class="o">=</span> <span class="n">x2</span><span class="o">*</span><span class="n">w2</span>
+    <span class="n">x1w1x2w2</span> <span class="o">=</span> <span class="n">x1w1</span> <span class="o">+</span> <span class="n">x2w2</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">x1w1x2w2</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="c1"># Activation function
+</span>    <span class="n">o</span> <span class="o">=</span> <span class="n">n</span><span class="p">.</span><span class="nf">tanh</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+<p>o is the output of our neuron. The next step is to define a the class Neuron, here’s the code:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">class</span> <span class="nc">Neuron</span><span class="p">:</span>
+  
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">nin</span><span class="p">):</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">w</span> <span class="o">=</span> <span class="nf">list</span><span class="p">()</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">b</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="n">random</span><span class="p">.</span><span class="nf">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range </span><span class="p">(</span><span class="n">nin</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">w</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nc">Value</span><span class="p">(</span><span class="n">random</span><span class="p">.</span><span class="nf">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
+  
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="c1"># w * x + b
+</span>    <span class="n">activation</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">wi</span><span class="p">,</span><span class="n">xi</span> <span class="ow">in</span> <span class="nf">zip</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">w</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">activation</span> <span class="o">+=</span> <span class="n">wi</span><span class="o">*</span><span class="n">xi</span>
+    <span class="n">activation</span><span class="o">+=</span><span class="n">self</span><span class="p">.</span><span class="n">b</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">activation</span><span class="p">.</span><span class="nf">tanh</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+  
+  <span class="k">def</span> <span class="nf">parameters</span><span class="p">(</span><span class="n">self</span><span class="p">):</span> <span class="c1">#For storing the parameters
+</span>    <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">w</span> <span class="o">+</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">b</span><span class="p">]</span>
+
+
+</code></pre></div></div>
+
+<p>Here we define the class Neuron, in the <strong>init</strong> method we create the weights based on the number of input(nin) and then we create the bias Value.
+When we call the Neuron it performs the activation based on the input and gives in output the result. Here’s an example of usage</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nc">Neuron</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">a</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nc">Value</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">something</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h4 id="create-a-layer">Create a layer</h4>
+
+<p>The next step is to create a layer made of neuron, here’s the code:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">class</span> <span class="nc">Layer</span><span class="p">:</span>
+  
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">nin</span><span class="p">,</span> <span class="n">nout</span><span class="p">):</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">neurons</span> <span class="o">=</span> <span class="nf">list</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">nout</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">neurons</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nc">Neuron</span><span class="p">(</span><span class="n">nin</span><span class="p">))</span>
+  
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">outs</span> <span class="o">=</span> <span class="nf">list</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">neuron</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">neurons</span><span class="p">:</span>
+        <span class="n">outs</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">neuron</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">outs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">outs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">outs</span>
+  
+  <span class="k">def</span> <span class="nf">parameters</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">neuron</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">neurons</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">neuron</span><span class="p">.</span><span class="nf">parameters</span><span class="p">()]</span>
+
+</code></pre></div></div>
+
+<p>In the <strong>init</strong> method we initialize a layer specifing the number of input for each neuron(nin) and the number of ouput for the layer(nout).
+When we call it, the <strong>call</strong> method push the input to every neuron and return the out of every neuron.</p>
+
+<h4 id="create-the-multilayer-perceptron">Create the multilayer perceptron</h4>
+
+<p>The final step is to create an<a href="https://en.wikipedia.org/wiki/Multilayer_perceptron">MLP fully connected</a>, here’s the code :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">class</span> <span class="nc">MLP</span><span class="p">:</span>
+  
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">nin</span><span class="p">,</span> <span class="n">nouts</span><span class="p">):</span>
+    <span class="n">sz</span> <span class="o">=</span> <span class="p">[</span><span class="n">nin</span><span class="p">]</span> <span class="o">+</span> <span class="n">nouts</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">layers</span> <span class="o">=</span> <span class="nf">list</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">nouts</span><span class="p">)):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nc">Layer</span><span class="p">(</span><span class="n">sz</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">sz</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+    
+  
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">layers</span><span class="p">:</span>
+      <span class="n">x</span> <span class="o">=</span> <span class="nf">layer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+  
+  <span class="k">def</span> <span class="nf">parameters</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">layers</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">layer</span><span class="p">.</span><span class="nf">parameters</span><span class="p">()]</span>
+
+</code></pre></div></div>
+
+<p>In the <strong>init</strong> method as usual we initialize the MLP giving the number of inputs of the neurons(nin) and then a list(nouts) where we store the number of neurons for each layer. When we creare the self.layer attribute we iterate over a list that we create where we have the number of inputs and outputs require for every layer.
+Now let’s give a look of how we can use it :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.0</span><span class="p">]</span>
+<span class="n">net</span> <span class="o">=</span> <span class="nc">MLP</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="nf">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="nc">Value</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">something</span><span class="p">)</span>
+
+
+</code></pre></div></div>
+
+<p>Now we are ready to train the net that we have built.</p>
+
+<h4 id="creating-the-dataset">Creating the dataset</h4>
+
+<p>To start we can manually create a very easy dataset and the desired target :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">xs</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+  <span class="p">[</span><span class="mf">6.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+  <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+  <span class="p">[</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">],</span>
+<span class="p">]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span>
+
+
+</code></pre></div></div>
+
+<p>So when we feed to our net the first list we want to obtain as a result the firs element of the ys list.
+Now all we need is a loss function that can tell us how good are the output of our net.
+When we have our loss function we can call the backpropagation on it(remember that is a Value object so we can do it) and then we can slighly adjust the parameters according to what minimize the loss function.
+Now we can implement it :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+  
+    <span class="c1"># forward pass
+</span>    <span class="n">ypred</span> <span class="o">=</span> <span class="nf">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">:</span>
+    <span class="n">ypred</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">net</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">ygt</span><span class="p">,</span><span class="n">yout</span> <span class="ow">in</span> <span class="nf">zip</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span><span class="n">ypred</span><span class="p">):</span>
+        <span class="n">loss</span><span class="o">+=</span> <span class="p">(</span><span class="n">yout</span><span class="o">-</span><span class="n">ygt</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="c1"># backward pass
+</span>    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">net</span><span class="p">.</span><span class="nf">parameters</span><span class="p">():</span>
+        <span class="n">p</span><span class="p">.</span><span class="n">grad</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">loss</span><span class="p">.</span><span class="nf">backward</span><span class="p">()</span>
+
+    <span class="c1"># update
+</span>    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">n</span><span class="p">.</span><span class="nf">parameters</span><span class="p">():</span>
+        <span class="n">p</span><span class="p">.</span><span class="n">data</span> <span class="o">+=</span> <span class="o">-</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">p</span><span class="p">.</span><span class="n">grad</span>
+
+    <span class="nf">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">loss</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
+  
+</code></pre></div></div>
+
+<p>In this piece of code we train our net following this step :</p>
+
+<ol>
+  <li>Forward pass
+We feed to the net the dataset and then we save the output of the net. Then we evaluate the loss using <a href="https://en.wikipedia.org/wiki/Mean_squared_error">MSE function</a>.</li>
+  <li>Backward Pass
+We reset all the gradient of all parameters and then we compute the new grad of each parameter calling backward on the loss function.</li>
+  <li>Update
+We update the parameters in the direction that minimize the loss function using a learning rate of 0.1</li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In this first part we built the foundamental for the understading of neural networks. In the next part we are going to see how to affine our techniques.</p>
+
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
+
+
+</main>
+<footer>
+    <div class="footer-content">
+      
+      <p><a href="mailto:tommaso.vaccari@mail.polimi.it">tommaso.vaccari@mail.polimi.it</a></p>
+      <p><a href="https://github.com/T-vaccari"><img src="/assets/images/github-mark-white.png" alt="GitHub" class="icon"> T-vaccari</a></p>
+      
+      <p>&copy; 2024 Tommaso's Portfolio. All rights reserved.</p>
+    </div>
+</footer>
+  
+
+   
+
+
+</body>
+</html>
