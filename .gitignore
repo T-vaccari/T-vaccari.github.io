@@ -5,8 +5,7 @@ _site
 vendor
 
 
-# Directory generate da Jekyll
-_site/
+
 
 # File di configurazione locali
 .jekyll-metadata
