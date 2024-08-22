@@ -76,8 +76,9 @@ word ||| meaning.</li>
 
 <h3 id="1-fetching-recipients-and-their-vocabulary-database-from-google-sheets">1. Fetching Recipients and Their Vocabulary Database from Google Sheets</h3>
 
-<p>The Google Sheet must be structured as follows: Email, DOCUMENT ID, SHEET ID, and a flag to receive the newsletter.
-<img src="/assets/images/IMG_123.png" alt="My helpful screenshot" /></p>
+<p>The Google Sheet must be structured as follows: Email, DOCUMENT ID, SHEET ID, and a flag to receive the newsletter.</p>
+
+<p><img src="/assets/images/IMG_123.png" alt="Sheet" /></p>
 
 <p>The function <code class="language-plaintext highlighter-rouge">start_vocab_app()</code> retrieves recipient details, including their vocabulary document and tracking sheet IDs. It then uses the provided Google Sheets API to extract this data and determine which subscribers should receive the newsletter.</p>
 
@@ -117,7 +118,7 @@ word ||| meaning.</li>
 
 <p>The app reads vocabulary words from a specific Google Doc using the Google Docs API. Each line in the document is formatted as a word and its meaning separated by ||| (I used it for parsing pursuits).Here is how it mus look like to work with the script :</p>
 
-<p><img src="/assets/images/IMG_124.PNG" alt="sheet" /></p>
+<p><img src="/assets/images/IMG_124.png" alt="DOC" /></p>
 
 <p>Here’s the part of the code that reads the words and returns the one that are selected randomly :</p>
 
@@ -264,7 +265,6 @@ word ||| meaning.</li>
 <p>This tool not only helps me expand my English vocabulary but also serves as a practical example of how APIs can be used to automate tasks and improve productivity. Whether you’re learning a new language or looking for ways to automate repetitive tasks, this project demonstrates the power of leveraging technology to create personalized solutions.</p>
 
 <p>If you found this article helpful, I encourage you to experiment with similar integrations and explore the vast possibilities of API-driven applications. Feel free to reach out with any questions or share your own experiences with building automated tools.</p>
-
 
     </div>
   </section>

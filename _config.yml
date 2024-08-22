@@ -17,6 +17,10 @@ permalink: /:categories/:year/:month/:day/:title.html
 collections:
   posts:
     output: true
+  projects:
+    output: true
+    permalink: /projects/:name/
+
 
 # Exclude from processing.
 exclude:

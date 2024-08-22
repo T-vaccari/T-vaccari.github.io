@@ -1,230 +1,257 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4004/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4004/" rel="alternate" type="text/html" /><updated>2024-08-21T18:33:37+02:00</updated><id>http://localhost:4004/feed.xml</id><title type="html">My portfolio</title><subtitle>Tommaso Vaccari&apos;s Portfolio</subtitle><entry><title type="html">Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets</title><link href="http://localhost:4004/jekyll/update/2024/08/21/EnglishNewsletter.html" rel="alternate" type="text/html" title="Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets" /><published>2024-08-21T00:00:00+02:00</published><updated>2024-08-21T00:00:00+02:00</updated><id>http://localhost:4004/jekyll/update/2024/08/21/EnglishNewsletter</id><content type="html" xml:base="http://localhost:4004/jekyll/update/2024/08/21/EnglishNewsletter.html"><![CDATA[<p>In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers  vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I’ve already studied.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-08-22T12:56:42+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My portfolio</title><subtitle>Tommaso Vaccari&apos;s Portfolio</subtitle><entry><title type="html">Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets</title><link href="http://localhost:4000/jekyll/update/2024/08/21/EnglishNewsletter.html" rel="alternate" type="text/html" title="Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets" /><published>2024-08-21T00:00:00+02:00</published><updated>2024-08-21T00:00:00+02:00</updated><id>http://localhost:4000/jekyll/update/2024/08/21/EnglishNewsletter</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2024/08/21/EnglishNewsletter.html"><![CDATA[In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers  vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I've already studied.
 
-<p>I decided to create this tool because I’m actively learning English and wanted an automated way to refresh and expand my vocabulary. Since I have experience with Python and APIs, I took the opportunity to integrate Google Docs and Google Sheets APIs to store and manage vocabulary words and user data.</p>
+I decided to create this tool because I’m actively learning English and wanted an automated way to refresh and expand my vocabulary. Since I have experience with Python and APIs, I took the opportunity to integrate Google Docs and Google Sheets APIs to store and manage vocabulary words and user data.
 
-<p>You can see the code in my <a href="https://github.com/T-vaccari/VocabularyNewsletter">github repo</a></p>
+You can see the code in my [github repo](https://github.com/T-vaccari/VocabularyNewsletter)
 
-<h2 id="overview-of-the-app">Overview of the app</h2>
+## Overview of the app
 
-<p>Core Components:</p>
+Core Components:
 
-<ol>
-  <li>Google Docs: Serves as the vocabulary database, containing a list of words and their meanings.</li>
-  <li>Google Sheets: Manages subscriber information and tracks vocabulary word appearances.</li>
-  <li>Email Automation: Sends out daily emails with a curated list of vocabulary words.</li>
-</ol>
+1. Google Docs: Serves as the vocabulary database, containing a list of words and their meanings.
+2. Google Sheets: Manages subscriber information and tracks vocabulary word appearances.
+3. Email Automation: Sends out daily emails with a curated list of vocabulary words.
 
-<p>Here’s how everything fits together:</p>
+Here’s how everything fits together:
 
-<ul>
-  <li>Google Docs stores the vocabulary words along with their meanings, formatted like this:
-word ||| meaning.</li>
-  <li>Google Sheets maintains a list of recipients, along with metadata such as which document they are pulling their words from and whether they should receive an email on any given day.</li>
-  <li>The app pulls a random set of words from Google Docs, formats them into an email, and sends it to the user.</li>
-</ul>
+- Google Docs stores the vocabulary words along with their meanings, formatted like this:
+word ||| meaning.
+- Google Sheets maintains a list of recipients, along with metadata such as which document they are pulling their words from and whether they should receive an email on any given day.
+- The app pulls a random set of words from Google Docs, formats them into an email, and sends it to the user.
 
-<h2 id="why-using-google-suit-and-relative-apis">Why using Google Suit and relative APIs</h2>
+## Why using Google Suit and relative APIs
 
-<p>There are many reasons I chose Google Docs and Google Sheets for this app:</p>
+There are many reasons I chose Google Docs and Google Sheets for this app:
 
-<ul>
-  <li>Google Docs: It allows me to easily add, update, and manage vocabulary terms in a simple, familiar text environment.</li>
-  <li>Google Sheets: This is a natural choice for tracking user data, such as which words have already been sent, email preferences, and other metadata.</li>
-  <li>Google API Integration: Google provides powerful APIs that allow seamless interaction with both Docs and Sheets, making it easy to read, write, and update data programmatically.</li>
-</ul>
+- Google Docs: It allows me to easily add, update, and manage vocabulary terms in a simple, familiar text environment.
+- Google Sheets: This is a natural choice for tracking user data, such as which words have already been sent, email preferences, and other metadata.
+- Google API Integration: Google provides powerful APIs that allow seamless interaction with both Docs and Sheets, making it easy to read, write, and update data programmatically.
 
-<h2 id="how-it-works">How It Works</h2>
+## How It Works
 
-<h3 id="1-fetching-recipients-and-their-vocabulary-database-from-google-sheets">1. Fetching Recipients and Their Vocabulary Database from Google Sheets</h3>
+### 1. Fetching Recipients and Their Vocabulary Database from Google Sheets
 
-<p>The Google Sheet must be structured as follows: Email, DOCUMENT ID, SHEET ID, and a flag to receive the newsletter.
-<img src="/assets/images/IMG_123.png" alt="My helpful screenshot" /></p>
+The Google Sheet must be structured as follows: Email, DOCUMENT ID, SHEET ID, and a flag to receive the newsletter.
 
-<p>The function <code class="language-plaintext highlighter-rouge">start_vocab_app()</code> retrieves recipient details, including their vocabulary document and tracking sheet IDs. It then uses the provided Google Sheets API to extract this data and determine which subscribers should receive the newsletter.</p>
+![Sheet](/assets/images/IMG_123.png)
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">start_vocab_app</span><span class="p">():</span>
-  <span class="n">SHEET_ID</span> <span class="o">=</span> <span class="sh">""</span>  <span class="c1"># Insert the SHEET ID used for the database
-</span>  <span class="n">SCOPES</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">https://www.googleapis.com/auth/spreadsheets</span><span class="sh">'</span><span class="p">]</span>
-  <span class="n">credentials</span> <span class="o">=</span> <span class="n">service_account</span><span class="p">.</span><span class="n">Credentials</span><span class="p">.</span><span class="nf">from_service_account_file</span><span class="p">(</span><span class="n">SERVICE_ACCOUNT_FILE</span><span class="p">,</span> <span class="n">scopes</span><span class="o">=</span><span class="n">SCOPES</span><span class="p">)</span>
-  <span class="n">service</span> <span class="o">=</span> <span class="nf">build</span><span class="p">(</span><span class="sh">'</span><span class="s">sheets</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">v4</span><span class="sh">'</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
-  <span class="n">SHEET_RANGE</span> <span class="o">=</span> <span class="sh">""</span>  <span class="c1"># Range to read data in the SHEET
-</span>  <span class="n">sheet</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="nf">spreadsheets</span><span class="p">()</span>
-  <span class="n">result</span> <span class="o">=</span> <span class="n">sheet</span><span class="p">.</span><span class="nf">values</span><span class="p">().</span><span class="nf">get</span><span class="p">(</span><span class="n">spreadsheetId</span><span class="o">=</span><span class="n">SHEET_ID</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">SHEET_RANGE</span><span class="p">).</span><span class="nf">execute</span><span class="p">()</span>
-  <span class="n">values</span> <span class="o">=</span> <span class="n">result</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">values</span><span class="sh">'</span><span class="p">,</span> <span class="p">[])</span>
-  <span class="n">recipients</span> <span class="o">=</span> <span class="nf">dict</span><span class="p">()</span>
-  <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-    <span class="n">recipients</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="n">thing</span> <span class="k">for</span> <span class="n">thing</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+The function `start_vocab_app()` retrieves recipient details, including their vocabulary document and tracking sheet IDs. It then uses the provided Google Sheets API to extract this data and determine which subscribers should receive the newsletter.
 
-  <span class="k">for</span> <span class="n">email</span><span class="p">,</span> <span class="n">features</span> <span class="ow">in</span> <span class="n">recipients</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
-    <span class="k">try</span><span class="p">:</span>
-      <span class="nf">if </span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]).</span><span class="nf">lower</span><span class="p">()</span> <span class="o">==</span> <span class="sh">"</span><span class="s">no</span><span class="sh">"</span><span class="p">:</span>
-        <span class="n">words</span> <span class="o">=</span> <span class="nf">read_google_doc</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">email_body</span> <span class="o">=</span> <span class="nf">create_email_body</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
-        <span class="nf">send_email</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">email_body</span><span class="p">)</span>
+```python
+def start_vocab_app():
+  SHEET_ID = ""  # Insert the SHEET ID used for the database
+  SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+  credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+  service = build('sheets', 'v4', credentials=credentials)
+  SHEET_RANGE = ""  # Range to read data in the SHEET
+  sheet = service.spreadsheets()
+  result = sheet.values().get(spreadsheetId=SHEET_ID, range=SHEET_RANGE).execute()
+  values = result.get('values', [])
+  recipients = dict()
+  for item in values[1:]:
+    recipients[item[0]] = [thing for thing in item[1:]]
+
+  for email, features in recipients.items():
+    try:
+      if (features[-1]).lower() == "no":
+        words = read_google_doc(features[0])
+        email_body = create_email_body(words)
+        send_email(email, email_body)
       
-        <span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="sh">'</span><span class="s">.</span><span class="sh">'</span><span class="p">:</span>
-          <span class="nf">counting_words</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">features</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        if features[1] != '.':
+          counting_words(words, features[1])
 
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">continue</span>
+        else:
+            continue
       
-    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-      <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Errore per il destinatario </span><span class="si">{</span><span class="n">email</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
-      <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Errore con </span><span class="si">{</span><span class="n">email</span><span class="si">}</span><span class="s">. Passo al destinatario successivo.</span><span class="sh">"</span><span class="p">)</span>
-      <span class="k">continue</span>
-</code></pre></div></div>
+    except Exception as e:
+      logging.error(f"Errore per il destinatario {email}: {e}")
+      print(f"Errore con {email}. Passo al destinatario successivo.")
+      continue
+```
 
-<h3 id="2-fetching-vocabulary-from-google-docs">2. Fetching Vocabulary from Google Docs</h3>
+### 2. Fetching Vocabulary from Google Docs
 
-<p>The app reads vocabulary words from a specific Google Doc using the Google Docs API. Each line in the document is formatted as a word and its meaning separated by ||| (I used it for parsing pursuits).Here is how it mus look like to work with the script :</p>
+The app reads vocabulary words from a specific Google Doc using the Google Docs API. Each line in the document is formatted as a word and its meaning separated by \|\|\| (I used it for parsing pursuits).Here is how it mus look like to work with the script :
 
-<p><img src="/assets/images/IMG_124.PNG" alt="sheet" /></p>
+![DOC](/assets/images/IMG_124.png)
 
-<p>Here’s the part of the code that reads the words and returns the one that are selected randomly :</p>
+Here’s the part of the code that reads the words and returns the one that are selected randomly :
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">read_google_doc</span><span class="p">(</span><span class="n">DOCUMENT_ID</span><span class="p">):</span>
-    <span class="n">SCOPES</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">https://www.googleapis.com/auth/documents.readonly</span><span class="sh">'</span><span class="p">]</span>
-    <span class="n">wordstosend</span> <span class="o">=</span> 
-    <span class="n">credentials</span> <span class="o">=</span> <span class="n">service_account</span><span class="p">.</span><span class="n">Credentials</span><span class="p">.</span><span class="nf">from_service_account_file</span><span class="p">(</span>
-        <span class="n">SERVICE_ACCOUNT_FILE</span><span class="p">,</span> <span class="n">scopes</span><span class="o">=</span><span class="n">SCOPES</span><span class="p">)</span>
-    <span class="n">service</span> <span class="o">=</span> <span class="nf">build</span><span class="p">(</span><span class="sh">'</span><span class="s">docs</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">v1</span><span class="sh">'</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
+```python
+def read_google_doc(DOCUMENT_ID):
+    SCOPES = ['https://www.googleapis.com/auth/documents.readonly']
+    wordstosend = 
+    credentials = service_account.Credentials.from_service_account_file(
+        SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+    service = build('docs', 'v1', credentials=credentials)
 
-    <span class="n">doc</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="nf">documents</span><span class="p">().</span><span class="nf">get</span><span class="p">(</span><span class="n">documentId</span><span class="o">=</span><span class="n">DOCUMENT_ID</span><span class="p">).</span><span class="nf">execute</span><span class="p">()</span>
-    <span class="n">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">body</span><span class="sh">'</span><span class="p">).</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">content</span><span class="sh">'</span><span class="p">)</span>
+    doc = service.documents().get(documentId=DOCUMENT_ID).execute()
+    content = doc.get('body').get('content')
 
-    <span class="n">text</span> <span class="o">=</span> <span class="sh">""</span>
-    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">content</span><span class="p">:</span>
-        <span class="k">if</span> <span class="sh">'</span><span class="s">paragraph</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">element</span><span class="p">:</span>
-            <span class="n">elements</span> <span class="o">=</span> <span class="n">element</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">paragraph</span><span class="sh">'</span><span class="p">).</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">elements</span><span class="sh">'</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
-                <span class="n">text_run</span> <span class="o">=</span> <span class="n">elem</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">textRun</span><span class="sh">'</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">text_run</span><span class="p">:</span>
-                    <span class="n">text</span> <span class="o">+=</span> <span class="n">text_run</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">content</span><span class="sh">'</span><span class="p">)</span>
+    text = ""
+    for element in content:
+        if 'paragraph' in element:
+            elements = element.get('paragraph').get('elements')
+            for elem in elements:
+                text_run = elem.get('textRun')
+                if text_run:
+                    text += text_run.get('content')
 
-    <span class="n">lines</span> <span class="o">=</span> <span class="n">text</span><span class="p">.</span><span class="nf">strip</span><span class="p">().</span><span class="nf">split</span><span class="p">(</span><span class="sh">'</span><span class="se">\n</span><span class="sh">'</span><span class="p">)</span>
-    <span class="n">term_list</span> <span class="o">=</span> <span class="p">[]</span>
+    lines = text.strip().split('\n')
+    term_list = []
     
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-        <span class="k">if</span> <span class="sh">'</span><span class="s">|||</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-            <span class="n">term</span><span class="p">,</span> <span class="n">meaning</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sh">'</span><span class="s">|||</span><span class="sh">'</span><span class="p">)</span>
-            <span class="n">term_list</span><span class="p">.</span><span class="nf">append</span><span class="p">([</span><span class="n">term</span><span class="p">.</span><span class="nf">strip</span><span class="p">(),</span> <span class="n">meaning</span><span class="p">.</span><span class="nf">strip</span><span class="p">()])</span>
+    for line in lines:
+        if '|||' in line:
+            term, meaning = line.split('|||')
+            term_list.append([term.strip(), meaning.strip()])
 
-    <span class="n">number</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">term_list</span><span class="p">),</span> <span class="n">wordstosend</span><span class="p">)</span>
-    <span class="n">random</span><span class="p">.</span><span class="nf">shuffle</span><span class="p">(</span><span class="n">term_list</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">random</span><span class="p">.</span><span class="nf">sample</span><span class="p">(</span><span class="n">term_list</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
+    number = min(len(term_list), wordstosend)
+    random.shuffle(term_list)
+    return random.sample(term_list, number)
 
 
-</code></pre></div></div>
+```
 
-<h3 id="3-tracking-logs-in-google-sheet">3. Tracking Logs in Google Sheet</h3>
+### 3. Tracking Logs in Google Sheet
 
-<p>We maintain a log of each word that is sent through the newsletter to ensure accurate tracking and to see what words the subscribers has already learned. Here’s the code :</p>
+We maintain a log of each word that is sent through the newsletter to ensure accurate tracking and to see what words the subscribers has already learned. Here's the code :
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">counting_words</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">SHEET_ID</span><span class="p">):</span>
-    <span class="n">SCOPES</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">https://www.googleapis.com/auth/spreadsheets</span><span class="sh">'</span><span class="p">]</span>
-    <span class="n">credentials</span> <span class="o">=</span> <span class="n">service_account</span><span class="p">.</span><span class="n">Credentials</span><span class="p">.</span><span class="nf">from_service_account_file</span><span class="p">(</span><span class="n">SERVICE_ACCOUNT_FILE</span><span class="p">,</span> <span class="n">scopes</span><span class="o">=</span><span class="n">SCOPES</span><span class="p">)</span>
-    <span class="n">service</span> <span class="o">=</span> <span class="nf">build</span><span class="p">(</span><span class="sh">'</span><span class="s">sheets</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">v4</span><span class="sh">'</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
-    <span class="n">SHEET_RANGE</span> <span class="o">=</span> <span class="sh">""</span>
-    <span class="n">sheet</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="nf">spreadsheets</span><span class="p">()</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">sheet</span><span class="p">.</span><span class="nf">values</span><span class="p">().</span><span class="nf">get</span><span class="p">(</span><span class="n">spreadsheetId</span><span class="o">=</span><span class="n">SHEET_ID</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">SHEET_RANGE</span><span class="p">).</span><span class="nf">execute</span><span class="p">()</span>
-    <span class="n">values</span> <span class="o">=</span> <span class="n">result</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">values</span><span class="sh">'</span><span class="p">,</span> <span class="p">[])</span>
-    <span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]}</span>  
+``` python
+def counting_words(words, SHEET_ID):
+    SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+    credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+    service = build('sheets', 'v4', credentials=credentials)
+    SHEET_RANGE = ""
+    sheet = service.spreadsheets()
+    result = sheet.values().get(spreadsheetId=SHEET_ID, range=SHEET_RANGE).execute()
+    values = result.get('values', [])
+    my_dict = {row[0]: row for row in values[1:]}  
 
-    <span class="n">modified_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>  
-    <span class="n">english_terms</span> <span class="o">=</span> <span class="nf">list</span><span class="p">()</span>
+    modified_values = [values[0]]  
+    english_terms = list()
 
-    <span class="k">for</span> <span class="n">terms</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
-        <span class="n">english_terms</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">terms</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    for terms in words:
+        english_terms.append(terms[0])
     
-    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">english_terms</span><span class="p">:</span>
-            <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">modified_values</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    for row in values[1:]:
+        if row[0] in english_terms:
+            row[1] = str(int(row[1]) + 1)
+        modified_values.append(row)
 
-    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">english_terms</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">my_dict</span><span class="p">:</span>
-            <span class="n">modified_values</span><span class="p">.</span><span class="nf">append</span><span class="p">([</span><span class="n">word</span><span class="p">,</span> <span class="sh">'</span><span class="s">1</span><span class="sh">'</span><span class="p">])</span>
+    for word in english_terms:
+        if word not in my_dict:
+            modified_values.append([word, '1'])
 
-    <span class="n">body</span> <span class="o">=</span> <span class="p">{</span><span class="sh">'</span><span class="s">values</span><span class="sh">'</span><span class="p">:</span> <span class="n">modified_values</span><span class="p">}</span>
+    body = {'values': modified_values}
 
-    <span class="n">result</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="nf">spreadsheets</span><span class="p">().</span><span class="nf">values</span><span class="p">().</span><span class="nf">update</span><span class="p">(</span>
-        <span class="n">spreadsheetId</span><span class="o">=</span><span class="n">SHEET_ID</span><span class="p">,</span>
-        <span class="nb">range</span><span class="o">=</span><span class="n">SHEET_RANGE</span><span class="p">,</span>
-        <span class="n">valueInputOption</span><span class="o">=</span><span class="sh">"</span><span class="s">RAW</span><span class="sh">"</span><span class="p">,</span>
-        <span class="n">body</span><span class="o">=</span><span class="n">body</span>
-    <span class="p">).</span><span class="nf">execute</span><span class="p">()</span>
+    result = service.spreadsheets().values().update(
+        spreadsheetId=SHEET_ID,
+        range=SHEET_RANGE,
+        valueInputOption="RAW",
+        body=body
+    ).execute()
 
 
-</code></pre></div></div>
+```
 
-<h3 id="4-creating-the-body-of-the-email">4. Creating the body of the email</h3>
+### 4. Creating the body of the email
 
-<p>This function generates an HTML email with vocabulary words and their meanings. It formats each word-meaning pair into a styled, centered HTML layout using basic CSS for a clean appearance. The email includes a header, a list of words for the day. The function returns the email content as an HTML string, ready for sending.</p>
+This function generates an HTML email with vocabulary words and their meanings. It formats each word-meaning pair into a styled, centered HTML layout using basic CSS for a clean appearance. The email includes a header, a list of words for the day. The function returns the email content as an HTML string, ready for sending.
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">create_email_body</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
-    <span class="n">word_html</span> <span class="o">=</span> <span class="sh">""</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span>
-        <span class="sa">f</span><span class="sh">"</span><span class="s">&lt;div style=</span><span class="sh">'</span><span class="s">text-align: center; margin: 10px 0; font-size: 24px;</span><span class="sh">'</span><span class="s">&gt;&lt;strong&gt;</span><span class="si">{</span><span class="n">word_pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s"> : </span><span class="si">{</span><span class="n">word_pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s">&lt;/strong&gt;&lt;/div&gt;</span><span class="sh">"</span>
-        <span class="k">for</span> <span class="n">word_pair</span> <span class="ow">in</span> <span class="n">words</span>
-    <span class="p">)</span>
+```python
+def create_email_body(words):
+    word_html = "".join(
+        f"<div style='text-align: center; margin: 10px 0; font-size: 24px;'><strong>{word_pair[0]} : {word_pair[1]}</strong></div>"
+        for word_pair in words
+    )
 
-    <span class="k">return</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
-    &lt;html&gt;
-    &lt;head&gt;
-      &lt;style&gt;
-        body 
-        h1 
-        h2 
-        p 
-        .container 
-        .footer 
-      &lt;/style&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-      &lt;div class=</span><span class="sh">"</span><span class="s">container</span><span class="sh">"</span><span class="s">&gt;
-        &lt;h1&gt;Daily Vocabulary&lt;/h1&gt;
-        &lt;h2&gt;Here are the words for today!&lt;/h2&gt;
-        </span><span class="si">{</span><span class="n">word_html</span><span class="si">}</span><span class="s">
-        &lt;div class=</span><span class="sh">"</span><span class="s">footer</span><span class="sh">"</span><span class="s">&gt;
-          &lt;p&gt;Keep Learning!&lt;/p&gt;
-          &lt;p style=</span><span class="sh">'</span><span class="s">font-style: italic;</span><span class="sh">'</span><span class="s">&gt;Mail sent automatically. Please do not respond.&lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/body&gt;
-    &lt;/html&gt;
-    </span><span class="sh">"""</span>
+    return f"""
+    <html>
+    <head>
+      <style>
+        body {{
+          font-family: Arial, sans-serif;
+          background-color: #f9f9f9;
+          padding: 20px;
+        }}
+        h1 {{
+          color: #4A90E2;
+          text-align: center;
+          margin-bottom: 10px;
+        }}
+        h2 {{
+          color: #333;
+          text-align: center;
+          margin-bottom: 20px;
+        }}
+        p {{
+          font-size: 16px;
+          line-height: 1.5;
+        }}
+        .container {{
+          max-width: 600px;
+          margin: 0 auto;
+          background-color: #fff;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }}
+        .footer {{
+          text-align: center;
+          margin-top: 20px;
+          font-size: 14px;
+          color: #888;
+        }}
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <h1>Daily Vocabulary</h1>
+        <h2>Here are the words for today!</h2>
+        {word_html}
+        <div class="footer">
+          <p>Keep Learning!</p>
+          <p style='font-style: italic;'>Mail sent automatically. Please do not respond.</p>
+        </div>
+      </div>
+    </body>
+    </html>
+    """
 
-</code></pre></div></div>
+```
 
-<h3 id="5-sending-the-email">5. Sending the Email</h3>
+### 5. Sending the Email
 
-<p>Once the words are fetched and the progress tracked, the app creates an HTML email with the vocabulary words and sends it to the recipient using SMTP:</p>
+Once the words are fetched and the progress tracked, the app creates an HTML email with the vocabulary words and sends it to the recipient using SMTP:
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">send_email</span><span class="p">(</span><span class="n">EMAIL_DESTINATION</span><span class="p">,</span> <span class="n">email_body</span><span class="p">):</span>
-    <span class="n">msg</span> <span class="o">=</span> <span class="nc">MIMEMultipart</span><span class="p">()</span>
-    <span class="n">msg</span><span class="p">[</span><span class="sh">'</span><span class="s">Subject</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="sh">'</span><span class="s">Daily Vocabulary</span><span class="sh">'</span>
-    <span class="n">msg</span><span class="p">[</span><span class="sh">'</span><span class="s">From</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">EMAIL_ADDRESS</span>
-    <span class="n">msg</span><span class="p">[</span><span class="sh">'</span><span class="s">To</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">EMAIL_DESTINATION</span>
-    <span class="n">msg</span><span class="p">.</span><span class="nf">attach</span><span class="p">(</span><span class="nc">MIMEText</span><span class="p">(</span><span class="n">email_body</span><span class="p">,</span> <span class="sh">'</span><span class="s">html</span><span class="sh">'</span><span class="p">))</span>
+```python
+def send_email(EMAIL_DESTINATION, email_body):
+    msg = MIMEMultipart()
+    msg['Subject'] = 'Daily Vocabulary'
+    msg['From'] = EMAIL_ADDRESS
+    msg['To'] = EMAIL_DESTINATION
+    msg.attach(MIMEText(email_body, 'html'))
 
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">smtplib</span><span class="p">.</span><span class="nc">SMTP_SSL</span><span class="p">(</span><span class="sh">'</span><span class="s">smtp.gmail.com</span><span class="sh">'</span><span class="p">,</span> <span class="mi">465</span><span class="p">)</span> <span class="k">as</span> <span class="n">smtp</span><span class="p">:</span>
-            <span class="n">smtp</span><span class="p">.</span><span class="nf">login</span><span class="p">(</span><span class="n">EMAIL_ADDRESS</span><span class="p">,</span> <span class="n">EMAIL_PASSWORD</span><span class="p">)</span>
-            <span class="n">smtp</span><span class="p">.</span><span class="nf">send_message</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">'</span><span class="s">Email inviata a </span><span class="si">{</span><span class="n">EMAIL_DESTINATION</span><span class="si">}</span><span class="sh">'</span><span class="p">)</span>
-    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    try:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+            smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+            smtp.send_message(msg)
+        print(f'Email inviata a {EMAIL_DESTINATION}')
+    except Exception as e:
         
-        <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Errore nell</span><span class="sh">'</span><span class="s">invio dell</span><span class="sh">'</span><span class="s">email a </span><span class="si">{</span><span class="n">EMAIL_DESTINATION</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
-        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Errore nell</span><span class="sh">'</span><span class="s">invio dell</span><span class="sh">'</span><span class="s">email a </span><span class="si">{</span><span class="n">EMAIL_DESTINATION</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+        logging.error(f"Errore nell'invio dell'email a {EMAIL_DESTINATION}: {e}")
+        print(f"Errore nell'invio dell'email a {EMAIL_DESTINATION}: {e}")
 
-</code></pre></div></div>
+```
 
-<h2 id="conclusion">Conclusion</h2>
+## Conclusion
 
-<p>Building this daily vocabulary newsletter has been a rewarding project that combines Python programming with Google APIs to automate and enhance language learning. By integrating Google Docs and Google Sheets, the application efficiently manages vocabulary data and user subscriptions, making the learning process more streamlined and interactive.</p>
+Building this daily vocabulary newsletter has been a rewarding project that combines Python programming with Google APIs to automate and enhance language learning. By integrating Google Docs and Google Sheets, the application efficiently manages vocabulary data and user subscriptions, making the learning process more streamlined and interactive.
 
-<p>This tool not only helps me expand my English vocabulary but also serves as a practical example of how APIs can be used to automate tasks and improve productivity. Whether you’re learning a new language or looking for ways to automate repetitive tasks, this project demonstrates the power of leveraging technology to create personalized solutions.</p>
+This tool not only helps me expand my English vocabulary but also serves as a practical example of how APIs can be used to automate tasks and improve productivity. Whether you're learning a new language or looking for ways to automate repetitive tasks, this project demonstrates the power of leveraging technology to create personalized solutions.
 
-<p>If you found this article helpful, I encourage you to experiment with similar integrations and explore the vast possibilities of API-driven applications. Feel free to reach out with any questions or share your own experiences with building automated tools.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I’ve already studied.]]></summary></entry><entry><title type="html">Neural Network : Part One</title><link href="http://localhost:4004/jekyll/update/2024/07/20/NeuralNetworkP1.html" rel="alternate" type="text/html" title="Neural Network : Part One" /><published>2024-07-20T00:00:00+02:00</published><updated>2024-07-20T00:00:00+02:00</updated><id>http://localhost:4004/jekyll/update/2024/07/20/NeuralNetworkP1</id><content type="html" xml:base="http://localhost:4004/jekyll/update/2024/07/20/NeuralNetworkP1.html"><![CDATA[## Introduction
+If you found this article helpful, I encourage you to experiment with similar integrations and explore the vast possibilities of API-driven applications. Feel free to reach out with any questions or share your own experiences with building automated tools.]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I’ve already studied.]]></summary></entry><entry><title type="html">Neural Network : Part One</title><link href="http://localhost:4000/jekyll/update/2024/07/20/NeuralNetworkP1.html" rel="alternate" type="text/html" title="Neural Network : Part One" /><published>2024-07-20T00:00:00+02:00</published><updated>2024-07-20T00:00:00+02:00</updated><id>http://localhost:4000/jekyll/update/2024/07/20/NeuralNetworkP1</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2024/07/20/NeuralNetworkP1.html"><![CDATA[## Introduction
 
 In this post, I would like to introduce how neural networks are built under the hood. I will explore the essential components and mechanisms that enable neural networks to learn and make predictions. By the end of this article, you should have a clearer understanding of how these powerful models work under the hood.
 
