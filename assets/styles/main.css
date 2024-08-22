@@ -1,53 +1,140 @@
-/* Base Styles */
-body {
+/* =========================================
+   Base Styles
+   ========================================= */
+
+   body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #e0e0e0;
     color: #2c3e50;
 }
+
 header {
     background-color: #2c3e50;
     color: #fff;
-    padding: 30px 0;
+    padding: 40px 0;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 nav {
     display: flex;
     justify-content: space-around;
     background-color: #34495e;
     padding: 15px 0;
 }
+
 nav a {
     color: #ecf0f1;
     padding: 12px 20px;
     text-decoration: none;
     text-transform: uppercase;
+    transition: background-color 0.3s ease;
 }
+
 nav a:hover {
     background-color: #2c3e50;
     border-radius: 5px;
 }
+
 section {
     padding: 30px;
     margin: 50px auto;
-    max-width: 1000px;
+    max-width: 1200px;
     background-color: #ffffff;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     border-radius: 8px;
 }
+
+/* =========================================
+   Project Grid
+   ========================================= */
+
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+/* Singolo blocco progetto */
+.project {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1 1 calc(33.333% - 20px); /* 3 colonne */
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.project img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Effetto hover sui progetti */
+.project:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: #f8f8f8;
+}
+
+.project h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    text-transform: uppercase;
+}
+
+.project a {
+    text-decoration: none;
+    color: #2980b9;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.project a:hover {
+    color: #3498db;
+}
+
+/* =========================================
+   Responsive Design
+   ========================================= */
+
+@media (max-width: 1024px) {
+    .project {
+        flex: 1 1 calc(50% - 20px); /* 2 colonne per schermi medi */
+    }
+}
+
+@media (max-width: 768px) {
+    .project {
+        flex: 1 1 100%; /* 1 colonna per schermi piccoli */
+    }
+}
+
+/* =========================================
+   Typography
+   ========================================= */
+
 .post-title {
-    font-size: 2.0em; /* Adjust the size as needed */
+    font-size: 2.0em;
     color: #2c3e50;
     margin-bottom: 20px;
 }
+
 h2 {
     color: #2c3e50;
     border-bottom: 2px solid #34495e;
     padding-bottom: 15px;
     margin-bottom: 25px;
 }
+
 .profile-pic {
     display: block;
     margin: 30px auto;
@@ -55,18 +142,16 @@ h2 {
     border-radius: 50%;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
-.project {
-    margin-bottom: 30px;
-}
-.project img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
+
+/* =========================================
+   Skills List
+   ========================================= */
+
 .skills ul {
     list-style-type: none;
     padding: 0;
 }
+
 .skills ul li {
     background-color: #f9f9f9;
     margin: 15px 0;
@@ -74,176 +159,137 @@ h2 {
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
+
+/* =========================================
+   Footer
+   ========================================= */
+
 footer {
     text-align: center;
     padding: 20px 0;
     background-color: #2c3e50;
     color: #ecf0f1;
 }
+
 .footer-content {
     text-align: center;
-    color: white;
     background-color: #333;
     padding: 25px;
+    color: #ecf0f1;
 }
+
 .footer-content p {
     margin: 10px 0;
 }
+
 .footer-content a {
-    color: white;
+    color: #ecf0f1;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
+
 .footer-content a:hover {
+    color: #3498db;
     text-decoration: underline;
 }
+
+/* Ridimensiona l'immagine di GitHub nel footer */
 .footer-content .icon {
-    width: 16px;
-    height: 16px;
+    width: 24px; /* Dimensioni più piccole */
+    height: 24px;
     vertical-align: middle;
     margin-right: 5px;
 }
+
+/* =========================================
+   Post Listing
+   ========================================= */
+
 .post-listing {
     text-align: center;
     margin-bottom: 30px;
     padding: 20px 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
+
+/* Animazione su hover per post */
+.post-listing:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: #f8f8f8;
+}
+
 .post-listing h2 {
     font-size: 1.75em;
     margin-bottom: 10px;
+    transition: color 0.3s ease;
 }
+
 .post-listing h2 a {
     color: #2c3e50;
     text-decoration: none;
     font-weight: bold;
 }
-/* Horizontal line under the title */
-.post-listing h2:after {
-    content: "";
-    display: inline-block;
-    width: 100%; /* Full width line */
-    height: 1px;
-    background-color: #ddd;
-    margin-top: 15px;
-    margin-bottom: 25px;
+
+.post-listing h2:hover {
+    color: #3498db;
 }
+
+/* =========================================
+   Post Content
+   ========================================= */
+
+/* Riduzione delle dimensioni delle immagini nei post */
 .post-content img {
-    max-width: 90% ; /* Adjust the width as needed */
+    max-width: 90%; /* Riduzione delle dimensioni per una visualizzazione migliore */
     height: auto;
     display: block;
     margin: 0 auto;
+    border-radius: 5px;
 }
-/* Base Styling for Code Blocks */
+
+/* =========================================
+   Code Block Styles
+   ========================================= */
+
 .highlight pre {
-    background-color: #282c34; /* Dark background for code blocks */
-    border: 1px solid #444c56; /* Subtle border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 15px; /* Padding around code */
-    overflow: auto; /* Scroll if needed */
-    color: #abb2bf; /* Light text color for code */
-    font-size: 16px; /* Font size */
-    line-height: 1.5; /* Line height for readability */
+    background-color: #282c34; /* Sfondo scuro per un contrasto migliore */
+    border: 1px solid #333; /* Bordo sottile per definire il blocco */
+    border-radius: 8px; /* Angoli arrotondati più pronunciati */
+    padding: 1.5rem; /* Spazio interno più ampio per una migliore leggibilità */
+    overflow-x: auto;
+    color: #f8f8f2; /* Colore del testo chiaro per una migliore visibilità */
+    font-size: 15px;
+    line-height: 1.6;
+    font-family: 'Source Code Pro', monospace;
+    white-space: pre-wrap; /* Permette l'avvolgimento delle righe lunghe */
+    word-break: break-all; /* Evita che le parole lunghe vengano troncate */
 }
 
-/* Syntax Highlighting Styles */
-.highlight .k { color: #c678dd; } /* Keywords (e.g., def, class) */
-.highlight .c { color: #5c6370; } /* Comments (e.g., # This is a comment) */
-.highlight .o { color: #56b6c2; } /* Operators (e.g., +, -, *) */
-.highlight .n { color: #d19a66; } /* Numbers (e.g., 42) */
-.highlight .s { color: #98c379; } /* Strings (e.g., "Hello, world!") */
-.highlight .p { color: #e06c75; } /* Punctuation (e.g., (), {}, []) */
-.highlight .m { color: #e5c07b; } /* Methods and Functions (e.g., print) */
-.highlight .d { color: #61afef; } /* Data types (e.g., int, str) */
-.highlight .f { color: #e5c07b; } /* Function names */
-.highlight .nf { color: #e5c07b; } /* Function names */
-.highlight .na { color: #e5c07b; } /* Attribute names */
-.highlight .nt { color: #c678dd; } /* Titles */
-.highlight .l { color: #d19a66; } /* Labels */
-.highlight .b { color: #56b6c2; } /* Built-in functions */
-.highlight .mi { color: #e06c75; } /* Magic methods */
-.highlight .s2 { color: #98c379; } /* Double-quoted strings */
-.highlight .s1 { color: #98c379; } /* Single-quoted strings */
+/* Evidenziazione della sintassi */
+.highlight .k { color: #ff79c6; } /* Parole chiave più evidenti */
+.highlight .c { color: #6a737d; } /* Commenti più chiari */
+.highlight .o { color: #61afef; } /* Operatori */
+.highlight .n { color: #d8dee9; } /* Numeri */
+.highlight .s { color: #a0ffa3; } /* Stringhe più vivaci */
+.highlight .p { color: #e06c75; } /* Punteggiatura */
+.highlight .m { color: #ffd700; } /* Metodi e Funzioni */
+.highlight .d { color: #61afef; } /* Tipi di dati */
+.highlight .f { color : #ffd700; } /* Nomi delle funzioni */
+.highlight .nf { color:  #ffd700; } /* Nomi delle funzioni */
+.highlight .na { color:  #ffd700; } /* Nomi degli attributi */
+.highlight .nt { color: #ff79c6; } /* Titoli */
+.highlight .l { color: #d8dee9; } /* Etichette */
+.highlight .b { color: #61afef; } /* Funzioni built-in */
+.highlight .mi { color: #e06c75; } /* Metodi magici */
+.highlight .s2 { color: #a0ffa3; } /* Stringhe tra doppi apici */
+.highlight .s1 { color: #a0ffa3; } /* Stringhe tra apici singoli */
 
-/* Adjustments for smaller screens */
-@media (max-width: 1024px) {
-    /* Styles for tablets and smaller desktop screens */
-    header {
-        padding: 20px 0;
-    }
-    nav {
-        padding: 10px 0;
-    }
-    section {
-        padding: 20px;
-    }
-    .post-title {
-        font-size: 1.8em;
-    }
-    .project img {
-        max-width: 90%;
-    }
-}
 
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: center;
-        padding: 10px 0;
-    }
 
-    nav a {
-        padding: 10px 0;
-        display: block;
-        text-align: center;
-    }
-
-    section {
-        padding: 15px;
-        margin: 30px auto;
-    }
-
-    .post-title {
-        font-size: 1.6em;
-    }
-
-    .project img {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        font-size: 14px;
-    }
-
-    header {
-        padding: 15px 0;
-    }
-
-    nav a {
-        padding: 8px 0;
-    }
-
-    section {
-        padding: 10px;
-        margin: 20px auto;
-    }
-
-    .post-title {
-        font-size: 1.4em;
-    }
-
-    .project img {
-        max-width: 100%;
-    }
-
-    .footer-content {
-        padding: 15px;
-    }
-
-    .highlight pre {
-        font-size: 14px;
-    }
-}
 
 
 

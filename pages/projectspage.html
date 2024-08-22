@@ -1,7 +1,6 @@
 ---
 title: project Page
 layout : default
-
 ---
 
 <header>
@@ -10,14 +9,15 @@ layout : default
     </div>
 </header>
 
-<section class="post">
+
+<section class="projects">
     {% for project in site.projects %}
     <div class="project">
       <h2><a href="{{ project.url }}">{{ project.title }}</a></h2>
-      <!--
-      <p>{{ project.description }}</p>
-      -->
+      <!-- <p>{{ project.description }}</p> Uncomment to show the description -->
     </div>
     {% endfor %}
 </section>
+
+
   
