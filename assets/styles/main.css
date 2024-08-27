@@ -116,6 +116,17 @@ section {
 }
 
 @media (max-width: 768px) {
+    /* Riduzione dei caratteri per i titoli dei progetti */
+    .project h2 {
+        font-size: 1.15em; /* Ridotto rispetto all'attuale 1.5em */
+    }
+
+    /* Riduzione dei caratteri per i titoli dei post */
+    .post-listing h2 {
+        font-size: 1.5em; /* Ridotto rispetto all'attuale 1.75em */
+    }
+
+    /* Altre regole esistenti per la navigazione */
     nav {
         flex-direction: column; /* Stack items vertically */
         align-items: center; /* Center-align the items */
@@ -128,10 +139,21 @@ section {
         text-align: center; /* Center-align text */
     }
 
+    /* Progetti in una singola colonna su schermi piccoli */
     .project {
         flex: 1 1 100%; /* 1 colonna per schermi piccoli */
     }
+    /* Ridurre i titoli dei progetti sui dispositivi mobili */
+    .projects .project h2 {
+        font-size: 1.25em !important; /* Forziamo la priorità con !important */
+    }
+
+    /* Ridurre i titoli dei post sui dispositivi mobili */
+    .post-listing h2 {
+        font-size: 1.5em !important; /* Forziamo la priorità con !important */
+    }
 }
+
 
 /* =========================================
    Typography
