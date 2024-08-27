@@ -1,7 +1,6 @@
 /* =========================================
    Base Styles
    ========================================= */
-
    body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
@@ -11,12 +10,19 @@
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-header {
+header, footer {
     background-color: #2c3e50;
     color: #fff;
-    padding: 40px 0;
     text-align: center;
+}
+
+header {
+    padding: 40px 0;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    padding: 20px 0;
 }
 
 nav {
@@ -24,7 +30,6 @@ nav {
     justify-content: space-around;
     background-color: #34495e;
     padding: 15px 0;
-    max-width: 100%; /* Ensure the navbar doesn't overflow */
     box-sizing: border-box; /* Include padding in width calculations */
 }
 
@@ -45,15 +50,14 @@ section {
     padding: 30px;
     margin: 50px auto;
     max-width: 1200px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
 /* =========================================
    Project Grid
    ========================================= */
-
 .projects {
     display: flex;
     flex-wrap: wrap;
@@ -61,9 +65,8 @@ section {
     justify-content: space-between;
 }
 
-/* Singolo blocco progetto */
 .project {
-    background-color: #ffffff;
+    background-color: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 20px;
@@ -73,18 +76,17 @@ section {
     text-align: center;
 }
 
+.project:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: #f8f8f8;
+}
+
 .project img {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
     margin-bottom: 15px;
-}
-
-/* Effetto hover sui progetti */
-.project:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    background-color: #f8f8f8;
 }
 
 .project h2 {
@@ -108,7 +110,6 @@ section {
 /* =========================================
    Responsive Design
    ========================================= */
-
 @media (max-width: 1024px) {
     .project {
         flex: 1 1 calc(50% - 20px); /* 2 colonne per schermi medi */
@@ -116,60 +117,45 @@ section {
 }
 
 @media (max-width: 768px) {
-    /* Riduzione dei caratteri per i titoli dei progetti */
-    .project h2 {
-        font-size: 1.15em; /* Ridotto rispetto all'attuale 1.5em */
-    }
-
-    /* Riduzione dei caratteri per i titoli dei post */
-    .post-listing h2 {
-        font-size: 1.5em; /* Ridotto rispetto all'attuale 1.75em */
-    }
-
-    /* Altre regole esistenti per la navigazione */
-    nav {
-        flex-direction: column; /* Stack items vertically */
-        align-items: center; /* Center-align the items */
-        padding: 10px; /* Adjust padding */
-    }
-
-    nav a {
-        padding: 10px 15px; /* Reduce padding for smaller screens */
-        display: block; /* Ensure links are full-width */
-        text-align: center; /* Center-align text */
-    }
-
-    /* Progetti in una singola colonna su schermi piccoli */
     .project {
         flex: 1 1 100%; /* 1 colonna per schermi piccoli */
     }
-    /* Ridurre i titoli dei progetti sui dispositivi mobili */
-    .projects .project h2 {
-        font-size: 1.25em !important; /* Forziamo la priorità con !important */
+
+    .project h2 {
+        font-size: 1.25em;
     }
 
-    /* Ridurre i titoli dei post sui dispositivi mobili */
-    .post-listing h2 {
-        font-size: 1.5em !important; /* Forziamo la priorità con !important */
+    nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    nav a {
+        padding: 10px 15px;
+        display: block;
+        text-align: center;
+    }
+    .highlight pre {
+        white-space: pre; /* Mantiene il codice intero senza wrapping */
+        word-break: normal; /* Disabilita il word-break per il codice */
     }
 }
-
 
 /* =========================================
    Typography
    ========================================= */
-
-.post-title {
-    font-size: 2.0em;
-    color: #2c3e50;
-    margin-bottom: 20px;
-}
-
 h2 {
     color: #2c3e50;
     border-bottom: 2px solid #34495e;
     padding-bottom: 15px;
     margin-bottom: 25px;
+}
+
+.post-title {
+    font-size: 2em;
+    color: #2c3e50;
+    margin-bottom: 20px;
 }
 
 .profile-pic {
@@ -183,7 +169,6 @@ h2 {
 /* =========================================
    Skills List
    ========================================= */
-
 .skills ul {
     list-style-type: none;
     padding: 0;
@@ -200,28 +185,15 @@ h2 {
 /* =========================================
    Footer
    ========================================= */
-
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: #2c3e50;
-    color: #ecf0f1;
-}
-
 .footer-content {
-    text-align: center;
     background-color: #333;
     padding: 25px;
     color: #ecf0f1;
 }
 
-.footer-content p {
+.footer-content p, .footer-content a {
     margin: 10px 0;
-}
-
-.footer-content a {
-    color: #ecf0f1;
-    text-decoration: none;
+    color: inherit;
     transition: color 0.3s ease;
 }
 
@@ -230,9 +202,8 @@ footer {
     text-decoration: underline;
 }
 
-/* Ridimensiona l'immagine di GitHub nel footer */
 .footer-content .icon {
-    width: 24px; /* Dimensioni più piccole */
+    width: 24px;
     height: 24px;
     vertical-align: middle;
     margin-right: 5px;
@@ -241,18 +212,16 @@ footer {
 /* =========================================
    Post Listing
    ========================================= */
-
 .post-listing {
     text-align: center;
     margin-bottom: 30px;
     padding: 20px 25px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #ffffff;
+    background-color: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
-/* Animazione su hover per post */
 .post-listing:hover {
     transform: translateY(-15px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -278,10 +247,8 @@ footer {
 /* =========================================
    Post Content
    ========================================= */
-
-/* Riduzione delle dimensioni delle immagini nei post */
 .post-content img {
-    max-width: 90%; /* Riduzione delle dimensioni per una visualizzazione migliore */
+    max-width: 90%;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -291,39 +258,31 @@ footer {
 /* =========================================
    Code Block Styles
    ========================================= */
-
-.highlight pre {
-    background-color: #282c34; /* Sfondo scuro per un contrasto migliore */
-    border: 1px solid #333; /* Bordo sottile per definire il blocco */
-    border-radius: 8px; /* Angoli arrotondati più pronunciati */
-    padding: 1.5rem; /* Spazio interno più ampio per una migliore leggibilità */
-    overflow-x: auto;
-    color: #f8f8f2; /* Colore del testo chiaro per una migliore visibilità */
+   .highlight pre {
+    background-color: #282c34;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 1.5rem;
+    overflow-x: auto; /* Permette lo scorrimento orizzontale */
+    color: #f8f8f2;
     font-size: 15px;
     line-height: 1.6;
     font-family: 'Source Code Pro', monospace;
-    white-space: pre-wrap; /* Permette l'avvolgimento delle righe lunghe */
-    word-break: break-all; /* Evita che le parole lunghe vengano troncate */
+    white-space: pre; /* Mantiene il codice su una singola riga se necessario */
+    word-break: normal; /* Evita di spezzare parole lunghe */
 }
 
-/* Evidenziazione della sintassi */
-.highlight .k { color: #ff79c6; } /* Parole chiave più evidenti */
-.highlight .c { color: #6a737d; } /* Commenti più chiari */
-.highlight .o { color: #61afef; } /* Operatori */
-.highlight .n { color: #d8dee9; } /* Numeri */
-.highlight .s { color: #a0ffa3; } /* Stringhe più vivaci */
-.highlight .p { color: #e06c75; } /* Punteggiatura */
-.highlight .m { color: #ffd700; } /* Metodi e Funzioni */
-.highlight .d { color: #61afef; } /* Tipi di dati */
-.highlight .f { color : #ffd700; } /* Nomi delle funzioni */
-.highlight .nf { color:  #ffd700; } /* Nomi delle funzioni */
-.highlight .na { color:  #ffd700; } /* Nomi degli attributi */
-.highlight .nt { color: #ff79c6; } /* Titoli */
-.highlight .l { color: #d8dee9; } /* Etichette */
-.highlight .b { color: #61afef; } /* Funzioni built-in */
-.highlight .mi { color: #e06c75; } /* Metodi magici */
-.highlight .s2 { color: #a0ffa3; } /* Stringhe tra doppi apici */
-.highlight .s1 { color: #a0ffa3; } /* Stringhe tra apici singoli */
+/* Syntax Highlighting */
+.highlight .k { color: #ff79c6; }
+.highlight .c { color: #6a737d; }
+.highlight .o { color: #61afef; }
+.highlight .n, .highlight .l { color: #d8dee9; }
+.highlight .s, .highlight .s2, .highlight .s1 { color: #a0ffa3; }
+.highlight .p { color: #e06c75; }
+.highlight .m, .highlight .f, .highlight .nf, .highlight .na { color: #ffd700; }
+.highlight .nt, .highlight .mi { color: #ff79c6; }
+.highlight .b, .highlight .d { color: #61afef; }
+
 
 
 
