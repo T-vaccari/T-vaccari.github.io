@@ -1,4 +1,241 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4001/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4001/" rel="alternate" type="text/html" /><updated>2024-08-27T18:30:00+02:00</updated><id>http://localhost:4001/feed.xml</id><title type="html">My portfolio</title><subtitle>Tommaso Vaccari&apos;s Portfolio</subtitle><entry><title type="html">Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets</title><link href="http://localhost:4001/jekyll/update/2024/08/21/EnglishNewsletter.html" rel="alternate" type="text/html" title="Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets" /><published>2024-08-21T00:00:00+02:00</published><updated>2024-08-21T00:00:00+02:00</updated><id>http://localhost:4001/jekyll/update/2024/08/21/EnglishNewsletter</id><content type="html" xml:base="http://localhost:4001/jekyll/update/2024/08/21/EnglishNewsletter.html"><![CDATA[In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers  vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I've already studied.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4002/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4002/" rel="alternate" type="text/html" /><updated>2024-08-29T11:32:44+02:00</updated><id>http://localhost:4002/feed.xml</id><title type="html">My portfolio</title><subtitle>Tommaso Vaccari&apos;s Portfolio</subtitle><entry><title type="html">Building a Simple Web App with Firebase Authentication and Firestore: A Step-by-Step Guide</title><link href="http://localhost:4002/jekyll/update/2024/08/28/Eisenhowe_Matrix.html" rel="alternate" type="text/html" title="Building a Simple Web App with Firebase Authentication and Firestore: A Step-by-Step Guide" /><published>2024-08-28T00:00:00+02:00</published><updated>2024-08-28T00:00:00+02:00</updated><id>http://localhost:4002/jekyll/update/2024/08/28/Eisenhowe_Matrix</id><content type="html" xml:base="http://localhost:4002/jekyll/update/2024/08/28/Eisenhowe_Matrix.html"><![CDATA[<p>In today’s post, I’ll walk you through the development of a simple web application, showcasing how to leverage Firebase Authentication and Firestore Database. This guide will help you understand how to:</p>
+
+<ol>
+  <li>Authenticate users with Firebase Authentication.</li>
+  <li>Store and retrieve data in real time using Firestore.</li>
+</ol>
+
+<p>To make things more practical, we’ll build an application based on the <a href="https://en.wikipedia.org/wiki/Time_management#The_Eisenhower_Method">Eisenhower Matrix</a>, a powerful decision-making framework that helps you prioritize tasks based on urgency and importance.</p>
+
+<p>If you want to see the final result in action, feel free to explore the app <a href="https://eisenhower-matrix.tommasovaccari.com">here</a>.</p>
+
+<h2 id="what-is-the-eisenhower-matrix">What is the Eisenhower Matrix?</h2>
+
+<p>The Eisenhower Matrix is divided into four quadrants:</p>
+
+<ul>
+  <li><strong>Quadrant 1</strong>: Urgent and Important</li>
+  <li><strong>Quadrant 2</strong>: Not Urgent but Important</li>
+  <li><strong>Quadrant 3</strong>: Urgent but Not Important</li>
+  <li><strong>Quadrant 4</strong>: Neither Urgent nor Important</li>
+</ul>
+
+<p>This framework helps you classify tasks and make better decisions about what to prioritize, what to plan for later, and what to delegate or remove.</p>
+
+<h2 id="overview-of-the-app">Overview of the App</h2>
+
+<p>My web application brings the Eisenhower Matrix to life by allowing users to interactively create, categorize, and manage tasks within the matrix.</p>
+
+<p>With this app, users can:</p>
+
+<ul>
+  <li><strong>Create an account</strong> using Firebase Authentication.</li>
+  <li><strong>Add tasks</strong> and assign them to one of the four quadrants (Urgent/Important, Not Urgent/Important, Urgent/Not Important, Not Urgent/Not Important).</li>
+  <li><strong>Move tasks dynamically</strong> between quadrants as priorities change.</li>
+  <li><strong>Store tasks</strong> securely in the cloud using Firestore, ensuring persistence across sessions and accessibility from any device.</li>
+</ul>
+
+<h3 id="core-components">Core Components</h3>
+
+<ul>
+  <li><strong>Firebase Authentication</strong>: Enables users to create accounts, log in, and secure access to their personalized task data.</li>
+  <li><strong>Firestore Database</strong>: A NoSQL cloud database that stores user tasks in real time, ensuring that changes are immediately reflected in the UI and synced across devices.</li>
+  <li><strong>HTML, JavaScript, and CSS</strong>: The front-end is built using standard web technologies. HTML structures the layout, JavaScript provides interactivity (e.g., adding and moving tasks), and CSS ensures the app is visually appealing and user-friendly.</li>
+</ul>
+
+<h2 id="why-firebase">Why Firebase?</h2>
+
+<p>Firebase provides a robust suite of tools, making it ideal for small projects like this. It offers both authentication and database features, allowing you to manage user sessions and store data without having to set up complex backend infrastructure. The <strong>free tier</strong> is more than enough for small projects, allowing you to build and launch an app without any initial cost.</p>
+
+<h2 id="step-by-step-guide">Step-by-Step Guide</h2>
+
+<p>Now, let’s dive into the app construction, step by step.</p>
+
+<h3 id="step-1-setting-up-firebase">Step 1: Setting Up Firebase</h3>
+
+<ol>
+  <li>Go to the <a href="https://console.firebase.google.com">Firebase Console</a> and create a new project.</li>
+  <li>Enable <strong>Firebase Authentication</strong>: Navigate to the “Authentication” tab, click “Set up sign-in method”, and enable <strong>Email/Password</strong> authentication.</li>
+  <li>Enable <strong>Firestore Database</strong>: In the “Firestore Database” section, click “Create database”, and choose the appropriate settings for your app (test mode is fine for development).</li>
+</ol>
+
+<p>Now you’re ready to integrate Firebase into your app!</p>
+
+<h3 id="step-2--integrate-firebase-into-the-web-app">Step 2 : Integrate Firebase into the Web App</h3>
+
+<p>Once you’ve completed the basic structure and styling of your web application using HTML and CSS, you can now integrate Firebase services to handle authentication and data storage.</p>
+
+<p>To do this, you need to import the necessary Firebase modules directly into your JavaScript file. Firebase provides a modern way to handle individual services using ES modules, which makes your code more modular and lightweight.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">initializeApp</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">getAuth</span><span class="p">,</span> <span class="nx">signInWithEmailAndPassword</span><span class="p">,</span> <span class="nx">createUserWithEmailAndPassword</span><span class="p">,</span> <span class="nx">onAuthStateChanged</span><span class="p">,</span> <span class="nx">signOut</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">getFirestore</span><span class="p">,</span> <span class="nx">doc</span><span class="p">,</span> <span class="nx">setDoc</span><span class="p">,</span> <span class="nx">collection</span><span class="p">,</span> <span class="nx">addDoc</span><span class="p">,</span> <span class="nx">onSnapshot</span><span class="p">,</span> <span class="nx">deleteDoc</span><span class="p">,</span> <span class="nx">query</span><span class="p">,</span> <span class="nx">where</span><span class="p">,</span> <span class="nx">limit</span><span class="p">,</span> <span class="nx">startAfter</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js</span><span class="dl">"</span><span class="p">;</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li>initializeApp: This function is essential to start using Firebase in your app. It initializes Firebase using your project’s configuration details.</li>
+</ul>
+
+<p>Authentication Services:</p>
+
+<ul>
+  <li>getAuth: Initializes Firebase Authentication, which is used to manage users and their login status..</li>
+  <li>signInWithEmailAndPassword: Allows users to log in using their email and password.</li>
+  <li>createUserWithEmailAndPassword: Enables new user registration with email and password.</li>
+  <li>onAuthStateChanged: Listens to changes in authentication state, allowing you to track whether a user is logged in or logged out.</li>
+  <li>signOut: Provides a method to log users out of the application.</li>
+</ul>
+
+<p>Firestore Services:</p>
+
+<ul>
+  <li>getFirestore: Initializes Firestore, the cloud database service that stores and syncs data in real time.
+doc and setDoc: Used to create or reference specific documents in the Firestore database (for example, tasks in our Eisenhower Matrix app).</li>
+  <li>collection and addDoc: Create or add data to a Firestore collection, such as adding a task to a user’s list.</li>
+  <li>onSnapshot: Listens to real-time changes in the database, so your app automatically reflects any updates made by the user.</li>
+  <li>deleteDoc: Allows you to delete specific documents (e.g., remove tasks).</li>
+  <li>query, where, limit, startAfter: Firestore query methods, which let you filter, paginate, and retrieve data efficiently from large collections.</li>
+</ul>
+
+<p>By importing these modules, you only load the specific functionality you need for your web app, which is a more efficient approach, especially for smaller projects.</p>
+
+<h3 id="step-3--firebase-configuration-and-initialization">Step 3 : Firebase Configuration and Initialization</h3>
+
+<p>Now you have to obtain the setting of your firebase project. You can find them in the setting section on the firebase console.</p>
+
+<p>In your javascript file, initialize Firebase using the config setting :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Firebase config (replace with your own Firebase project settings)</span>
+<span class="kd">const</span> <span class="nx">firebaseConfig</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">apiKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YOUR_API_KEY</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">authDomain</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YOUR_AUTH_DOMAIN</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">projectId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YOUR_PROJECT_ID</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">storageBucket</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YOUR_STORAGE_BUCKET</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">messagingSenderId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YOUR_MESSAGING_SENDER_ID</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">appId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YOUR_APP_ID</span><span class="dl">"</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nf">initializeApp</span><span class="p">(</span><span class="nx">firebaseConfig</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">auth</span> <span class="o">=</span> <span class="nf">getAuth</span><span class="p">(</span><span class="nx">app</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="nf">getFirestore</span><span class="p">(</span><span class="nx">app</span><span class="p">);</span>
+
+</code></pre></div></div>
+
+<h3 id="step-4-implement-firebase-authentication">Step 4: Implement Firebase Authentication</h3>
+
+<p>Now that Firebase is initialized, let’s handle user authentication. We’ll add functionality for both signing up and logging in.
+Now for the sake of clarity I use as an ID ‘signUp’ and ‘logn’ ,then you have to change it with the ID that you used in your HTML.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Sign up new users</span>
+<span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">signUp</span><span class="dl">'</span><span class="p">).</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">email</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">email</span><span class="dl">'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">password</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">password</span><span class="dl">'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    
+    <span class="nx">auth</span><span class="p">.</span><span class="nf">createUserWithEmailAndPassword</span><span class="p">(</span><span class="nx">email</span><span class="p">,</span> <span class="nx">password</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">then</span><span class="p">(</span><span class="nx">userCredential</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nf">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">User signed up!</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nf">alert</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+        <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="c1">// Log in existing users</span>
+<span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">).</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">email</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">email</span><span class="dl">'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">password</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">password</span><span class="dl">'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    
+    <span class="nx">auth</span><span class="p">.</span><span class="nf">signInWithEmailAndPassword</span><span class="p">(</span><span class="nx">email</span><span class="p">,</span> <span class="nx">password</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">then</span><span class="p">(</span><span class="nx">userCredential</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nf">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">User logged in!</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nf">alert</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+        <span class="p">});</span>
+<span class="p">});</span>
+
+</code></pre></div></div>
+
+<h3 id="step-5-firestore-for-storing-tasks">Step 5: Firestore for Storing Tasks</h3>
+
+<p>Once the user is logged in, we’ll allow them to add and remove tasks to Firestore. Each task will be saved under the user’s unique ID in the Firestore database.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Add a task to Firestore</span>
+<span class="kd">function</span> <span class="nf">addTask</span><span class="p">(</span><span class="nx">quadrantId</span><span class="p">,</span> <span class="nx">task</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">userId</span> <span class="o">=</span> <span class="nf">getCurrentUserId</span><span class="p">();</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">userId</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+    <span class="kd">const</span> <span class="nx">tasksRef</span> <span class="o">=</span> <span class="nf">collection</span><span class="p">(</span><span class="nx">db</span><span class="p">,</span> <span class="s2">`users/</span><span class="p">${</span><span class="nx">userId</span><span class="p">}</span><span class="s2">/tasks`</span><span class="p">);</span>
+    <span class="nf">addDoc</span><span class="p">(</span><span class="nx">tasksRef</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">text</span><span class="p">:</span> <span class="nx">task</span><span class="p">,</span>
+        <span class="na">quadrant</span><span class="p">:</span> <span class="nx">quadrantId</span><span class="p">,</span>
+        <span class="na">createdAt</span><span class="p">:</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">()</span>
+    <span class="p">}).</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="c1">//console.log("Task added successfully");</span>
+    <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error adding task: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+<span class="c1">//Remove task from firestore</span>
+<span class="kd">function</span> <span class="nf">deleteTask</span><span class="p">(</span><span class="nx">taskId</span><span class="p">,</span> <span class="nx">taskItem</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">userId</span> <span class="o">=</span> <span class="nf">getCurrentUserId</span><span class="p">();</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">userId</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+    <span class="kd">const</span> <span class="nx">taskRef</span> <span class="o">=</span> <span class="nf">doc</span><span class="p">(</span><span class="nx">db</span><span class="p">,</span> <span class="s2">`users/</span><span class="p">${</span><span class="nx">userId</span><span class="p">}</span><span class="s2">/tasks/</span><span class="p">${</span><span class="nx">taskId</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="nf">deleteDoc</span><span class="p">(</span><span class="nx">taskRef</span><span class="p">).</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">taskItem</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nf">removeChild</span><span class="p">(</span><span class="nx">taskItem</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Task deleted successfully</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error deleting task: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h3 id="step-6-displaying-tasks-in-real-time">Step 6: Displaying Tasks in Real Time</h3>
+
+<p>Firestore provides real-time listeners, which we’ll use to display tasks as soon as they’re added.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">auth</span><span class="p">.</span><span class="nf">onAuthStateChanged</span><span class="p">(</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Listen for changes to the user's task list in Firestore</span>
+        <span class="nx">db</span><span class="p">.</span><span class="nf">collection</span><span class="p">(</span><span class="dl">'</span><span class="s1">users</span><span class="dl">'</span><span class="p">).</span><span class="nf">doc</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">uid</span><span class="p">).</span><span class="nf">collection</span><span class="p">(</span><span class="dl">'</span><span class="s1">tasks</span><span class="dl">'</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">orderBy</span><span class="p">(</span><span class="dl">'</span><span class="s1">timestamp</span><span class="dl">'</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">onSnapshot</span><span class="p">(</span><span class="nx">snapshot</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">taskList</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">taskList</span><span class="dl">'</span><span class="p">);</span>
+                <span class="nx">taskList</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>  <span class="c1">// Clear previous tasks</span>
+                
+                <span class="nx">snapshot</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">doc</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="kd">const</span> <span class="nx">taskItem</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">li</span><span class="dl">'</span><span class="p">);</span>
+                    <span class="nx">taskItem</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">().</span><span class="nx">task</span><span class="p">;</span>
+                    <span class="nx">taskList</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">taskItem</span><span class="p">);</span>
+                <span class="p">});</span>
+            <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+</code></pre></div></div>
+
+<h3 id="step-7-putting-it-all-together">Step 7: Putting It All Together</h3>
+
+<p>At this point, we’ve successfully integrated Firebase Authentication and Firestore. Here’s what happens in our app:</p>
+
+<ol>
+  <li>User Authentication: Users can sign up or log in.</li>
+  <li>Task Management: Once authenticated, users can add tasks to Firestore.</li>
+  <li>Real-Time Updates: Tasks are displayed in real-time, so users can see updates immediately.</li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Integrating Firebase Authentication and Firestore into your web application offers a streamlined, serverless solution for managing both user authentication and real-time data storage. In our example, we demonstrated how to build a task management app using the Eisenhower Matrix, but the principles outlined here can easily be extended to a wide range of web applications. Firebase’s suite of tools enables you to focus on your front-end development while it handles the complexities of authentication, database management, and scalability.</p>
+
+<p>What makes Firebase especially appealing is its simplicity and scalability—whether you’re working on small projects or building apps with large-scale needs, Firebase can handle it. The free tier is particularly beneficial for smaller applications or prototypes, allowing you to develop and deploy without upfront costs.</p>
+
+<p>If you’re looking to expand beyond this, Firebase offers a rich ecosystem of services, including Cloud Functions, Hosting, and Analytics, which can further enhance your app’s functionality and performance. These tools, combined with Firebase’s real-time synchronization and seamless cross-platform support, can significantly reduce development time and effort, while ensuring a robust and scalable application.</p>
+
+<p>Explore Firebase’s extensive <a href="https://firebase.google.com/docs/">documentation</a> to dive deeper into these tools, and take your web app to the next level. Happy coding!</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[In today’s post, I’ll walk you through the development of a simple web application, showcasing how to leverage Firebase Authentication and Firestore Database. This guide will help you understand how to:]]></summary></entry><entry><title type="html">Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets</title><link href="http://localhost:4002/jekyll/update/2024/08/21/EnglishNewsletter.html" rel="alternate" type="text/html" title="Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets" /><published>2024-08-21T00:00:00+02:00</published><updated>2024-08-21T00:00:00+02:00</updated><id>http://localhost:4002/jekyll/update/2024/08/21/EnglishNewsletter</id><content type="html" xml:base="http://localhost:4002/jekyll/update/2024/08/21/EnglishNewsletter.html"><![CDATA[In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers  vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I've already studied.
 
 I decided to create this tool because I’m actively learning English and wanted an automated way to refresh and expand my vocabulary. Since I have experience with Python and APIs, I took the opportunity to integrate Google Docs and Google Sheets APIs to store and manage vocabulary words and user data.
 
@@ -251,7 +488,7 @@ Developing this daily vocabulary newsletter has been both a fulfilling and insig
 
 Beyond enhancing my English vocabulary, this tool showcases the practical benefits of leveraging APIs to streamline workflows and automate repetitive tasks. Whether you're exploring new ways to master a language or seeking methods to boost productivity, this project underscores the potential of technology to create tailored and efficient solutions.
 
-If you found value in this article, I encourage you to explore similar integrations and push the boundaries of API-driven applications. Don’t hesitate to reach out if you have any questions or want to share your own experiences with building automated tools — the possibilities are endless, and innovation is just a step away.]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I’ve already studied.]]></summary></entry><entry><title type="html">Neural Network : Part One</title><link href="http://localhost:4001/jekyll/update/2024/07/20/NeuralNetworkP1.html" rel="alternate" type="text/html" title="Neural Network : Part One" /><published>2024-07-20T00:00:00+02:00</published><updated>2024-07-20T00:00:00+02:00</updated><id>http://localhost:4001/jekyll/update/2024/07/20/NeuralNetworkP1</id><content type="html" xml:base="http://localhost:4001/jekyll/update/2024/07/20/NeuralNetworkP1.html"><![CDATA[## Introduction
+If you found value in this article, I encourage you to explore similar integrations and push the boundaries of API-driven applications. Don’t hesitate to reach out if you have any questions or want to share your own experiences with building automated tools — the possibilities are endless, and innovation is just a step away.]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I’ve already studied.]]></summary></entry><entry><title type="html">Neural Network : Part One</title><link href="http://localhost:4002/jekyll/update/2024/07/20/NeuralNetworkP1.html" rel="alternate" type="text/html" title="Neural Network : Part One" /><published>2024-07-20T00:00:00+02:00</published><updated>2024-07-20T00:00:00+02:00</updated><id>http://localhost:4002/jekyll/update/2024/07/20/NeuralNetworkP1</id><content type="html" xml:base="http://localhost:4002/jekyll/update/2024/07/20/NeuralNetworkP1.html"><![CDATA[## Introduction
 
 In this post, I would like to introduce how neural networks are built under the hood. I will explore the essential components and mechanisms that enable neural networks to learn and make predictions. By the end of this article, you should have a clearer understanding of how these powerful models work under the hood.
 
