@@ -26,9 +26,7 @@ This framework helps you classify tasks and make better decisions about what to 
 
 ## Overview of the App
 
-My web application brings the Eisenhower Matrix to life by allowing users to interactively create, categorize, and manage tasks within the matrix.
-
-With this app, users can:
+My web application brings the Eisenhower Matrix to life allowing users to:
 
 - **Create an account** using Firebase Authentication.
 - **Add tasks** and assign them to one of the four quadrants (Urgent/Important, Not Urgent/Important, Urgent/Not Important, Not Urgent/Not Important).
