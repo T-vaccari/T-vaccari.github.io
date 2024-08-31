@@ -55,7 +55,6 @@ Now, let's dive into the app construction, step by step.
 
 Now you're ready to integrate Firebase into your app!
 
-
 ### Step 2 : Integrate Firebase into the Web App
 
 Once you've completed the basic structure and styling of your web application using HTML and CSS, you can now integrate Firebase services to handle authentication and data storage.
