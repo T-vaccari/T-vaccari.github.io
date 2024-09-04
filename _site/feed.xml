@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4002/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4002/" rel="alternate" type="text/html" /><updated>2024-08-29T11:32:44+02:00</updated><id>http://localhost:4002/feed.xml</id><title type="html">My portfolio</title><subtitle>Tommaso Vaccari&apos;s Portfolio</subtitle><entry><title type="html">Building a Simple Web App with Firebase Authentication and Firestore: A Step-by-Step Guide</title><link href="http://localhost:4002/jekyll/update/2024/08/28/Eisenhowe_Matrix.html" rel="alternate" type="text/html" title="Building a Simple Web App with Firebase Authentication and Firestore: A Step-by-Step Guide" /><published>2024-08-28T00:00:00+02:00</published><updated>2024-08-28T00:00:00+02:00</updated><id>http://localhost:4002/jekyll/update/2024/08/28/Eisenhowe_Matrix</id><content type="html" xml:base="http://localhost:4002/jekyll/update/2024/08/28/Eisenhowe_Matrix.html"><![CDATA[<p>In today’s post, I’ll walk you through the development of a simple web application, showcasing how to leverage Firebase Authentication and Firestore Database. This guide will help you understand how to:</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4001/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4001/" rel="alternate" type="text/html" /><updated>2024-09-04T13:00:54+02:00</updated><id>http://localhost:4001/feed.xml</id><title type="html">My portfolio</title><subtitle>Tommaso Vaccari&apos;s Portfolio</subtitle><entry><title type="html">Building a Simple Web App with Firebase Authentication and Firestore: A Step-by-Step Guide</title><link href="http://localhost:4001/jekyll/update/2024/08/28/Eisenhower_Matrix.html" rel="alternate" type="text/html" title="Building a Simple Web App with Firebase Authentication and Firestore: A Step-by-Step Guide" /><published>2024-08-28T00:00:00+02:00</published><updated>2024-08-28T00:00:00+02:00</updated><id>http://localhost:4001/jekyll/update/2024/08/28/Eisenhower_Matrix</id><content type="html" xml:base="http://localhost:4001/jekyll/update/2024/08/28/Eisenhower_Matrix.html"><![CDATA[<p>In today’s post, I’ll walk you through the development of a simple web application, showcasing how to leverage Firebase Authentication and Firestore Database. This guide will help you understand how to:</p>
 
 <ol>
   <li>Authenticate users with Firebase Authentication.</li>
@@ -24,9 +24,7 @@
 
 <h2 id="overview-of-the-app">Overview of the App</h2>
 
-<p>My web application brings the Eisenhower Matrix to life by allowing users to interactively create, categorize, and manage tasks within the matrix.</p>
-
-<p>With this app, users can:</p>
+<p>My web application brings the Eisenhower Matrix to life allowing users to:</p>
 
 <ul>
   <li><strong>Create an account</strong> using Firebase Authentication.</li>
@@ -235,674 +233,632 @@ Now for the sake of clarity I use as an ID ‘signUp’ and ‘logn’ ,then you
 
 <p>If you’re looking to expand beyond this, Firebase offers a rich ecosystem of services, including Cloud Functions, Hosting, and Analytics, which can further enhance your app’s functionality and performance. These tools, combined with Firebase’s real-time synchronization and seamless cross-platform support, can significantly reduce development time and effort, while ensuring a robust and scalable application.</p>
 
-<p>Explore Firebase’s extensive <a href="https://firebase.google.com/docs/">documentation</a> to dive deeper into these tools, and take your web app to the next level. Happy coding!</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[In today’s post, I’ll walk you through the development of a simple web application, showcasing how to leverage Firebase Authentication and Firestore Database. This guide will help you understand how to:]]></summary></entry><entry><title type="html">Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets</title><link href="http://localhost:4002/jekyll/update/2024/08/21/EnglishNewsletter.html" rel="alternate" type="text/html" title="Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets" /><published>2024-08-21T00:00:00+02:00</published><updated>2024-08-21T00:00:00+02:00</updated><id>http://localhost:4002/jekyll/update/2024/08/21/EnglishNewsletter</id><content type="html" xml:base="http://localhost:4002/jekyll/update/2024/08/21/EnglishNewsletter.html"><![CDATA[In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers  vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I've already studied.
+<p>Explore Firebase’s extensive <a href="https://firebase.google.com/docs/">documentation</a> to dive deeper into these tools, and take your web app to the next level. Happy coding!</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[In today’s post, I’ll walk you through the development of a simple web application, showcasing how to leverage Firebase Authentication and Firestore Database. This guide will help you understand how to:]]></summary></entry><entry><title type="html">Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets</title><link href="http://localhost:4001/jekyll/update/2024/08/21/EnglishNewsletter.html" rel="alternate" type="text/html" title="Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets" /><published>2024-08-21T00:00:00+02:00</published><updated>2024-08-21T00:00:00+02:00</updated><id>http://localhost:4001/jekyll/update/2024/08/21/EnglishNewsletter</id><content type="html" xml:base="http://localhost:4001/jekyll/update/2024/08/21/EnglishNewsletter.html"><![CDATA[<p>In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers  vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I’ve already studied.</p>
 
-I decided to create this tool because I’m actively learning English and wanted an automated way to refresh and expand my vocabulary. Since I have experience with Python and APIs, I took the opportunity to integrate Google Docs and Google Sheets APIs to store and manage vocabulary words and user data.
+<p>I decided to create this tool because I’m actively learning English and wanted an automated way to refresh and expand my vocabulary. Since I have experience with Python and APIs, I took the opportunity to integrate Google Docs and Google Sheets APIs to store and manage vocabulary words and user data.</p>
 
-You can see the code in my [github repo](https://github.com/T-vaccari/VocabularyNewsletter)
+<p>You can see the code in my <a href="https://github.com/T-vaccari/VocabularyNewsletter">github repo</a></p>
 
-## Overview of the app
+<h2 id="overview-of-the-app">Overview of the app</h2>
 
-Core Components:
+<p>Core Components:</p>
 
-1. Google Docs: Serves as the vocabulary database, containing a list of words and their meanings.
-2. Google Sheets: Manages subscriber information and tracks vocabulary word appearances.
-3. Email Automation: Sends out daily emails with a curated list of vocabulary words.
+<ol>
+  <li>Google Docs: Serves as the vocabulary database, containing a list of words and their meanings.</li>
+  <li>Google Sheets: Manages subscriber information and tracks vocabulary word appearances.</li>
+  <li>Email Automation: Sends out daily emails with a curated list of vocabulary words.</li>
+</ol>
 
-Here’s how everything fits together:
+<p>Here’s how everything fits together:</p>
 
-- Google Docs stores the vocabulary words along with their meanings, formatted like this:
-word ||| meaning.
-- Google Sheets maintains a list of recipients, along with metadata such as which document they are pulling their words from and whether they should receive an email on any given day.
-- The app pulls a random set of words from Google Docs, formats them into an email, and sends it to the user.
+<ul>
+  <li>Google Docs stores the vocabulary words along with their meanings, formatted like this:
+word ||| meaning.</li>
+  <li>Google Sheets maintains a list of recipients, along with metadata such as which document they are pulling their words from and whether they should receive an email on any given day.</li>
+  <li>The app pulls a random set of words from Google Docs, formats them into an email, and sends it to the user.</li>
+</ul>
 
-## Why using Google Suit and relative APIs
+<h2 id="why-using-google-suit-and-relative-apis">Why using Google Suit and relative APIs</h2>
 
-There are many reasons I chose Google Docs and Google Sheets for this app:
+<p>There are many reasons I chose Google Docs and Google Sheets for this app:</p>
 
-- Google Docs: It allows me to easily add, update, and manage vocabulary terms in a simple, familiar text environment.
-- Google Sheets: This is a natural choice for tracking user data, such as which words have already been sent, email preferences, and other metadata.
-- Google API Integration: Google provides powerful APIs that allow seamless interaction with both Docs and Sheets, making it easy to read, write, and update data programmatically.
+<ul>
+  <li>Google Docs: It allows me to easily add, update, and manage vocabulary terms in a simple, familiar text environment.</li>
+  <li>Google Sheets: This is a natural choice for tracking user data, such as which words have already been sent, email preferences, and other metadata.</li>
+  <li>Google API Integration: Google provides powerful APIs that allow seamless interaction with both Docs and Sheets, making it easy to read, write, and update data programmatically.</li>
+</ul>
 
-## How It Works
+<h2 id="how-it-works">How It Works</h2>
 
-### 1. Fetching Recipients and Their Vocabulary Database from Google Sheets
+<h3 id="1-fetching-recipients-and-their-vocabulary-database-from-google-sheets">1. Fetching Recipients and Their Vocabulary Database from Google Sheets</h3>
 
-The Google Sheet must be structured as follows: Email, DOCUMENT ID, SHEET ID, and a flag to receive the newsletter.
+<p>The Google Sheet must be structured as follows: Email, DOCUMENT ID, SHEET ID, and a flag to receive the newsletter.</p>
 
-![Sheet](/assets/images/IMG_123.png)
+<p><img src="/assets/images/IMG_123.png" alt="Sheet" /></p>
 
-The function `start_vocab_app()` retrieves recipient details, including their vocabulary document and tracking sheet IDs. It then uses the provided Google Sheets API to extract this data and determine which subscribers should receive the newsletter.
+<p>The function <code class="language-plaintext highlighter-rouge">start_vocab_app()</code> retrieves recipient details, including their vocabulary document and tracking sheet IDs. It then uses the provided Google Sheets API to extract this data and determine which subscribers should receive the newsletter.</p>
 
-```python
-def start_vocab_app():
-  SHEET_ID = ""  # Insert the SHEET ID used for the database
-  SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-  credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
-  service = build('sheets', 'v4', credentials=credentials)
-  SHEET_RANGE = ""  # Range to read data in the SHEET
-  sheet = service.spreadsheets()
-  result = sheet.values().get(spreadsheetId=SHEET_ID, range=SHEET_RANGE).execute()
-  values = result.get('values', [])
-  recipients = dict()
-  for item in values[1:]:
-    recipients[item[0]] = [thing for thing in item[1:]]
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">start_vocab_app</span><span class="p">():</span>
+  <span class="n">SHEET_ID</span> <span class="o">=</span> <span class="sh">""</span>  <span class="c1"># Insert the SHEET ID used for the database
+</span>  <span class="n">SCOPES</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">https://www.googleapis.com/auth/spreadsheets</span><span class="sh">'</span><span class="p">]</span>
+  <span class="n">credentials</span> <span class="o">=</span> <span class="n">service_account</span><span class="p">.</span><span class="n">Credentials</span><span class="p">.</span><span class="nf">from_service_account_file</span><span class="p">(</span><span class="n">SERVICE_ACCOUNT_FILE</span><span class="p">,</span> <span class="n">scopes</span><span class="o">=</span><span class="n">SCOPES</span><span class="p">)</span>
+  <span class="n">service</span> <span class="o">=</span> <span class="nf">build</span><span class="p">(</span><span class="sh">'</span><span class="s">sheets</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">v4</span><span class="sh">'</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
+  <span class="n">SHEET_RANGE</span> <span class="o">=</span> <span class="sh">""</span>  <span class="c1"># Range to read data in the SHEET
+</span>  <span class="n">sheet</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="nf">spreadsheets</span><span class="p">()</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">sheet</span><span class="p">.</span><span class="nf">values</span><span class="p">().</span><span class="nf">get</span><span class="p">(</span><span class="n">spreadsheetId</span><span class="o">=</span><span class="n">SHEET_ID</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">SHEET_RANGE</span><span class="p">).</span><span class="nf">execute</span><span class="p">()</span>
+  <span class="n">values</span> <span class="o">=</span> <span class="n">result</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">values</span><span class="sh">'</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="n">recipients</span> <span class="o">=</span> <span class="nf">dict</span><span class="p">()</span>
+  <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">recipients</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="n">thing</span> <span class="k">for</span> <span class="n">thing</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
 
-  for email, features in recipients.items():
-    try:
-      if (features[-1]).lower() == "no":
-        words = read_google_doc(features[0])
-        email_body = create_email_body(words)
-        send_email(email, email_body)
+  <span class="k">for</span> <span class="n">email</span><span class="p">,</span> <span class="n">features</span> <span class="ow">in</span> <span class="n">recipients</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="nf">if </span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]).</span><span class="nf">lower</span><span class="p">()</span> <span class="o">==</span> <span class="sh">"</span><span class="s">no</span><span class="sh">"</span><span class="p">:</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="nf">read_google_doc</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">email_body</span> <span class="o">=</span> <span class="nf">create_email_body</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+        <span class="nf">send_email</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">email_body</span><span class="p">)</span>
       
-        if features[1] != '.':
-          counting_words(words, features[1])
+        <span class="k">if</span> <span class="n">features</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="sh">'</span><span class="s">.</span><span class="sh">'</span><span class="p">:</span>
+          <span class="nf">counting_words</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">features</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
-        else:
-            continue
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">continue</span>
       
-    except Exception as e:
-      logging.error(f"Errore per il destinatario {email}: {e}")
-      print(f"Errore con {email}. Passo al destinatario successivo.")
-      continue
-```
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Errore per il destinatario </span><span class="si">{</span><span class="n">email</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+      <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Errore con </span><span class="si">{</span><span class="n">email</span><span class="si">}</span><span class="s">. Passo al destinatario successivo.</span><span class="sh">"</span><span class="p">)</span>
+      <span class="k">continue</span>
+</code></pre></div></div>
 
-### 2. Fetching Vocabulary from Google Docs
+<h3 id="2-fetching-vocabulary-from-google-docs">2. Fetching Vocabulary from Google Docs</h3>
 
-The app reads vocabulary words from a specific Google Doc using the Google Docs API. Each line in the document is formatted as a word and its meaning separated by \|\|\| (I used it for parsing pursuits).Here is how it mus look like to work with the script :
+<p>The app reads vocabulary words from a specific Google Doc using the Google Docs API. Each line in the document is formatted as a word and its meaning separated by ||| (I used it for parsing pursuits).Here is how it mus look like to work with the script :</p>
 
-![DOC](/assets/images/IMG_124.png)
+<p><img src="/assets/images/IMG_124.png" alt="DOC" /></p>
 
-Here’s the part of the code that reads the words and returns the one that are selected randomly :
+<p>Here’s the part of the code that reads the words and returns the one that are selected randomly :</p>
 
-```python
-def read_google_doc(DOCUMENT_ID):
-    SCOPES = ['https://www.googleapis.com/auth/documents.readonly']
-    wordstosend = 
-    credentials = service_account.Credentials.from_service_account_file(
-        SERVICE_ACCOUNT_FILE, scopes=SCOPES)
-    service = build('docs', 'v1', credentials=credentials)
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">read_google_doc</span><span class="p">(</span><span class="n">DOCUMENT_ID</span><span class="p">):</span>
+    <span class="n">SCOPES</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">https://www.googleapis.com/auth/documents.readonly</span><span class="sh">'</span><span class="p">]</span>
+    <span class="n">wordstosend</span> <span class="o">=</span> 
+    <span class="n">credentials</span> <span class="o">=</span> <span class="n">service_account</span><span class="p">.</span><span class="n">Credentials</span><span class="p">.</span><span class="nf">from_service_account_file</span><span class="p">(</span>
+        <span class="n">SERVICE_ACCOUNT_FILE</span><span class="p">,</span> <span class="n">scopes</span><span class="o">=</span><span class="n">SCOPES</span><span class="p">)</span>
+    <span class="n">service</span> <span class="o">=</span> <span class="nf">build</span><span class="p">(</span><span class="sh">'</span><span class="s">docs</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">v1</span><span class="sh">'</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
 
-    doc = service.documents().get(documentId=DOCUMENT_ID).execute()
-    content = doc.get('body').get('content')
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="nf">documents</span><span class="p">().</span><span class="nf">get</span><span class="p">(</span><span class="n">documentId</span><span class="o">=</span><span class="n">DOCUMENT_ID</span><span class="p">).</span><span class="nf">execute</span><span class="p">()</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">body</span><span class="sh">'</span><span class="p">).</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">content</span><span class="sh">'</span><span class="p">)</span>
 
-    text = ""
-    for element in content:
-        if 'paragraph' in element:
-            elements = element.get('paragraph').get('elements')
-            for elem in elements:
-                text_run = elem.get('textRun')
-                if text_run:
-                    text += text_run.get('content')
+    <span class="n">text</span> <span class="o">=</span> <span class="sh">""</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">content</span><span class="p">:</span>
+        <span class="k">if</span> <span class="sh">'</span><span class="s">paragraph</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">element</span><span class="p">:</span>
+            <span class="n">elements</span> <span class="o">=</span> <span class="n">element</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">paragraph</span><span class="sh">'</span><span class="p">).</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">elements</span><span class="sh">'</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
+                <span class="n">text_run</span> <span class="o">=</span> <span class="n">elem</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">textRun</span><span class="sh">'</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">text_run</span><span class="p">:</span>
+                    <span class="n">text</span> <span class="o">+=</span> <span class="n">text_run</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">content</span><span class="sh">'</span><span class="p">)</span>
 
-    lines = text.strip().split('\n')
-    term_list = []
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">text</span><span class="p">.</span><span class="nf">strip</span><span class="p">().</span><span class="nf">split</span><span class="p">(</span><span class="sh">'</span><span class="se">\n</span><span class="sh">'</span><span class="p">)</span>
+    <span class="n">term_list</span> <span class="o">=</span> <span class="p">[]</span>
     
-    for line in lines:
-        if '|||' in line:
-            term, meaning = line.split('|||')
-            term_list.append([term.strip(), meaning.strip()])
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="k">if</span> <span class="sh">'</span><span class="s">|||</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">term</span><span class="p">,</span> <span class="n">meaning</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sh">'</span><span class="s">|||</span><span class="sh">'</span><span class="p">)</span>
+            <span class="n">term_list</span><span class="p">.</span><span class="nf">append</span><span class="p">([</span><span class="n">term</span><span class="p">.</span><span class="nf">strip</span><span class="p">(),</span> <span class="n">meaning</span><span class="p">.</span><span class="nf">strip</span><span class="p">()])</span>
 
-    number = min(len(term_list), wordstosend)
-    random.shuffle(term_list)
-    return random.sample(term_list, number)
+    <span class="n">number</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">term_list</span><span class="p">),</span> <span class="n">wordstosend</span><span class="p">)</span>
+    <span class="n">random</span><span class="p">.</span><span class="nf">shuffle</span><span class="p">(</span><span class="n">term_list</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">random</span><span class="p">.</span><span class="nf">sample</span><span class="p">(</span><span class="n">term_list</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
 
 
-```
+</code></pre></div></div>
 
-### 3. Tracking Logs in Google Sheet
+<h3 id="3-tracking-logs-in-google-sheet">3. Tracking Logs in Google Sheet</h3>
 
-We maintain a log of each word that is sent through the newsletter to ensure accurate tracking and to see what words the subscribers has already learned. Here's the code :
+<p>We maintain a log of each word that is sent through the newsletter to ensure accurate tracking and to see what words the subscribers has already learned. Here’s the code :</p>
 
-``` python
-def counting_words(words, SHEET_ID):
-    SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-    credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
-    service = build('sheets', 'v4', credentials=credentials)
-    SHEET_RANGE = ""
-    sheet = service.spreadsheets()
-    result = sheet.values().get(spreadsheetId=SHEET_ID, range=SHEET_RANGE).execute()
-    values = result.get('values', [])
-    my_dict = {row[0]: row for row in values[1:]}  
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">counting_words</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">SHEET_ID</span><span class="p">):</span>
+    <span class="n">SCOPES</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">https://www.googleapis.com/auth/spreadsheets</span><span class="sh">'</span><span class="p">]</span>
+    <span class="n">credentials</span> <span class="o">=</span> <span class="n">service_account</span><span class="p">.</span><span class="n">Credentials</span><span class="p">.</span><span class="nf">from_service_account_file</span><span class="p">(</span><span class="n">SERVICE_ACCOUNT_FILE</span><span class="p">,</span> <span class="n">scopes</span><span class="o">=</span><span class="n">SCOPES</span><span class="p">)</span>
+    <span class="n">service</span> <span class="o">=</span> <span class="nf">build</span><span class="p">(</span><span class="sh">'</span><span class="s">sheets</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">v4</span><span class="sh">'</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
+    <span class="n">SHEET_RANGE</span> <span class="o">=</span> <span class="sh">""</span>
+    <span class="n">sheet</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="nf">spreadsheets</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">sheet</span><span class="p">.</span><span class="nf">values</span><span class="p">().</span><span class="nf">get</span><span class="p">(</span><span class="n">spreadsheetId</span><span class="o">=</span><span class="n">SHEET_ID</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">SHEET_RANGE</span><span class="p">).</span><span class="nf">execute</span><span class="p">()</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">result</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">values</span><span class="sh">'</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]}</span>  
 
-    modified_values = [values[0]]  
-    english_terms = list()
+    <span class="n">modified_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>  
+    <span class="n">english_terms</span> <span class="o">=</span> <span class="nf">list</span><span class="p">()</span>
 
-    for terms in words:
-        english_terms.append(terms[0])
+    <span class="k">for</span> <span class="n">terms</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="n">english_terms</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">terms</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     
-    for row in values[1:]:
-        if row[0] in english_terms:
-            row[1] = str(int(row[1]) + 1)
-        modified_values.append(row)
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">english_terms</span><span class="p">:</span>
+            <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">modified_values</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 
-    for word in english_terms:
-        if word not in my_dict:
-            modified_values.append([word, '1'])
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">english_terms</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">my_dict</span><span class="p">:</span>
+            <span class="n">modified_values</span><span class="p">.</span><span class="nf">append</span><span class="p">([</span><span class="n">word</span><span class="p">,</span> <span class="sh">'</span><span class="s">1</span><span class="sh">'</span><span class="p">])</span>
 
-    body = {'values': modified_values}
+    <span class="n">body</span> <span class="o">=</span> <span class="p">{</span><span class="sh">'</span><span class="s">values</span><span class="sh">'</span><span class="p">:</span> <span class="n">modified_values</span><span class="p">}</span>
 
-    result = service.spreadsheets().values().update(
-        spreadsheetId=SHEET_ID,
-        range=SHEET_RANGE,
-        valueInputOption="RAW",
-        body=body
-    ).execute()
+    <span class="n">result</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="nf">spreadsheets</span><span class="p">().</span><span class="nf">values</span><span class="p">().</span><span class="nf">update</span><span class="p">(</span>
+        <span class="n">spreadsheetId</span><span class="o">=</span><span class="n">SHEET_ID</span><span class="p">,</span>
+        <span class="nb">range</span><span class="o">=</span><span class="n">SHEET_RANGE</span><span class="p">,</span>
+        <span class="n">valueInputOption</span><span class="o">=</span><span class="sh">"</span><span class="s">RAW</span><span class="sh">"</span><span class="p">,</span>
+        <span class="n">body</span><span class="o">=</span><span class="n">body</span>
+    <span class="p">).</span><span class="nf">execute</span><span class="p">()</span>
 
 
-```
+</code></pre></div></div>
 
-### 4. Creating the body of the email
+<h3 id="4-creating-the-body-of-the-email">4. Creating the body of the email</h3>
 
-This function generates an HTML email with vocabulary words and their meanings. It formats each word-meaning pair into a styled, centered HTML layout using basic CSS for a clean appearance. The email includes a header, a list of words for the day. The function returns the email content as an HTML string, ready for sending.
+<p>This function generates an HTML email with vocabulary words and their meanings. It formats each word-meaning pair into a styled, centered HTML layout using basic CSS for a clean appearance. The email includes a header, a list of words for the day. The function returns the email content as an HTML string, ready for sending.</p>
 
-```python
-def create_email_body(words):
-    word_html = "".join(
-        f"<div style='text-align: center; margin: 10px 0; font-size: 24px;'><strong>{word_pair[0]} : {word_pair[1]}</strong></div>"
-        for word_pair in words
-    )
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">create_email_body</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+    <span class="n">word_html</span> <span class="o">=</span> <span class="sh">""</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span>
+        <span class="sa">f</span><span class="sh">"</span><span class="s">&lt;div style=</span><span class="sh">'</span><span class="s">text-align: center; margin: 10px 0; font-size: 24px;</span><span class="sh">'</span><span class="s">&gt;&lt;strong&gt;</span><span class="si">{</span><span class="n">word_pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s"> : </span><span class="si">{</span><span class="n">word_pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s">&lt;/strong&gt;&lt;/div&gt;</span><span class="sh">"</span>
+        <span class="k">for</span> <span class="n">word_pair</span> <span class="ow">in</span> <span class="n">words</span>
+    <span class="p">)</span>
 
-    return f"""
-    <html>
-    <head>
-      <style>
-        body {{
-          font-family: Arial, sans-serif;
-          background-color: #f9f9f9;
-          padding: 20px;
-        }}
-        h1 {{
-          color: #4A90E2;
-          text-align: center;
-          margin-bottom: 10px;
-        }}
-        h2 {{
-          color: #333;
-          text-align: center;
-          margin-bottom: 20px;
-        }}
-        p {{
-          font-size: 16px;
-          line-height: 1.5;
-        }}
-        .container {{
-          max-width: 600px;
-          margin: 0 auto;
-          background-color: #fff;
-          padding: 30px;
-          border-radius: 10px;
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }}
-        .footer {{
-          text-align: center;
-          margin-top: 20px;
-          font-size: 14px;
-          color: #888;
-        }}
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        <h1>Daily Vocabulary</h1>
-        <h2>Here are the words for today!</h2>
-        {word_html}
-        <div class="footer">
-          <p>Keep Learning!</p>
-          <p style='font-style: italic;'>Mail sent automatically. Please do not respond.</p>
-        </div>
-      </div>
-    </body>
-    </html>
-    """
+    <span class="k">return</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+    &lt;html&gt;
+    &lt;head&gt;
+      &lt;style&gt;
+        body 
+        h1 
+        h2 
+        p 
+        .container 
+        .footer 
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div class=</span><span class="sh">"</span><span class="s">container</span><span class="sh">"</span><span class="s">&gt;
+        &lt;h1&gt;Daily Vocabulary&lt;/h1&gt;
+        &lt;h2&gt;Here are the words for today!&lt;/h2&gt;
+        </span><span class="si">{</span><span class="n">word_html</span><span class="si">}</span><span class="s">
+        &lt;div class=</span><span class="sh">"</span><span class="s">footer</span><span class="sh">"</span><span class="s">&gt;
+          &lt;p&gt;Keep Learning!&lt;/p&gt;
+          &lt;p style=</span><span class="sh">'</span><span class="s">font-style: italic;</span><span class="sh">'</span><span class="s">&gt;Mail sent automatically. Please do not respond.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+    </span><span class="sh">"""</span>
 
-```
+</code></pre></div></div>
 
-### 5. Sending the Email
+<h3 id="5-sending-the-email">5. Sending the Email</h3>
 
-Once the words are fetched and the progress tracked, the app creates an HTML email with the vocabulary words and sends it to the recipient using SMTP:
+<p>Once the words are fetched and the progress tracked, the app creates an HTML email with the vocabulary words and sends it to the recipient using SMTP:</p>
 
-```python
-def send_email(EMAIL_DESTINATION, email_body):
-    msg = MIMEMultipart()
-    msg['Subject'] = 'Daily Vocabulary'
-    msg['From'] = EMAIL_ADDRESS
-    msg['To'] = EMAIL_DESTINATION
-    msg.attach(MIMEText(email_body, 'html'))
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">send_email</span><span class="p">(</span><span class="n">EMAIL_DESTINATION</span><span class="p">,</span> <span class="n">email_body</span><span class="p">):</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="nc">MIMEMultipart</span><span class="p">()</span>
+    <span class="n">msg</span><span class="p">[</span><span class="sh">'</span><span class="s">Subject</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="sh">'</span><span class="s">Daily Vocabulary</span><span class="sh">'</span>
+    <span class="n">msg</span><span class="p">[</span><span class="sh">'</span><span class="s">From</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">EMAIL_ADDRESS</span>
+    <span class="n">msg</span><span class="p">[</span><span class="sh">'</span><span class="s">To</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">EMAIL_DESTINATION</span>
+    <span class="n">msg</span><span class="p">.</span><span class="nf">attach</span><span class="p">(</span><span class="nc">MIMEText</span><span class="p">(</span><span class="n">email_body</span><span class="p">,</span> <span class="sh">'</span><span class="s">html</span><span class="sh">'</span><span class="p">))</span>
 
-    try:
-        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-            smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-            smtp.send_message(msg)
-        print(f'Email inviata a {EMAIL_DESTINATION}')
-    except Exception as e:
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">smtplib</span><span class="p">.</span><span class="nc">SMTP_SSL</span><span class="p">(</span><span class="sh">'</span><span class="s">smtp.gmail.com</span><span class="sh">'</span><span class="p">,</span> <span class="mi">465</span><span class="p">)</span> <span class="k">as</span> <span class="n">smtp</span><span class="p">:</span>
+            <span class="n">smtp</span><span class="p">.</span><span class="nf">login</span><span class="p">(</span><span class="n">EMAIL_ADDRESS</span><span class="p">,</span> <span class="n">EMAIL_PASSWORD</span><span class="p">)</span>
+            <span class="n">smtp</span><span class="p">.</span><span class="nf">send_message</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">'</span><span class="s">Email inviata a </span><span class="si">{</span><span class="n">EMAIL_DESTINATION</span><span class="si">}</span><span class="sh">'</span><span class="p">)</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         
-        logging.error(f"Errore nell'invio dell'email a {EMAIL_DESTINATION}: {e}")
-        print(f"Errore nell'invio dell'email a {EMAIL_DESTINATION}: {e}")
+        <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Errore nell</span><span class="sh">'</span><span class="s">invio dell</span><span class="sh">'</span><span class="s">email a </span><span class="si">{</span><span class="n">EMAIL_DESTINATION</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Errore nell</span><span class="sh">'</span><span class="s">invio dell</span><span class="sh">'</span><span class="s">email a </span><span class="si">{</span><span class="n">EMAIL_DESTINATION</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
 
-```
+</code></pre></div></div>
 
-## Conclusion
+<h2 id="conclusion">Conclusion</h2>
 
-Developing this daily vocabulary newsletter has been both a fulfilling and insightful project, blending the power of Python with the versatility of Google APIs to automate and enrich the language-learning experience. By seamlessly integrating Google Docs and Google Sheets, the application efficiently handles vocabulary data, user subscriptions, and content distribution, making the learning process smoother and more interactive.
+<p>Developing this daily vocabulary newsletter has been both a fulfilling and insightful project, blending the power of Python with the versatility of Google APIs to automate and enrich the language-learning experience. By seamlessly integrating Google Docs and Google Sheets, the application efficiently handles vocabulary data, user subscriptions, and content distribution, making the learning process smoother and more interactive.</p>
 
-Beyond enhancing my English vocabulary, this tool showcases the practical benefits of leveraging APIs to streamline workflows and automate repetitive tasks. Whether you're exploring new ways to master a language or seeking methods to boost productivity, this project underscores the potential of technology to create tailored and efficient solutions.
+<p>Beyond enhancing my English vocabulary, this tool showcases the practical benefits of leveraging APIs to streamline workflows and automate repetitive tasks. Whether you’re exploring new ways to master a language or seeking methods to boost productivity, this project underscores the potential of technology to create tailored and efficient solutions.</p>
 
-If you found value in this article, I encourage you to explore similar integrations and push the boundaries of API-driven applications. Don’t hesitate to reach out if you have any questions or want to share your own experiences with building automated tools — the possibilities are endless, and innovation is just a step away.]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I’ve already studied.]]></summary></entry><entry><title type="html">Neural Network : Part One</title><link href="http://localhost:4002/jekyll/update/2024/07/20/NeuralNetworkP1.html" rel="alternate" type="text/html" title="Neural Network : Part One" /><published>2024-07-20T00:00:00+02:00</published><updated>2024-07-20T00:00:00+02:00</updated><id>http://localhost:4002/jekyll/update/2024/07/20/NeuralNetworkP1</id><content type="html" xml:base="http://localhost:4002/jekyll/update/2024/07/20/NeuralNetworkP1.html"><![CDATA[## Introduction
+<p>If you found value in this article, I encourage you to explore similar integrations and push the boundaries of API-driven applications. Don’t hesitate to reach out if you have any questions or want to share your own experiences with building automated tools — the possibilities are endless, and innovation is just a step away.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I’ve already studied.]]></summary></entry><entry><title type="html">Neural Network : Part One</title><link href="http://localhost:4001/jekyll/update/2024/07/20/NeuralNetworkP1.html" rel="alternate" type="text/html" title="Neural Network : Part One" /><published>2024-07-20T00:00:00+02:00</published><updated>2024-07-20T00:00:00+02:00</updated><id>http://localhost:4001/jekyll/update/2024/07/20/NeuralNetworkP1</id><content type="html" xml:base="http://localhost:4001/jekyll/update/2024/07/20/NeuralNetworkP1.html"><![CDATA[<h2 id="introduction">Introduction</h2>
 
-In this post, I would like to introduce how neural networks are built under the hood. I will explore the essential components and mechanisms that enable neural networks to learn and make predictions. By the end of this article, you should have a clearer understanding of how these powerful models work under the hood.
+<p>In this post, I would like to introduce how neural networks are built under the hood. I will explore the essential components and mechanisms that enable neural networks to learn and make predictions. By the end of this article, you should have a clearer understanding of how these powerful models work under the hood.</p>
 
-## Overview of Neural Networks
+<h2 id="overview-of-neural-networks">Overview of Neural Networks</h2>
 
-Before starting to dive deep into neural networks I would like to roughly remind to the reader what is the main goal and how its reached. Neural networks (NNs) are a class of machine learning models inspired by the structure and function of the human brain. The primary objective of a neural network is to learn a mapping from input data to desired output values by adjusting its parameters through a process of optimization.
+<p>Before starting to dive deep into neural networks I would like to roughly remind to the reader what is the main goal and how its reached. Neural networks (NNs) are a class of machine learning models inspired by the structure and function of the human brain. The primary objective of a neural network is to learn a mapping from input data to desired output values by adjusting its parameters through a process of optimization.</p>
 
-### 1. Goal of neural networks
+<h3 id="1-goal-of-neural-networks">1. Goal of neural networks</h3>
 
-The central aim of a neural network is to learn how to produce accurate outputs when given specific inputs. This process involves training the network on a dataset, where each data point consists of an input and a corresponding target output. For instance, in a classification problem, the input might be an image, and the target output would be the label of the object in the image. Or maybe in a regression problem we want to train our model to answer the question how much?.
+<p>The central aim of a neural network is to learn how to produce accurate outputs when given specific inputs. This process involves training the network on a dataset, where each data point consists of an input and a corresponding target output. For instance, in a classification problem, the input might be an image, and the target output would be the label of the object in the image. Or maybe in a regression problem we want to train our model to answer the question how much?.</p>
 
-### 2. Training Process
+<h3 id="2-training-process">2. Training Process</h3>
 
-#### 2.1 Feeding data into the net and comparison of the output
+<h4 id="21-feeding-data-into-the-net-and-comparison-of-the-output">2.1 Feeding data into the net and comparison of the output</h4>
 
-During training, the network is provided with a set of input data and its corresponding target outputs. The network makes predictions based on the input data, which are then compared to the target outputs. This comparison is crucial for evaluating how well the network is performing.
+<p>During training, the network is provided with a set of input data and its corresponding target outputs. The network makes predictions based on the input data, which are then compared to the target outputs. This comparison is crucial for evaluating how well the network is performing.</p>
 
-#### 2.2 Loss Function
+<h4 id="22-loss-function">2.2 Loss Function</h4>
 
-To quantify the difference between the network's predictions and the target outputs, we use a loss function (or cost function). The loss function measures the prediction error. Common loss functions include Mean Squared Error for regression tasks and Cross-Entropy Loss for classification tasks. A lower value of the loss function indicates better performance of the network.
+<p>To quantify the difference between the network’s predictions and the target outputs, we use a loss function (or cost function). The loss function measures the prediction error. Common loss functions include Mean Squared Error for regression tasks and Cross-Entropy Loss for classification tasks. A lower value of the loss function indicates better performance of the network.</p>
 
-#### 2.3 Optimization via backpropagation
+<h4 id="23-optimization-via-backpropagation">2.3 Optimization via backpropagation</h4>
 
-The goal of training is to minimize the loss function, which involves finding the optimal set of parameters (weights and biases) for the network. To achieve this, we use an optimization algorithm that adjusts the parameters to reduce the loss.
-Backpropagation is the method used to compute the gradients of the loss function with respect to the network's parameters.
+<p>The goal of training is to minimize the loss function, which involves finding the optimal set of parameters (weights and biases) for the network. To achieve this, we use an optimization algorithm that adjusts the parameters to reduce the loss.
+Backpropagation is the method used to compute the gradients of the loss function with respect to the network’s parameters.
 It involves:
 Forward Pass: Computing the predictions of the network and the loss.
-Backward Pass: Calculating the gradients of the loss function with respect to each parameter using the chain rule of calculus.
+Backward Pass: Calculating the gradients of the loss function with respect to each parameter using the chain rule of calculus.</p>
 
-#### 2.4 Gradient Descent
+<h4 id="24-gradient-descent">2.4 Gradient Descent</h4>
 
-Once the gradients are computed, they are used by the optimization algorithm (often gradient descent or its variants) to update the network's parameters. The network parameters are adjusted in the direction that reduces the loss function. This process is iterated over multiple epochs (passes through the entire dataset) until the loss function converges to a minimum value or sufficiently small error.
+<p>Once the gradients are computed, they are used by the optimization algorithm (often gradient descent or its variants) to update the network’s parameters. The network parameters are adjusted in the direction that reduces the loss function. This process is iterated over multiple epochs (passes through the entire dataset) until the loss function converges to a minimum value or sufficiently small error.</p>
 
-Roughly speaking this is the process that we want to follow for achieving our goal.
-With the foundational concepts established, we will now delve into the detailed steps required to build a neural network. Firstly, we need to create a class that represents data within our neural network. This class must track the origin of each data value, including the operations and values used to compute it, in order to facilitate accurate gradient calculation during backpropagation. We are going to call the class for representing data *Value* class.
+<p>Roughly speaking this is the process that we want to follow for achieving our goal.
+With the foundational concepts established, we will now delve into the detailed steps required to build a neural network. Firstly, we need to create a class that represents data within our neural network. This class must track the origin of each data value, including the operations and values used to compute it, in order to facilitate accurate gradient calculation during backpropagation. We are going to call the class for representing data <em>Value</em> class.</p>
 
-## Breakdown of the code for the Value class
+<h2 id="breakdown-of-the-code-for-the-value-class">Breakdown of the code for the Value class</h2>
 
-Now I will start to implement in code what we have seen in the foundational concepts about NN.
+<p>Now I will start to implement in code what we have seen in the foundational concepts about NN.</p>
 
-### Building the basic item of the class and the attribute of the object
+<h3 id="building-the-basic-item-of-the-class-and-the-attribute-of-the-object">Building the basic item of the class and the attribute of the object</h3>
 
-``` python
-class Value: 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Value</span><span class="p">:</span> 
     
-    def __init__(self, data, _children = (), _op = '' ):
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">_children</span> <span class="o">=</span> <span class="p">(),</span> <span class="n">_op</span> <span class="o">=</span> <span class="sh">''</span> <span class="p">):</span>
         
-        self.data = data
-        self._previosly = set(_children)
-        self._operations = _op
-        self.grad = 0.0
-        self._backward = lambda : None
+        <span class="n">self</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">_previosly</span> <span class="o">=</span> <span class="nf">set</span><span class="p">(</span><span class="n">_children</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">_operations</span> <span class="o">=</span> <span class="n">_op</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">grad</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">_backward</span> <span class="o">=</span> <span class="k">lambda</span> <span class="p">:</span> <span class="bp">None</span>
 
-    def __repr__(self):
-        return f"Value(data={self.data})"
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="sh">"</span><span class="s">Value(data=</span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">data</span><span class="si">}</span><span class="s">)</span><span class="sh">"</span>
 
-```
+</code></pre></div></div>
 
-  Here we initialize the value objects with it's own attribute. Let's breakdown each attribute :
+<p>Here we initialize the value objects with it’s own attribute. Let’s breakdown each attribute :</p>
 
-- self.data = data, saves the value of the object
-- self._previosly = set(_children), saves in a set the children of it's value, that means that we save what values generated this value. Thanks to the set we can avoid duplicates
-- self._operations =_op, we keep track of what operation generated this value
-- self.grad = 0.0 , we initially set it to zero, then we are going to modify it accordingly to the rules of backpropagation, we store it in this attribute
-- self._backward = lambda : None , we need to store here the function that provide to us the gradient, we set it initially to a lambda None because it dipends on the operation that generated this Value object.
+<ul>
+  <li>self.data = data, saves the value of the object</li>
+  <li>self._previosly = set(_children), saves in a set the children of it’s value, that means that we save what values generated this value. Thanks to the set we can avoid duplicates</li>
+  <li>self._operations =_op, we keep track of what operation generated this value</li>
+  <li>self.grad = 0.0 , we initially set it to zero, then we are going to modify it accordingly to the rules of backpropagation, we store it in this attribute</li>
+  <li>self._backward = lambda : None , we need to store here the function that provide to us the gradient, we set it initially to a lambda None because it dipends on the operation that generated this Value object.</li>
+</ul>
 
-The __repr__ method is used to print the value object.
-So for example if we want to generate a value object we can do as follow :
+<p>The <strong>repr</strong> method is used to print the value object.
+So for example if we want to generate a value object we can do as follow :</p>
 
-``` python
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    <span class="n">a</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="o">&gt;&gt;&gt;</span> <span class="nc">Value</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
 
-    a = Value(3)
-    print(a)
-    >>> Value(data = 3)
+</code></pre></div></div>
 
-```
+<h3 id="building-the-basic-operation-and-the-relative-backward-function-for-value-object">Building the basic operation and the relative backward function for value object</h3>
 
-### Building the basic operation and the relative backward function for value object
-
-```python
-class Value : 
-    ... #Code seen before
-
-    def __add__(self, other):
-        out = Value(self.data + other.data, (self, other), '+')
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Value</span> <span class="p">:</span> 
+    <span class="p">...</span> <span class="c1">#Code seen before
+</span>
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">other</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">other</span><span class="p">),</span> <span class="sh">'</span><span class="s">+</span><span class="sh">'</span><span class="p">)</span>
     
-        def _backward():
-            self.grad += 1.0 * out.grad
-            other.grad += 1.0 * out.grad
-        out._backward = _backward
+        <span class="k">def</span> <span class="nf">_backward</span><span class="p">():</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">grad</span> <span class="o">+=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">out</span><span class="p">.</span><span class="n">grad</span>
+            <span class="n">other</span><span class="p">.</span><span class="n">grad</span> <span class="o">+=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">out</span><span class="p">.</span><span class="n">grad</span>
+        <span class="n">out</span><span class="p">.</span><span class="n">_backward</span> <span class="o">=</span> <span class="n">_backward</span>
     
-        return out
+        <span class="k">return</span> <span class="n">out</span>
 
     
-```
+</code></pre></div></div>
 
-Here we have the code for the __add__ method.
-Simply in this method  we create an out Value object featured by a new value and a set of children(the two Value object that originated it) and then we append the operation that originated that new Value object. Then from the foundamental of calculus we know that the gradient of the two children due to this operation can be calculated as shown in the code. For much more detail watch gradient explained [here](https://en.wikipedia.org/wiki/Gradient). Let's watch how does the add function behave :
+<p>Here we have the code for the <strong>add</strong> method.
+Simply in this method  we create an out Value object featured by a new value and a set of children(the two Value object that originated it) and then we append the operation that originated that new Value object. Then from the foundamental of calculus we know that the gradient of the two children due to this operation can be calculated as shown in the code. For much more detail watch gradient explained <a href="https://en.wikipedia.org/wiki/Gradient">here</a>. Let’s watch how does the add function behave :</p>
 
-``` python
-    a = Value(3)
-    b = Value(4)
-    c = a + b
-    print(c)
-    >>> Value(data = 7)
-    print(c._previously)
-    >>> (Value(data = 3),Value(data = 4))
-    print(c._operation)
-    >>> '+'
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">a</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="o">&gt;&gt;&gt;</span> <span class="nc">Value</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">_previously</span><span class="p">)</span>
+    <span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="nc">Value</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="mi">3</span><span class="p">),</span><span class="nc">Value</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">_operation</span><span class="p">)</span>
+    <span class="o">&gt;&gt;&gt;</span> <span class="sh">'</span><span class="s">+</span><span class="sh">'</span>
 
-```
+</code></pre></div></div>
 
-Now let's look a the code for the __mul__ method :
+<p>Now let’s look a the code for the <strong>mul</strong> method :</p>
 
-``` python
-class Value :
-    ... #Code seen before
-
-    def __mul__(self, other):
-        out = Value(self.data * other.data, (self, other), '*')
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Value</span> <span class="p">:</span>
+    <span class="p">...</span> <span class="c1">#Code seen before
+</span>
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">other</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">other</span><span class="p">),</span> <span class="sh">'</span><span class="s">*</span><span class="sh">'</span><span class="p">)</span>
         
-        def _backward():
-            self.grad += other.data * out.grad
-            other.grad += self.data * out.grad
-        out._backward = _backward
+        <span class="k">def</span> <span class="nf">_backward</span><span class="p">():</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">grad</span> <span class="o">+=</span> <span class="n">other</span><span class="p">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">out</span><span class="p">.</span><span class="n">grad</span>
+            <span class="n">other</span><span class="p">.</span><span class="n">grad</span> <span class="o">+=</span> <span class="n">self</span><span class="p">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">out</span><span class="p">.</span><span class="n">grad</span>
+        <span class="n">out</span><span class="p">.</span><span class="n">_backward</span> <span class="o">=</span> <span class="n">_backward</span>
         
-        return out
+        <span class="k">return</span> <span class="n">out</span>
 
-```
+</code></pre></div></div>
 
-In the __add__ method, we create a new Value object with a new value and a set of children, which are the two Value objects that originated this result. We also append the operation that produced this new Value object. The backward function is designed to compute the gradient according to calculus rules.
+<p>In the <strong>add</strong> method, we create a new Value object with a new value and a set of children, which are the two Value objects that originated this result. We also append the operation that produced this new Value object. The backward function is designed to compute the gradient according to calculus rules.</p>
 
-Note that we use the += operator when updating the .grad attribute. This is because we want to accumulate the gradient. For example, if the Value object is involved in multiple operations, the gradient should reflect all these operations, making the gradient cumulative.
-Generally this is the process that we follow to create new method for operation for thi class. For the purpose of creating a neural network we need also a function that can work for us as an [activation function](https://en.wikipedia.org/wiki/Activation_function).
-In this case we add the tanh function for this scope
+<p>Note that we use the += operator when updating the .grad attribute. This is because we want to accumulate the gradient. For example, if the Value object is involved in multiple operations, the gradient should reflect all these operations, making the gradient cumulative.
+Generally this is the process that we follow to create new method for operation for thi class. For the purpose of creating a neural network we need also a function that can work for us as an <a href="https://en.wikipedia.org/wiki/Activation_function">activation function</a>.
+In this case we add the tanh function for this scope</p>
 
-``` python
-class Value:
-   ... #Code seen before
-    def tanh(self):
-        x = self.data
-        t = (math.exp(2*x) - 1)/(math.exp(2*x) + 1)
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Value</span><span class="p">:</span>
+   <span class="p">...</span> <span class="c1">#Code seen before
+</span>    <span class="k">def</span> <span class="nf">tanh</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">data</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">math</span><span class="p">.</span><span class="nf">exp</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">math</span><span class="p">.</span><span class="nf">exp</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
-        out = Value(t, (self, ),'tanh')
+        <span class="n">out</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="p">),</span><span class="sh">'</span><span class="s">tanh</span><span class="sh">'</span><span class="p">)</span>
     
-        def _backward():
-            self.grad += (1 - t**2) * out.grad
-        out._backward = _backward
+        <span class="k">def</span> <span class="nf">_backward</span><span class="p">():</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">grad</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">out</span><span class="p">.</span><span class="n">grad</span>
+        <span class="n">out</span><span class="p">.</span><span class="n">_backward</span> <span class="o">=</span> <span class="n">_backward</span>
         
-        return out
+        <span class="k">return</span> <span class="n">out</span>
 
-```
+</code></pre></div></div>
 
-From calculus we know that tanh is defined as :
+<p>From calculus we know that tanh is defined as :</p>
 
-$$
-\tanh(x) = \frac{e^{2x} - 1}{e^{2x} + 1}
-$$
+\[\tanh(x) = \frac{e^{2x} - 1}{e^{2x} + 1}\]
 
-Then we can implement the backward function knowing that :
+<p>Then we can implement the backward function knowing that :</p>
 
-$$
-\frac{d}{dx} \tanh(x) = 1 - \tanh^2(x)
-$$
+\[\frac{d}{dx} \tanh(x) = 1 - \tanh^2(x)\]
 
-Now we implement the expnential method for being able of using tanh:
+<p>Now we implement the expnential method for being able of using tanh:</p>
 
-```python
-class Value:
-    ...#Code seen before
-    def exp(self):
-        x = self.data
-        out = Value(math.exp(x), (self, ), 'exp')
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Value</span><span class="p">:</span>
+    <span class="p">...</span><span class="c1">#Code seen before
+</span>    <span class="k">def</span> <span class="nf">exp</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">data</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="n">math</span><span class="p">.</span><span class="nf">exp</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="p">),</span> <span class="sh">'</span><span class="s">exp</span><span class="sh">'</span><span class="p">)</span>
         
-        def _backward():
-            self.grad += out.data * out.grad 
-        out._backward = _backward
+        <span class="k">def</span> <span class="nf">_backward</span><span class="p">():</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">grad</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">out</span><span class="p">.</span><span class="n">grad</span> 
+        <span class="n">out</span><span class="p">.</span><span class="n">_backward</span> <span class="o">=</span> <span class="n">_backward</span>
         
-        return out
+        <span class="k">return</span> <span class="n">out</span>
 
-```
+</code></pre></div></div>
 
-We have now implemented most of the basic operations for our Value object. The final step is to implement a backward method. This method will be responsible for calling the backward functions of each object in the proper order.
+<p>We have now implemented most of the basic operations for our Value object. The final step is to implement a backward method. This method will be responsible for calling the backward functions of each object in the proper order.</p>
 
-## Building the backward method
+<h2 id="building-the-backward-method">Building the backward method</h2>
 
-Here's the code for the function :
+<p>Here’s the code for the function :</p>
 
-```python
-class Value : 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Value</span> <span class="p">:</span> 
 
-    ... #Code seen before
-
-    def backward(self):
+    <span class="p">...</span> <span class="c1">#Code seen before
+</span>
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
     
-        topo = []
-        visited = set()
-        def build_topo(v):
-            if v not in visited:
-                visited.add(v)
-                for child in v._previously:
-                build_topo(child)
-                topo.append(v)
-        build_topo(self)
+        <span class="n">topo</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">visited</span> <span class="o">=</span> <span class="nf">set</span><span class="p">()</span>
+        <span class="k">def</span> <span class="nf">build_topo</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+                <span class="n">visited</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">v</span><span class="p">.</span><span class="n">_previously</span><span class="p">:</span>
+                <span class="nf">build_topo</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+                <span class="n">topo</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="nf">build_topo</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
         
-        self.grad = 1.0
-        for node in reversed(topo):
-            node._backward()
+        <span class="n">self</span><span class="p">.</span><span class="n">grad</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nf">reversed</span><span class="p">(</span><span class="n">topo</span><span class="p">):</span>
+            <span class="n">node</span><span class="p">.</span><span class="nf">_backward</span><span class="p">()</span>
 
 
-```
+</code></pre></div></div>
 
-Thanks to the implementation of the Value object, we are able to construct a computation graph that captures the entire history of how a Value object was derived. This graph is formed by following the _previously set of each Value object, which tracks all the predecessor values involved in its computation.
+<p>Thanks to the implementation of the Value object, we are able to construct a computation graph that captures the entire history of how a Value object was derived. This graph is formed by following the _previously set of each Value object, which tracks all the predecessor values involved in its computation.</p>
 
-To compute the gradients, we begin by focusing on the final Value object, which typically results from a loss function in a neural network. Since we are interested in the gradient of this final Value with respect to itself, we initialize its gradient (self.grad) to 1. This initialization signifies that the gradient of the final Value with respect to itself is 1.
+<p>To compute the gradients, we begin by focusing on the final Value object, which typically results from a loss function in a neural network. Since we are interested in the gradient of this final Value with respect to itself, we initialize its gradient (self.grad) to 1. This initialization signifies that the gradient of the final Value with respect to itself is 1.</p>
 
-Following this, we execute the backward ipass by invoking the _backward function for each Value object. This process starts with the final Value and proceeds backward through the computation graph to the initial Value objects. This reverse traversal ensures that the gradient for each Value is computed correctly based on the chain rule of differentiation, allowing us to accumulate the gradients appropriately.
+<p>Following this, we execute the backward ipass by invoking the _backward function for each Value object. This process starts with the final Value and proceeds backward through the computation graph to the initial Value objects. This reverse traversal ensures that the gradient for each Value is computed correctly based on the chain rule of differentiation, allowing us to accumulate the gradients appropriately.</p>
 
-We've now looked at the basics of how a neural network works. This simple approach helps us understand the core concepts behind its operation.
-Now it's time to create a very simple net.
+<p>We’ve now looked at the basics of how a neural network works. This simple approach helps us understand the core concepts behind its operation.
+Now it’s time to create a very simple net.</p>
 
-### Creating a Neural Network
+<h3 id="creating-a-neural-network">Creating a Neural Network</h3>
 
-Now we will look more deeply on how to create a net by little steps.
+<p>Now we will look more deeply on how to create a net by little steps.</p>
 
-#### Create one artifical neuron
+<h4 id="create-one-artifical-neuron">Create one artifical neuron</h4>
 
-Now we can create an [artificial neuron](https://en.wikipedia.org/wiki/Artificial_neuron) with two inputs.
-This is an example of how does a neuron work :
+<p>Now we can create an <a href="https://en.wikipedia.org/wiki/Artificial_neuron">artificial neuron</a> with two inputs.
+This is an example of how does a neuron work :</p>
 
-```python
-    #Inputs x1,x1
-    x1 = Value(1.0)
-    x2 = Value(2.0)
-    #Weights w1,w2
-    w1 = Value(6.0)
-    w2 = Value(-4.0)
-    # bias of the neuron
-    b = Value(9.8)
-    # x1*w1 + x2*w2 + b
-    x1w1 = x1*w1
-    x2w2 = x2*w2
-    x1w1x2w2 = x1w1 + x2w2
-    n = x1w1x2w2 + b
-    # Activation function
-    o = n.tanh()
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1">#Inputs x1,x1
+</span>    <span class="n">x1</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+    <span class="c1">#Weights w1,w2
+</span>    <span class="n">w1</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="mf">6.0</span><span class="p">)</span>
+    <span class="n">w2</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="o">-</span><span class="mf">4.0</span><span class="p">)</span>
+    <span class="c1"># bias of the neuron
+</span>    <span class="n">b</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="mf">9.8</span><span class="p">)</span>
+    <span class="c1"># x1*w1 + x2*w2 + b
+</span>    <span class="n">x1w1</span> <span class="o">=</span> <span class="n">x1</span><span class="o">*</span><span class="n">w1</span>
+    <span class="n">x2w2</span> <span class="o">=</span> <span class="n">x2</span><span class="o">*</span><span class="n">w2</span>
+    <span class="n">x1w1x2w2</span> <span class="o">=</span> <span class="n">x1w1</span> <span class="o">+</span> <span class="n">x2w2</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">x1w1x2w2</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="c1"># Activation function
+</span>    <span class="n">o</span> <span class="o">=</span> <span class="n">n</span><span class="p">.</span><span class="nf">tanh</span><span class="p">()</span>
 
-```
+</code></pre></div></div>
 
-o is the output of our neuron. The next step is to define a the class Neuron, here's the code:
+<p>o is the output of our neuron. The next step is to define a the class Neuron, here’s the code:</p>
 
-```python
-
-class Neuron:
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">class</span> <span class="nc">Neuron</span><span class="p">:</span>
   
-  def __init__(self, nin):
-    self.w = list()
-    self.b = Value(random.uniform(-1,1))
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">nin</span><span class="p">):</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">w</span> <span class="o">=</span> <span class="nf">list</span><span class="p">()</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">b</span> <span class="o">=</span> <span class="nc">Value</span><span class="p">(</span><span class="n">random</span><span class="p">.</span><span class="nf">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 
-    for _ in range (nin):
-        self.w.append(Value(random.uniform(-1,1)))
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range </span><span class="p">(</span><span class="n">nin</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">w</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nc">Value</span><span class="p">(</span><span class="n">random</span><span class="p">.</span><span class="nf">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
   
-  def __call__(self, x):
-    # w * x + b
-    activation = 0
-    for wi,xi in zip(self.w,x):
-        activation += wi*xi
-    activation+=self.b
-    out = activation.tanh()
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="c1"># w * x + b
+</span>    <span class="n">activation</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">wi</span><span class="p">,</span><span class="n">xi</span> <span class="ow">in</span> <span class="nf">zip</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">w</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">activation</span> <span class="o">+=</span> <span class="n">wi</span><span class="o">*</span><span class="n">xi</span>
+    <span class="n">activation</span><span class="o">+=</span><span class="n">self</span><span class="p">.</span><span class="n">b</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">activation</span><span class="p">.</span><span class="nf">tanh</span><span class="p">()</span>
 
-    return out
+    <span class="k">return</span> <span class="n">out</span>
   
-  def parameters(self): #For storing the parameters
-    return self.w + [self.b]
+  <span class="k">def</span> <span class="nf">parameters</span><span class="p">(</span><span class="n">self</span><span class="p">):</span> <span class="c1">#For storing the parameters
+</span>    <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">w</span> <span class="o">+</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">b</span><span class="p">]</span>
 
 
-```
+</code></pre></div></div>
 
-Here we define the class Neuron, in the __init__ method we create the weights based on the number of input(nin) and then we create the bias Value.
-When we call the Neuron it performs the activation based on the input and gives in output the result. Here's an example of usage
+<p>Here we define the class Neuron, in the <strong>init</strong> method we create the weights based on the number of input(nin) and then we create the bias Value.
+When we call the Neuron it performs the activation based on the input and gives in output the result. Here’s an example of usage</p>
 
-```python
-x = [1,2,3]
-a = Neuron(3)
-print(a(x))
->>> Value(data = something)
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nc">Neuron</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">a</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nc">Value</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">something</span><span class="p">)</span>
 
-```
+</code></pre></div></div>
 
-#### Create a layer
+<h4 id="create-a-layer">Create a layer</h4>
 
-The next step is to create a layer made of neuron, here's the code:
+<p>The next step is to create a layer made of neuron, here’s the code:</p>
 
-```python
-
-class Layer:
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">class</span> <span class="nc">Layer</span><span class="p">:</span>
   
-  def __init__(self, nin, nout):
-    self.neurons = list()
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">nin</span><span class="p">,</span> <span class="n">nout</span><span class="p">):</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">neurons</span> <span class="o">=</span> <span class="nf">list</span><span class="p">()</span>
 
-    for _ in range(nout):
-        self.neurons.append(Neuron(nin))
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">nout</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">neurons</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nc">Neuron</span><span class="p">(</span><span class="n">nin</span><span class="p">))</span>
   
-  def __call__(self, x):
-    outs = list()
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">outs</span> <span class="o">=</span> <span class="nf">list</span><span class="p">()</span>
     
-    for neuron in self.neurons:
-        outs.append(neuron(x))
+    <span class="k">for</span> <span class="n">neuron</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">neurons</span><span class="p">:</span>
+        <span class="n">outs</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">neuron</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 
-    return outs[0] if len(outs) == 1 else outs
+    <span class="k">return</span> <span class="n">outs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">outs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">outs</span>
   
-  def parameters(self):
-    return [p for neuron in self.neurons for p in neuron.parameters()]
+  <span class="k">def</span> <span class="nf">parameters</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">neuron</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">neurons</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">neuron</span><span class="p">.</span><span class="nf">parameters</span><span class="p">()]</span>
 
-```
+</code></pre></div></div>
 
-In the __init__ method we initialize a layer specifing the number of input for each neuron(nin) and the number of ouput for the layer(nout).
-When we call it, the __call__ method push the input to every neuron and return the out of every neuron.
+<p>In the <strong>init</strong> method we initialize a layer specifing the number of input for each neuron(nin) and the number of ouput for the layer(nout).
+When we call it, the <strong>call</strong> method push the input to every neuron and return the out of every neuron.</p>
 
-#### Create the multilayer perceptron
+<h4 id="create-the-multilayer-perceptron">Create the multilayer perceptron</h4>
 
-The final step is to create an[MLP fully connected](https://en.wikipedia.org/wiki/Multilayer_perceptron), here's the code :
+<p>The final step is to create an<a href="https://en.wikipedia.org/wiki/Multilayer_perceptron">MLP fully connected</a>, here’s the code :</p>
 
-```python
-
-class MLP:
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">class</span> <span class="nc">MLP</span><span class="p">:</span>
   
-  def __init__(self, nin, nouts):
-    sz = [nin] + nouts
-    self.layers = list()
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">nin</span><span class="p">,</span> <span class="n">nouts</span><span class="p">):</span>
+    <span class="n">sz</span> <span class="o">=</span> <span class="p">[</span><span class="n">nin</span><span class="p">]</span> <span class="o">+</span> <span class="n">nouts</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">layers</span> <span class="o">=</span> <span class="nf">list</span><span class="p">()</span>
 
-    for i in range(len(nouts)):
-        self.layers.append(Layer(sz[i],sz[i+1]))
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">nouts</span><span class="p">)):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nc">Layer</span><span class="p">(</span><span class="n">sz</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">sz</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
     
   
-  def __call__(self, x):
-    for layer in self.layers:
-      x = layer(x)
-    return x
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">layers</span><span class="p">:</span>
+      <span class="n">x</span> <span class="o">=</span> <span class="nf">layer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
   
-  def parameters(self):
-    return [p for layer in self.layers for p in layer.parameters()]
+  <span class="k">def</span> <span class="nf">parameters</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">layers</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">layer</span><span class="p">.</span><span class="nf">parameters</span><span class="p">()]</span>
 
-```
+</code></pre></div></div>
 
-In the __init__ method as usual we initialize the MLP giving the number of inputs of the neurons(nin) and then a list(nouts) where we store the number of neurons for each layer. When we creare the self.layer attribute we iterate over a list that we create where we have the number of inputs and outputs require for every layer.
-Now let's give a look of how we can use it :
+<p>In the <strong>init</strong> method as usual we initialize the MLP giving the number of inputs of the neurons(nin) and then a list(nouts) where we store the number of neurons for each layer. When we creare the self.layer attribute we iterate over a list that we create where we have the number of inputs and outputs require for every layer.
+Now let’s give a look of how we can use it :</p>
 
-```python
-x = [1.0, 5.0, -6.0]
-net = MLP(3, [4, 4, 1])
-net(x)
->>>Value(data=something)
-
-
-```
-
-Now we are ready to train the net that we have built.
-
-#### Creating the dataset
-
-To start we can manually create a very easy dataset and the desired target :
-
-```python
-xs = [
-  [1.0, 2.0, -1.0],
-  [6.0, -4.0, 1],
-  [2, 1.0, -1.0],
-  [4.0, 3.0, -2.0],
-]
-ys = [2.0, -4.0, -3.0, 2.0]
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.0</span><span class="p">]</span>
+<span class="n">net</span> <span class="o">=</span> <span class="nc">MLP</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="nf">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="nc">Value</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">something</span><span class="p">)</span>
 
 
-```
+</code></pre></div></div>
 
-So when we feed to our net the first list we want to obtain as a result the firs element of the ys list.
+<p>Now we are ready to train the net that we have built.</p>
+
+<h4 id="creating-the-dataset">Creating the dataset</h4>
+
+<p>To start we can manually create a very easy dataset and the desired target :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">xs</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+  <span class="p">[</span><span class="mf">6.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+  <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+  <span class="p">[</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">],</span>
+<span class="p">]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span>
+
+
+</code></pre></div></div>
+
+<p>So when we feed to our net the first list we want to obtain as a result the firs element of the ys list.
 Now all we need is a loss function that can tell us how good are the output of our net.
 When we have our loss function we can call the backpropagation on it(remember that is a Value object so we can do it) and then we can slighly adjust the parameters according to what minimize the loss function.
-Now we can implement it :
+Now we can implement it :</p>
 
-```python
-for k in range(20):
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
   
-    # forward pass
-    ypred = list()
-    for x in xs:
-    ypred.append(net(x))
-    loss = 0
+    <span class="c1"># forward pass
+</span>    <span class="n">ypred</span> <span class="o">=</span> <span class="nf">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">:</span>
+    <span class="n">ypred</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">net</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="mi">0</span>
 
-    for ygt,yout in zip(ys,ypred):
-        loss+= (yout-ygt)**2
+    <span class="k">for</span> <span class="n">ygt</span><span class="p">,</span><span class="n">yout</span> <span class="ow">in</span> <span class="nf">zip</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span><span class="n">ypred</span><span class="p">):</span>
+        <span class="n">loss</span><span class="o">+=</span> <span class="p">(</span><span class="n">yout</span><span class="o">-</span><span class="n">ygt</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 
-    # backward pass
-    for p in net.parameters():
-        p.grad = 0.0
-    loss.backward()
+    <span class="c1"># backward pass
+</span>    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">net</span><span class="p">.</span><span class="nf">parameters</span><span class="p">():</span>
+        <span class="n">p</span><span class="p">.</span><span class="n">grad</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">loss</span><span class="p">.</span><span class="nf">backward</span><span class="p">()</span>
 
-    # update
-    for p in n.parameters():
-        p.data += -0.1 * p.grad
+    <span class="c1"># update
+</span>    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">n</span><span class="p">.</span><span class="nf">parameters</span><span class="p">():</span>
+        <span class="n">p</span><span class="p">.</span><span class="n">data</span> <span class="o">+=</span> <span class="o">-</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">p</span><span class="p">.</span><span class="n">grad</span>
 
-    print(k, loss.data)
+    <span class="nf">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">loss</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
   
-```
+</code></pre></div></div>
 
-In this piece of code we train our net following this step :
+<p>In this piece of code we train our net following this step :</p>
 
-1. Forward pass
-   We feed to the net the dataset and then we save the output of the net. Then we evaluate the loss using [MSE function](https://en.wikipedia.org/wiki/Mean_squared_error).
-2. Backward Pass
-   We reset all the gradient of all parameters and then we compute the new grad of each parameter calling backward on the loss function.
-3. Update
-   We update the parameters in the direction that minimize the loss function using a learning rate of 0.1
+<ol>
+  <li>Forward pass
+We feed to the net the dataset and then we save the output of the net. Then we evaluate the loss using <a href="https://en.wikipedia.org/wiki/Mean_squared_error">MSE function</a>.</li>
+  <li>Backward Pass
+We reset all the gradient of all parameters and then we compute the new grad of each parameter calling backward on the loss function.</li>
+  <li>Update
+We update the parameters in the direction that minimize the loss function using a learning rate of 0.1</li>
+</ol>
 
-## Conclusion
+<h2 id="conclusion">Conclusion</h2>
 
-In this first part we built the foundamental for the understading of neural networks. In the next part we are going to see how to affine our techniques.]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[Introduction]]></summary></entry></feed>
+<p>In this first part we built the foundamental for the understading of neural networks. In the next part we are going to see how to affine our techniques.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[Introduction]]></summary></entry></feed>
