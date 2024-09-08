@@ -1,7 +1,6 @@
 ---
-title: land page
+title: Home Page
 layout: default
-
 ---
 
 
