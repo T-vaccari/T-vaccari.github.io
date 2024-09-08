@@ -17,6 +17,7 @@ permalink: /:categories/:year/:month/:day/:title.html
 collections:
   posts:
     output: true
+    permalink: /blog/post/:year/:month/:day/:title.html
   projects:
     output: true
     permalink: /projects/:name/
