@@ -1,19 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z09DCP3TL8"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-Z09DCP3TL8');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tommaso's portfolio showcasing projects, blog, and more. Learn about my expertise in software engineering and see my latest work.">
+    <meta name="keywords" content="Tommaso Vaccari, portfolio, software engineer, projects, blog, CV, now page">
+    <meta name="author" content="Tommaso Vaccari">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{{ page.title | default: site.title }}">
+    <meta property="og:description" content="Tommaso's portfolio showcasing projects, blog, and more.">
+    <meta property="og:image" content="{{ '/assets/images/og-image.png' | relative_url }}">
+    <meta property="og:url" content="{{ page.url | relative_url }}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+    <meta name="twitter:description" content="Tommaso's portfolio showcasing projects, blog, and more.">
+    <meta name="twitter:image" content="{{ '/assets/images/twitter-image.png' | relative_url }}">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Tommaso Vaccari",
+      "jobTitle": "Software Engineer",
+      "email": "tommaso.vaccari@mail.polimi.it",
+      "url": "https://tommasovaccari.com",
+      "sameAs": [
+        "https://github.com/T-vaccari",
+        "https://www.linkedin.com/in/tommaso-vaccari-97b36b298/"
+      ]
+    }
+    </script>
+
     <title>{{ page.title | default: site.title }}</title>
-    <!-- Usa il filtro `relative_url` per gestire il percorso del CSS -->
     <link rel="stylesheet" href="{{ '/assets/styles/main.css' | relative_url }}">
 </head>
 <body>
@@ -25,8 +57,6 @@
 
 <nav>
     <a href="{{ '/' | relative_url }}">Home</a>
-    <!--<a href="{{ '/about.html' | relative_url }}">About</a> -->
-    <!--<a href="{{ '/contact.html' | relative_url }}">Contact</a> -->
     <a href="{{ '/docs/TommasoVaccari_CV.pdf' | relative_url }}">CV</a>
     <a href="{{ 'pages/nowpage.html' | relative_url }}">Now Page</a>
     <a href="{{ 'pages/projectspage.html' | relative_url }}">Projects</a>
@@ -34,22 +64,17 @@
 </nav>
 
 <main>
-    <!-- Questo è il segnaposto per il contenuto delle pagine Markdown -->
     {{ content }}
 </main>
+
 <footer>
     <div class="footer-content">
-      
       <p><a href="mailto:tommaso.vaccari@mail.polimi.it">tommaso.vaccari@mail.polimi.it</a></p>
-      <p><a href="https://github.com/T-vaccari"><img src="/assets/images/github-mark-white.png" alt="GitHub" class="icon"> T-vaccari</a></p>
-      
+      <p><a href="https://github.com/T-vaccari"><img src="/assets/images/github-mark-white.png" alt="Tommaso Vaccari's GitHub profile" class="icon"> T-vaccari</a></p>
+      <p><a href="https://www.linkedin.com/in/tommaso-vaccari-97b36b298/"><img src="/assets/images/linkedin-logo.png" alt="Tommaso Vaccari's Linkedin profile" class="icon"> Tommaso Vaccari</a></p>
       <p>&copy; 2024 Tommaso's Portfolio. All rights reserved.</p>
     </div>
 </footer>
-  
-
-   
-
-
 </body>
 </html>
+
