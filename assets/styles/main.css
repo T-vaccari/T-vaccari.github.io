@@ -106,7 +106,15 @@ section {
 .project a:hover {
     color: #3498db;
 }
-
+/* =========================================
+   MathJax Responsiveness Fix
+   ========================================= */
+mjx-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    display: block;
+}
 /* =========================================
    Responsive Design
    ========================================= */
