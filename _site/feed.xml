@@ -1,108 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4001/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4001/" rel="alternate" type="text/html" /><updated>2025-01-28T09:37:11+01:00</updated><id>http://localhost:4001/feed.xml</id><title type="html">My portfolio</title><subtitle>Tommaso Vaccari&apos;s Portfolio</subtitle><entry><title type="html">Neural Network : Part Two</title><link href="http://localhost:4001/blog/post/2025/01/25/NeuralNetworkP2.html" rel="alternate" type="text/html" title="Neural Network : Part Two" /><published>2025-01-25T00:00:00+01:00</published><updated>2025-01-25T00:00:00+01:00</updated><id>http://localhost:4001/blog/post/2025/01/25/NeuralNetworkP2</id><content type="html" xml:base="http://localhost:4001/blog/post/2025/01/25/NeuralNetworkP2.html"><![CDATA[<h1 id="introduction">Introduction</h1>
-<p>In this second post, we will take another step forward. We’ll dive into the concept of linear regression, explore its connection to neural networks, and demonstrate how to build a model from scratch. This approach will help us gain a deeper understanding of the core concepts behind both linear regression and neural networks.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4001/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4001/" rel="alternate" type="text/html" /><updated>2025-02-06T11:39:56+01:00</updated><id>http://localhost:4001/feed.xml</id><title type="html">My portfolio</title><subtitle>Tommaso Vaccari&apos;s Portfolio</subtitle><entry><title type="html">Neural Network : Part Two</title><link href="http://localhost:4001/blog/post/2025/01/25/NeuralNetworkP2.html" rel="alternate" type="text/html" title="Neural Network : Part Two" /><published>2025-01-25T00:00:00+01:00</published><updated>2025-01-25T00:00:00+01:00</updated><id>http://localhost:4001/blog/post/2025/01/25/NeuralNetworkP2</id><content type="html" xml:base="http://localhost:4001/blog/post/2025/01/25/NeuralNetworkP2.html"><![CDATA[# Introduction
+In this second post, we will take another step forward. We’ll dive into the concept of linear regression, explore its connection to neural networks, and demonstrate how to build a model from scratch. This approach will help us gain a deeper understanding of the core concepts behind both linear regression and neural networks.
 
-<h2 id="linear-regression">Linear Regression</h2>
+## Linear Regression
 
-<h3 id="model-and-loss-function">Model and Loss function</h3>
-<p>Before starting, we need to define some terminology. When we want to predict a value, we call it a label or target. Each label is associated with its own features. The model makes predictions based solely on these features. Therefore, we need to refine the model to accurately predict the correct label based on the provided input features.</p>
 
-<p>We want to predict a  target, $ \hat{y}$, based on a set of features grouped in a vector called ${X}$. To make the prediction, we need to find the weight vector ${W}$ and the bias $ B $ that give us the most accurate predictions. This relationship can be expressed using the dot product:</p>
+### Model and Loss function
+Before starting, we need to define some terminology. When we want to predict a value, we call it a label or target. Each label is associated with its own features. The model makes predictions based solely on these features. Therefore, we need to refine the model to accurately predict the correct label based on the provided input features.
 
-\[\hat{y} = W \cdot X + b\]
+We want to predict a  target, $ \hat{y}$, based on a set of features grouped in a vector called ${X}$. To make the prediction, we need to find the weight vector ${W}$ and the bias $ B $ that give us the most accurate predictions. This relationship can be expressed using the dot product:
 
-<p>If we want to group everything together, we can define the X matrix, having along the lines the features of a single label, so we have the $\hat{y}$ vector that represents the vector of the prediction given the matrix features and the bias vector:</p>
+$$\hat{y} = W \cdot X + b $$
 
-\[\hat{y} = X \cdot W + b\]
+If we want to group everything together, we can define the X matrix, having along the lines the features of a single label, so we have the $\hat{y}$ vector that represents the vector of the prediction given the matrix features and the bias vector:
 
-<p>Now we need to define a loss function to evaluate the model. The most common is the squared error, where $\hat{y}_i$ is the prediction and $y_i$ is the corresponding true label.</p>
+$$\hat{y} = X \cdot W + b$$
 
-\[L_i(W, b)= \frac{1}{2} (\hat{y}_i-y_i)^2\]
+Now we need to define a loss function to evaluate the model. The most common is the squared error, where $\hat{y}_i$ is the prediction and $y_i$ is the corresponding true label. 
 
-<p>We can observe that the loss is a function of weight and bias.</p>
+$$L_i(W, b)= \frac{1}{2} (\hat{y}_i-y_i)^2$$
 
-<p>Now we can extend the evaluation of the loss along all the predictions, averaging it to obtain an intuitive idea of how our model is performing.</p>
+We can observe that the loss is a function of weight and bias.
 
-\[L_i (W,B) =\frac{1}{n} \sum_{i=1}^{n} L_i(W,B) = \frac{1}{n} \sum_{i=1}^{n} \frac{1}{2} (X^{(i)} \cdot W + b - y^{(i)})^2\]
+Now we can extend the evaluation of the loss along all the predictions, averaging it to obtain an intuitive idea of how our model is performing.
 
-<p>We have to keep in mind our goal: we want to find W and B that give us the minimum value of loss along all the predictions.</p>
 
-<h3 id="minibatch-stochastic-gradient-descent">Minibatch Stochastic Gradient Descent</h3>
+$$L_i (W,B) =\frac{1}{n} \sum_{i=1}^{n} L_i(W,B) = \frac{1}{n} \sum_{i=1}^{n} \frac{1}{2} (X^{(i)} \cdot W + b - y^{(i)})^2$$
 
-<p>The key to optimizing a model and improving its predictions is to iteratively update the weights by modifying them in the opposite direction of the gradient of the loss function. This process is known as gradient descent. Although it may seem simple at first glance, it is the foundation of many advanced techniques in machine learning and plays a central role in training modern models.</p>
+We have to keep in mind our goal: we want to find W and B that give us the minimum value of loss along all the predictions.
 
-<p>To optimize the process, we do not update the model using the entire dataset at once. Instead, we randomly select smaller subsets of the data, called batches. The model is then optimized iteratively by performing updates on these batches, which makes the process more efficient and scalable, especially for large datasets. This approach is commonly referred to as mini-batch gradient descent.</p>
+### Minibatch Stochastic Gradient Descent
 
-<p>To keep it simple we can break down this process into four steps:</p>
+The key to optimizing a model and improving its predictions is to iteratively update the weights by modifying them in the opposite direction of the gradient of the loss function. This process is known as gradient descent. Although it may seem simple at first glance, it is the foundation of many advanced techniques in machine learning and plays a central role in training modern models.
 
-<ol>
-  <li>Batch Selection: 
-Randomly choose a small subset of training data. This approach balances computational efficiency with learning effectiveness. Instead of processing the entire dataset, which would be slow and memory-intensive, we sample a representative mini-batch that captures the overall data characteristics.</li>
-  <li>Loss Calculation:
-Measure how far the model’s predictions are from the true values for each example in the batch. Compute the average loss, which serves as a performance metric. This average loss quantifies the model’s current error, providing a clear signal about how well (or poorly) the model is performing on this particular set of examples.</li>
-  <li>Gradient Computation: Calculate the derivative of the loss with respect to each model parameter. This gradient acts like a compass, pointing to the direction that would most quickly increase the loss. By understanding how each weight contributes to the model’s error, we can intelligently adjust the model’s internal representation to improve its predictive capabilities.</li>
-  <li>Parameter Update: Move the model’s parameters in the opposite direction of the gradient, scaled by a small learning rate. This is akin to taking careful steps down a complex landscape, where each step aims to reduce the overall error. The learning rate determines the size of these steps – too large, and you might overshoot the optimal solution; too small, and progress becomes painfully slow.</li>
-</ol>
+To optimize the process, we do not update the model using the entire dataset at once. Instead, we randomly select smaller subsets of the data, called batches. The model is then optimized iteratively by performing updates on these batches, which makes the process more efficient and scalable, especially for large datasets. This approach is commonly referred to as mini-batch gradient descent.
 
-<p>If we want to express this in formulas we have:</p>
+To keep it simple we can break down this process into four steps:
 
-<p>1) The weights update:</p>
+1. Batch Selection: 
+Randomly choose a small subset of training data. This approach balances computational efficiency with learning effectiveness. Instead of processing the entire dataset, which would be slow and memory-intensive, we sample a representative mini-batch that captures the overall data characteristics.
+2. Loss Calculation:
+Measure how far the model's predictions are from the true values for each example in the batch. Compute the average loss, which serves as a performance metric. This average loss quantifies the model's current error, providing a clear signal about how well (or poorly) the model is performing on this particular set of examples.
+3. Gradient Computation: Calculate the derivative of the loss with respect to each model parameter. This gradient acts like a compass, pointing to the direction that would most quickly increase the loss. By understanding how each weight contributes to the model's error, we can intelligently adjust the model's internal representation to improve its predictive capabilities.
+4. Parameter Update: Move the model's parameters in the opposite direction of the gradient, scaled by a small learning rate. This is akin to taking careful steps down a complex landscape, where each step aims to reduce the overall error. The learning rate determines the size of these steps – too large, and you might overshoot the optimal solution; too small, and progress becomes painfully slow.
 
-\[\mathbf{w} \gets \mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \frac{\partial L^{(i)} (\mathbf{w}, b)}{\partial \mathbf{w}} = \mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \left( \mathbf{x}^{(i)} \cdot \mathbf{w} + b - y^{(i)} \right) \mathbf{x}^{(i)}.\]
+If we want to express this in formulas we have:
 
-<p>2) The Bias Update:</p>
+1) The weights update:
 
-\[b \gets b - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \frac{\partial L^{(i)} (\mathbf{w}, b)}{\partial b} 
-= b - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \left( \mathbf{x}^{(i)} \cdot \mathbf{w} + b - y^{(i)} \right).\]
+$$
+\mathbf{w} \gets \mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \frac{\partial L^{(i)} (\mathbf{w}, b)}{\partial \mathbf{w}} = \mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \left( \mathbf{x}^{(i)} \cdot \mathbf{w} + b - y^{(i)} \right) \mathbf{x}^{(i)}.
+$$
 
-<h3 id="linear-regression-as-a-neural-network">Linear Regression as a Neural Network</h3>
+2) The Bias Update:
 
-<p>While linear models are not sufficiently rich to express complex relationships between features, we can introduce neural networks to obtain a more expressive model. Nevertheless, we can also view a linear model as a neural network where every input feature corresponds to a neuron with its own weight and bias.</p>
+$$
+b \gets b - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \frac{\partial L^{(i)} (\mathbf{w}, b)}{\partial b} 
+= b - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \left( \mathbf{x}^{(i)} \cdot \mathbf{w} + b - y^{(i)} \right).
+$$
 
-<h2 id="implementation-using-object-oriented-design">Implementation using object-oriented design</h2>
-<p>To gain a deeper understanding of how a model is created and trained, we aim to implement the classes and methods from scratch. We are following this approach because, in my opinion, using machine learning libraries like PyTorch directly does not provide a comprehensive understanding of what happens under the hood.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-<span class="kn">import</span> <span class="n">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="n">torch</span>
-</code></pre></div></div>
 
-<p>Now we are ready to implement from scratch our model for linear regression, we need :</p>
-<ol>
-  <li>The model</li>
-  <li>The loss function</li>
-  <li>The optimization algorithm</li>
-  <li>The training function</li>
-</ol>
+### Linear Regression as a Neural Network
 
-<h3 id="building-the-model">Building the model</h3>
+While linear models are not sufficiently rich to express complex relationships between features, we can introduce neural networks to obtain a more expressive model. Nevertheless, we can also view a linear model as a neural network where every input feature corresponds to a neuron with its own weight and bias.
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">LinearRegressionModel</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">num_inputs</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
-            <span class="sh">"""</span><span class="s">
+
+
+
+## Implementation using object-oriented design
+To gain a deeper understanding of how a model is created and trained, we aim to implement the classes and methods from scratch. We are following this approach because, in my opinion, using machine learning libraries like PyTorch directly does not provide a comprehensive understanding of what happens under the hood.
+
+
+```python
+%matplotlib inline
+import matplotlib.pyplot as plt
+import numpy as np
+import torch
+```
+
+Now we are ready to implement from scratch our model for linear regression, we need : 
+1. The model
+2. The loss function
+3. The optimization algorithm
+4. The training function
+
+### Building the model 
+
+
+```python
+class LinearRegressionModel:
+    def __init__(self, num_inputs, learning_rate, sigma=0.01):
+            """
             Initialize the model parameters.
 
             Args:
             - num_inputs (int): Number of input features.
             - learning_rate (float): Learning rate for gradient descent.
             - sigma (float): Standard deviation for initializing weights.
-            </span><span class="sh">"""</span>
-            <span class="n">self</span><span class="p">.</span><span class="n">num_inputs</span> <span class="o">=</span> <span class="n">num_inputs</span>
-            <span class="n">self</span><span class="p">.</span><span class="n">learning_rate</span> <span class="o">=</span> <span class="n">learning_rate</span>
+            """
+            self.num_inputs = num_inputs
+            self.learning_rate = learning_rate
             
-            <span class="c1"># Initialize weights and bias
-</span>            <span class="n">self</span><span class="p">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">num_inputs</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-            <span class="n">self</span><span class="p">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            # Initialize weights and bias
+            self.w = torch.normal(mean=0.0, std=sigma, size=(num_inputs, 1), requires_grad=True)
+            self.b = torch.zeros(1, requires_grad=True)
         
-</code></pre></div></div>
+```
 
-<p>Here we have created a class that contains the weights and bias. Additionally, we have introduced the hyperparameters, which are typically user-defined and used to adjust various aspects during the training phase. The weights are sampled from a <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal distribution with a mean of 0 and a standard deviation of 0.01</a>, while the bias is initialized to zero.</p>
+Here we have created a class that contains the weights and bias. Additionally, we have introduced the hyperparameters, which are typically user-defined and used to adjust various aspects during the training phase. The weights are sampled from a [normal distribution with a mean of 0 and a standard deviation of 0.01](https://en.wikipedia.org/wiki/Normal_distribution), while the bias is initialized to zero.
 
-<p>Now we can add the method to obtain the forward pass:</p>
+Now we can add the method to obtain the forward pass:
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@add_to_class</span><span class="p">(</span><span class="n">LinearRegressionModel</span><span class="p">)</span> 
-<span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-        <span class="sh">"""</span><span class="s">
+
+```python
+@add_to_class(LinearRegressionModel) 
+def forward(self, X):
+        """
         Compute the forward pass: y = Xw + b.
 
         Args:
@@ -110,17 +123,19 @@ Measure how far the model’s predictions are from the true values for each exam
         
         Returns:
         - torch.Tensor: Predicted values of shape (batch_size, 1).
-        </span><span class="sh">"""</span>
-        <span class="k">return</span> <span class="n">torch</span><span class="p">.</span><span class="nf">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">w</span><span class="p">)</span> <span class="o">+</span> <span class="n">self</span><span class="p">.</span><span class="n">b</span>
-</code></pre></div></div>
+        """
+        return torch.matmul(X, self.w) + self.b
+```
 
-<h3 id="building-the-loss-function">Building the loss function</h3>
+### Building the loss function
 
-<p>Now we add the method to calculate the loss for a single batch of examples by using the squared loss function and then returning the mean.</p>
+Now we add the method to calculate the loss for a single batch of examples by using the squared loss function and then returning the mean.
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@add_to_class</span><span class="p">(</span><span class="n">LinearRegressionModel</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">compute_loss</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">):</span>
-        <span class="sh">"""</span><span class="s">
+
+```python
+@add_to_class(LinearRegressionModel)
+def compute_loss(self, y_pred, y_true):
+        """
         Compute Mean Squared Error loss.
 
         Args:
@@ -129,38 +144,38 @@ Measure how far the model’s predictions are from the true values for each exam
         
         Returns:
         - torch.Tensor: Scalar loss value.
-        </span><span class="sh">"""</span>
-        <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">((</span><span class="n">y_pred</span> <span class="o">-</span> <span class="n">y_true</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">).</span><span class="nf">mean</span><span class="p">()</span>
-</code></pre></div></div>
+        """
+        return 0.5 * ((y_pred - y_true) ** 2).mean()
+```
 
-<h3 id="building-the-optimization-algorithm">Building the optimization algorithm</h3>
+### Building the optimization algorithm
 
-<p>This is the fundamental part of our model—the algorithm that allows us to improve its predictions. We are going to implement Stochastic Gradient Descent (SGD), as discussed earlier.</p>
+This is the fundamental part of our model—the algorithm that allows us to improve its predictions. We are going to implement Stochastic Gradient Descent (SGD), as discussed earlier.
 
-<p>The steps we want to follow are:</p>
-<ol>
-  <li>Randomly select a batch from the training set.</li>
-  <li>Make predictions using the selected batch.</li>
-  <li>Compute the loss of the predictions.</li>
-  <li>Calculate the gradient of the loss with respect to the weights and bias.</li>
-  <li>Update the parameters (weights and bias) using the learning rate and computed gradients.</li>
-</ol>
+The steps we want to follow are:
+1.	Randomly select a batch from the training set.
+2.	Make predictions using the selected batch.
+3.	Compute the loss of the predictions.
+4.	Calculate the gradient of the loss with respect to the weights and bias.
+5.	Update the parameters (weights and bias) using the learning rate and computed gradients.
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@add_to_class</span><span class="p">(</span><span class="n">LinearRegressionModel</span><span class="p">)</span> 
-<span class="k">def</span> <span class="nf">update_parameters</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
-        <span class="sh">"""</span><span class="s">
+
+```python
+@add_to_class(LinearRegressionModel) 
+def update_parameters(self):
+        """
         Update the model parameters using gradient descent.
-        </span><span class="sh">"""</span>
-        <span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="nf">no_grad</span><span class="p">():</span>
-            <span class="n">self</span><span class="p">.</span><span class="n">w</span> <span class="o">-=</span> <span class="n">self</span><span class="p">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">w</span><span class="p">.</span><span class="n">grad</span>
-            <span class="n">self</span><span class="p">.</span><span class="n">b</span> <span class="o">-=</span> <span class="n">self</span><span class="p">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">b</span><span class="p">.</span><span class="n">grad</span>
+        """
+        with torch.no_grad():
+            self.w -= self.learning_rate * self.w.grad
+            self.b -= self.learning_rate * self.b.grad
 
-            <span class="c1"># Manually zero the gradients
-</span>            <span class="n">self</span><span class="p">.</span><span class="n">w</span><span class="p">.</span><span class="n">grad</span><span class="p">.</span><span class="nf">zero_</span><span class="p">()</span>
-            <span class="n">self</span><span class="p">.</span><span class="n">b</span><span class="p">.</span><span class="n">grad</span><span class="p">.</span><span class="nf">zero_</span><span class="p">()</span>
+            # Manually zero the gradients
+            self.w.grad.zero_()
+            self.b.grad.zero_()
 
-<span class="k">def</span> <span class="nf">train_step</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
-    <span class="sh">"""</span><span class="s">
+def train_step(self, X, y, batch_size):
+    """
     Perform a single training step.
 
     Args:
@@ -170,36 +185,38 @@ Measure how far the model’s predictions are from the true values for each exam
     
     Returns:
     - float: Loss value for the batch.
-    </span><span class="sh">"""</span>
-    <span class="c1"># Sample a random batch
-</span>    <span class="n">num_samples</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,))</span>
-    <span class="n">X_batch</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
-    <span class="n">y_batch</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+    """
+    # Sample a random batch
+    num_samples = X.shape[0]
+    indices = torch.randint(0, num_samples, (batch_size,))
+    X_batch = X[indices]
+    y_batch = y[indices]
 
-    <span class="c1"># Forward pass
-</span>    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">forward</span><span class="p">(</span><span class="n">X_batch</span><span class="p">)</span>
+    # Forward pass
+    y_pred = self.forward(X_batch)
 
-    <span class="c1"># Compute loss
-</span>    <span class="n">loss</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">compute_loss</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_batch</span><span class="p">)</span>
+    # Compute loss
+    loss = self.compute_loss(y_pred, y_batch)
 
-    <span class="c1"># Backward pass
-</span>    <span class="n">loss</span><span class="p">.</span><span class="nf">backward</span><span class="p">()</span>
+    # Backward pass
+    loss.backward()
 
-    <span class="c1"># Update parameters
-</span>    <span class="n">self</span><span class="p">.</span><span class="nf">update_parameters</span><span class="p">()</span>
+    # Update parameters
+    self.update_parameters()
 
-    <span class="c1"># Return the loss value as a scalar
-</span>    <span class="k">return</span> <span class="n">loss</span><span class="p">.</span><span class="nf">item</span><span class="p">()</span>
+    # Return the loss value as a scalar
+    return loss.item()
 
-</code></pre></div></div>
+```
 
-<h3 id="building-the-training-method">Building the training method</h3>
-<p>The last step to complete our model is to implement a method that allows us to train it. It would be useful to visualize how the weights, bias, and learning rate change throughout the training process, so we can also add a method to plot this information.</p>
+### Building the training method
+The last step to complete our model is to implement a method that allows us to train it. It would be useful to visualize how the weights, bias, and learning rate change throughout the training process, so we can also add a method to plot this information.
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@add_to_class</span><span class="p">(</span><span class="n">LinearRegressionModel</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
-        <span class="sh">"""</span><span class="s">
+
+```python
+@add_to_class(LinearRegressionModel)
+def train(self, X, y, epochs, batch_size):
+        """
         Train the model over multiple epochs.
 
         Args:
@@ -210,88 +227,86 @@ Measure how far the model’s predictions are from the true values for each exam
         
         Returns:
         - list: List of loss values for each epoch.
-        </span><span class="sh">"""</span>
-        <span class="n">losses</span> <span class="o">=</span> <span class="p">[]</span>
+        """
+        losses = []
 
-        <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-            <span class="c1"># Perform a training step and compute the average loss for the epoch
-</span>            <span class="n">loss</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">train_step</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
-            <span class="n">losses</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+        for epoch in range(epochs):
+            # Perform a training step and compute the average loss for the epoch
+            loss = self.train_step(X, y, batch_size)
+            losses.append(loss)
 
-            <span class="c1"># Print progress every 10 epochs
-</span>            <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s">, Loss: </span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="p">.</span><span class="mi">6</span><span class="n">f</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+            # Print progress every 10 epochs
+            if epoch % 10 == 0:
+                print(f"Epoch {epoch}, Loss: {loss:.6f}")
 
-        <span class="k">return</span> <span class="n">losses</span>
+        return losses
     
-</code></pre></div></div>
+```
 
-<h2 id="testing-the-model">Testing The model</h2>
-<p>Now that the class is built from scratch, we can proceed with testing it to verify if everything works correctly. Testing the model typically involves the following steps:</p>
-<ol>
-  <li>Creating synthetic data (or retrieving real data)</li>
-  <li>Instantiating the model</li>
-  <li>Training the model</li>
-  <li>Testing the model on the evaluation set</li>
-</ol>
+## Testing The model
+Now that the class is built from scratch, we can proceed with testing it to verify if everything works correctly. Testing the model typically involves the following steps:
+1.	Creating synthetic data (or retrieving real data)
+2.	Instantiating the model
+3.	Training the model
+4.	Testing the model on the evaluation set
 
-<p>Now, we initialize a vector to represent the weights that our model needs to learn from the data during the training process, and we follow the same process for the bias.
+Now, we initialize a vector to represent the weights that our model needs to learn from the data during the training process, and we follow the same process for the bias.
 Then we compute the target that we are going to use, with the features to train our model.
-We can also adjust hyperparameters as needed.</p>
+We can also adjust hyperparameters as needed.
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Define hyperparameters
-</span><span class="n">num_samples</span> <span class="o">=</span> <span class="mi">4000</span>
-<span class="n">num_inputs</span> <span class="o">=</span> <span class="mi">2000</span>
-<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
-<span class="n">epochs</span> <span class="o">=</span> <span class="mi">2000</span>
-<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span>
 
-<span class="c1"># Generate synthetic data
-</span><span class="n">true_w</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">randn</span><span class="p">((</span><span class="n">num_inputs</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">true_b</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">rand</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">randn</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">num_inputs</span><span class="p">))</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">true_w</span><span class="p">)</span> <span class="o">+</span> <span class="n">true_b</span> <span class="o">+</span> <span class="n">torch</span><span class="p">.</span><span class="nf">randn</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="mf">0.01</span>
-</code></pre></div></div>
+```python
+# Define hyperparameters
+num_samples = 4000
+num_inputs = 2000
+learning_rate = 0.01
+epochs = 2000
+batch_size = 64
 
-<h4 id="define-hyperparameters">Define hyperparameters:</h4>
-<ul>
-  <li><strong>num_samples</strong>: The number of data samples to generate.</li>
-  <li><strong>num_inputs</strong>: The number of input features for each sample.</li>
-  <li><strong>learning_rate</strong>: The rate at which the model learns during training.</li>
-  <li><strong>epochs</strong>: The number of times the entire dataset is passed through the model during training.</li>
-  <li><strong>batch_size</strong>: The number of samples processed before the model’s internal parameters are updated.</li>
-</ul>
+# Generate synthetic data
+true_w = torch.randn((num_inputs, 1))
+true_b = torch.rand((1,1))
+X = torch.randn((num_samples, num_inputs))
+y = torch.matmul(X, true_w) + true_b + torch.randn((num_samples, 1)) * 0.01
+```
 
-<h4 id="generate-synthetic-data">Generate synthetic data:</h4>
-<ul>
-  <li><strong>true_w</strong>: Randomly generated weights for the input features.</li>
-  <li><strong>true_b</strong>: Randomly generated bias term.</li>
-  <li><strong>X</strong>: Randomly generated input data with <code class="language-plaintext highlighter-rouge">num_samples</code> rows and <code class="language-plaintext highlighter-rouge">num_inputs</code> columns.</li>
-  <li><strong>y</strong>: The target values calculated by multiplying <code class="language-plaintext highlighter-rouge">X</code> with <code class="language-plaintext highlighter-rouge">true_w</code>, adding <code class="language-plaintext highlighter-rouge">true_b</code>, and adding a small amount of random noise to simulate real-world data.</li>
-</ul>
+#### Define hyperparameters:
+- **num_samples**: The number of data samples to generate.
+- **num_inputs**: The number of input features for each sample.
+- **learning_rate**: The rate at which the model learns during training.
+- **epochs**: The number of times the entire dataset is passed through the model during training.
+- **batch_size**: The number of samples processed before the model's internal parameters are updated.
 
-<p>Now we can look at the complete class with all the methods :</p>
+#### Generate synthetic data:
+- **true_w**: Randomly generated weights for the input features.
+- **true_b**: Randomly generated bias term.
+- **X**: Randomly generated input data with `num_samples` rows and `num_inputs` columns.
+- **y**: The target values calculated by multiplying `X` with `true_w`, adding `true_b`, and adding a small amount of random noise to simulate real-world data.
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">LinearRegressionModel</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">num_inputs</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
-        <span class="sh">"""</span><span class="s">
+Now we can look at the complete class with all the methods : 
+
+
+```python
+class LinearRegressionModel:
+    def __init__(self, num_inputs, learning_rate, sigma=0.01):
+        """
         Initialize the model parameters.
 
         Args:
         - num_inputs (int): Number of input features.
         - learning_rate (float): Learning rate for gradient descent.
         - sigma (float): Standard deviation for initializing weights.
-        </span><span class="sh">"""</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">num_inputs</span> <span class="o">=</span> <span class="n">num_inputs</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">learning_rate</span> <span class="o">=</span> <span class="n">learning_rate</span>
+        """
+        self.num_inputs = num_inputs
+        self.learning_rate = learning_rate
         
-        <span class="c1"># Initialize weights and bias
-</span>        <span class="n">self</span><span class="p">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">num_inputs</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">losses</span> <span class="o">=</span> <span class="p">[]</span>
+        # Initialize weights and bias
+        self.w = torch.normal(mean=0.0, std=sigma, size=(num_inputs, 1), requires_grad=True)
+        self.b = torch.zeros(1, requires_grad=True)
+        self.losses = []
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-        <span class="sh">"""</span><span class="s">
+    def forward(self, X):
+        """
         Compute the forward pass: y = Xw + b.
 
         Args:
@@ -299,11 +314,11 @@ We can also adjust hyperparameters as needed.</p>
         
         Returns:
         - torch.Tensor: Predicted values of shape (batch_size, 1).
-        </span><span class="sh">"""</span>
-        <span class="k">return</span> <span class="n">torch</span><span class="p">.</span><span class="nf">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">w</span><span class="p">)</span> <span class="o">+</span> <span class="n">self</span><span class="p">.</span><span class="n">b</span>
+        """
+        return torch.matmul(X, self.w) + self.b
 
-    <span class="k">def</span> <span class="nf">compute_loss</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">):</span>
-        <span class="sh">"""</span><span class="s">
+    def compute_loss(self, y_pred, y_true):
+        """
         Compute Mean Squared Error loss.
 
         Args:
@@ -312,23 +327,23 @@ We can also adjust hyperparameters as needed.</p>
         
         Returns:
         - torch.Tensor: Scalar loss value.
-        </span><span class="sh">"""</span>
-        <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">((</span><span class="n">y_pred</span> <span class="o">-</span> <span class="n">y_true</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">).</span><span class="nf">mean</span><span class="p">()</span>
+        """
+        return 0.5 * ((y_pred - y_true) ** 2).mean()
 
-    <span class="k">def</span> <span class="nf">update_parameters</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
-        <span class="sh">"""</span><span class="s">
+    def update_parameters(self):
+        """
         Update the model parameters using gradient descent.
-        </span><span class="sh">"""</span>
-        <span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="nf">no_grad</span><span class="p">():</span>
-            <span class="n">self</span><span class="p">.</span><span class="n">w</span> <span class="o">-=</span> <span class="n">self</span><span class="p">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">w</span><span class="p">.</span><span class="n">grad</span>
-            <span class="n">self</span><span class="p">.</span><span class="n">b</span> <span class="o">-=</span> <span class="n">self</span><span class="p">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">b</span><span class="p">.</span><span class="n">grad</span>
+        """
+        with torch.no_grad():
+            self.w -= self.learning_rate * self.w.grad
+            self.b -= self.learning_rate * self.b.grad
 
-            <span class="c1"># Manually zero the gradients
-</span>            <span class="n">self</span><span class="p">.</span><span class="n">w</span><span class="p">.</span><span class="n">grad</span><span class="p">.</span><span class="nf">zero_</span><span class="p">()</span>
-            <span class="n">self</span><span class="p">.</span><span class="n">b</span><span class="p">.</span><span class="n">grad</span><span class="p">.</span><span class="nf">zero_</span><span class="p">()</span>
+            # Manually zero the gradients
+            self.w.grad.zero_()
+            self.b.grad.zero_()
 
-    <span class="k">def</span> <span class="nf">train_step</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
-        <span class="sh">"""</span><span class="s">
+    def train_step(self, X, y, batch_size):
+        """
         Perform a single training step.
 
         Args:
@@ -338,30 +353,30 @@ We can also adjust hyperparameters as needed.</p>
         
         Returns:
         - float: Loss value for the batch.
-        </span><span class="sh">"""</span>
-        <span class="c1"># Sample a random batch
-</span>        <span class="n">num_samples</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,))</span>
-        <span class="n">X_batch</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
-        <span class="n">y_batch</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+        """
+        # Sample a random batch
+        num_samples = X.shape[0]
+        indices = torch.randint(0, num_samples, (batch_size,))
+        X_batch = X[indices]
+        y_batch = y[indices]
 
-        <span class="c1"># Forward pass
-</span>        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">forward</span><span class="p">(</span><span class="n">X_batch</span><span class="p">)</span>
+        # Forward pass
+        y_pred = self.forward(X_batch)
 
-        <span class="c1"># Compute loss
-</span>        <span class="n">loss</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">compute_loss</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_batch</span><span class="p">)</span>
+        # Compute loss
+        loss = self.compute_loss(y_pred, y_batch)
 
-        <span class="c1"># Backward pass
-</span>        <span class="n">loss</span><span class="p">.</span><span class="nf">backward</span><span class="p">()</span>
+        # Backward pass
+        loss.backward()
 
-        <span class="c1"># Update parameters
-</span>        <span class="n">self</span><span class="p">.</span><span class="nf">update_parameters</span><span class="p">()</span>
+        # Update parameters
+        self.update_parameters()
 
-        <span class="c1"># Return the loss value as a scalar
-</span>        <span class="k">return</span> <span class="n">loss</span><span class="p">.</span><span class="nf">item</span><span class="p">()</span>
+        # Return the loss value as a scalar
+        return loss.item()
 
-    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
-        <span class="sh">"""</span><span class="s">
+    def train(self, X, y, epochs, batch_size):
+        """
         Train the model over multiple epochs.
 
         Args:
@@ -372,86 +387,92 @@ We can also adjust hyperparameters as needed.</p>
         
         Returns:
         - list: List of loss values for each epoch.
-        </span><span class="sh">"""</span>
+        """
         
 
-        <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-            <span class="c1"># Perform a training step and compute the average loss for the epoch
-</span>            <span class="n">loss</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">train_step</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
-            <span class="n">self</span><span class="p">.</span><span class="n">losses</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+        for epoch in range(epochs):
+            # Perform a training step and compute the average loss for the epoch
+            loss = self.train_step(X, y, batch_size)
+            self.losses.append(loss)
 
-            <span class="c1">#print(loss)
-</span>        
-        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Final Loss : </span><span class="sh">"</span><span class="p">,</span><span class="n">loss</span><span class="p">)</span>
-        <span class="n">self</span><span class="p">.</span><span class="nf">plot_training_results</span><span class="p">()</span>
+            #print(loss)
+        
+        print("Final Loss : ",loss)
+        self.plot_training_results()
 
-        <span class="c1">#return losses
-</span>
+        #return losses
 
-    <span class="k">def</span> <span class="nf">plot_training_results</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+    def plot_training_results(self):
+        plt.figure(figsize=(25, 8))
         
-        <span class="c1"># First subplot: Training loss 
-</span>        <span class="n">plt</span><span class="p">.</span><span class="nf">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">losses</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">Log Loss</span><span class="sh">"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">"</span><span class="s">blue</span><span class="sh">"</span><span class="p">)</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">axhline</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">losses</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">linestyle</span><span class="o">=</span><span class="sh">"</span><span class="s">--</span><span class="sh">"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">"</span><span class="s">red</span><span class="sh">"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">Final Loss</span><span class="sh">"</span><span class="p">)</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">'</span><span class="s">Epoch</span><span class="sh">'</span><span class="p">)</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">'</span><span class="s">Log Loss</span><span class="sh">'</span><span class="p">)</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">'</span><span class="s">Training Loss Over Time</span><span class="sh">'</span><span class="p">)</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+        # First subplot: Training loss 
+        plt.subplot(1, 3, 1)
+        plt.plot(np.log(self.losses), label="Log Loss", color="blue")
+        plt.axhline(np.log(self.losses[-1]), linestyle="--", color="red", label="Final Loss")
+        plt.xlabel('Epoch')
+        plt.ylabel('Log Loss')
+        plt.title('Training Loss Over Time')
+        plt.legend()
+        plt.grid(True)
         
-        <span class="c1"># Second subplot: weight comparison
-</span>        <span class="n">plt</span><span class="p">.</span><span class="nf">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">learned_weights</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">w</span><span class="p">.</span><span class="nf">detach</span><span class="p">().</span><span class="nf">numpy</span><span class="p">().</span><span class="nf">flatten</span><span class="p">()</span>
-        <span class="n">true_weights</span> <span class="o">=</span> <span class="n">true_w</span><span class="p">.</span><span class="nf">numpy</span><span class="p">().</span><span class="nf">flatten</span><span class="p">()</span>
+        # Second subplot: weight comparison
+        plt.subplot(1, 3, 2)
+        learned_weights = self.w.detach().numpy().flatten()
+        true_weights = true_w.numpy().flatten()
         
-        <span class="c1"># Create a scatter plot comparing true vs learned weights
-</span>        <span class="n">plt</span><span class="p">.</span><span class="nf">scatter</span><span class="p">(</span><span class="n">true_weights</span><span class="p">,</span> <span class="n">learned_weights</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">blue</span><span class="sh">'</span><span class="p">)</span>
+        # Create a scatter plot comparing true vs learned weights
+        plt.scatter(true_weights, learned_weights, alpha=0.5, color='blue')
         
-        <span class="c1"># Add a diagonal line representing perfect prediction
-</span>        <span class="n">max_val</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="n">true_weights</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="n">learned_weights</span><span class="p">))</span>
-        <span class="n">min_val</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">min</span><span class="p">(</span><span class="n">true_weights</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="nf">min</span><span class="p">(</span><span class="n">learned_weights</span><span class="p">))</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">([</span><span class="n">min_val</span><span class="p">,</span> <span class="n">max_val</span><span class="p">],</span> <span class="p">[</span><span class="n">min_val</span><span class="p">,</span> <span class="n">max_val</span><span class="p">],</span> <span class="sh">'</span><span class="s">r--</span><span class="sh">'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">'</span><span class="s">Perfect Match</span><span class="sh">'</span><span class="p">)</span>
+        # Add a diagonal line representing perfect prediction
+        max_val = max(np.max(true_weights), np.max(learned_weights))
+        min_val = min(np.min(true_weights), np.min(learned_weights))
+        plt.plot([min_val, max_val], [min_val, max_val], 'r--', label='Perfect Match')
         
         
-        <span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">'</span><span class="s">True Weights</span><span class="sh">'</span><span class="p">)</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">'</span><span class="s">Learned Weights</span><span class="sh">'</span><span class="p">)</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">'</span><span class="s">True vs Learned Weights</span><span class="sh">'</span><span class="p">)</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+        plt.xlabel('True Weights')
+        plt.ylabel('Learned Weights')
+        plt.title('True vs Learned Weights')
+        plt.legend()
+        plt.grid(True)
         
-        <span class="c1"># Third subplot: Bias comparison 
-</span>        <span class="n">plt</span><span class="p">.</span><span class="nf">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-        <span class="n">true_bias</span> <span class="o">=</span> <span class="nf">float</span><span class="p">(</span><span class="n">true_b</span><span class="p">.</span><span class="nf">numpy</span><span class="p">().</span><span class="nf">flatten</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">learned_bias</span> <span class="o">=</span> <span class="nf">float</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">b</span><span class="p">.</span><span class="nf">detach</span><span class="p">().</span><span class="nf">numpy</span><span class="p">().</span><span class="nf">flatten</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+        # Third subplot: Bias comparison 
+        plt.subplot(1, 3, 3)
+        true_bias = float(true_b.numpy().flatten()[0])
+        learned_bias = float(self.b.detach().numpy().flatten()[0])
         
-        <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">True Bias</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Learned Bias</span><span class="sh">'</span><span class="p">]</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">true_bias</span><span class="p">,</span> <span class="n">learned_bias</span><span class="p">]</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">blue</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">orange</span><span class="sh">'</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+        x = ['True Bias', 'Learned Bias']
+        y = [true_bias, learned_bias]
+        plt.bar(x, y, color=['blue', 'orange'], alpha=0.7)
         
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
-            <span class="n">plt</span><span class="p">.</span><span class="nf">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="o">+</span> <span class="mf">0.02</span><span class="p">,</span> <span class="sa">f</span><span class="sh">'</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="sh">'</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="sh">'</span><span class="s">center</span><span class="sh">'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        for i, val in enumerate(y):
+            plt.text(i, val + 0.02, f'{val:.2f}', ha='center', fontsize=10)
             
-        <span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">'</span><span class="s">Bias Value</span><span class="sh">'</span><span class="p">)</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">'</span><span class="s">True vs Learned Bias</span><span class="sh">'</span><span class="p">)</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="sh">'</span><span class="s">y</span><span class="sh">'</span><span class="p">)</span>
+        plt.ylabel('Bias Value')
+        plt.title('True vs Learned Bias')
+        plt.grid(axis='y')
         
-        <span class="n">plt</span><span class="p">.</span><span class="nf">tight_layout</span><span class="p">()</span>
-        <span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
-</code></pre></div></div>
+        plt.tight_layout()
+        plt.show()
+```
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Model</span> <span class="o">=</span> <span class="nc">LinearRegressionModel</span><span class="p">(</span><span class="n">num_inputs</span><span class="p">,</span><span class="n">learning_rate</span><span class="p">)</span>
-<span class="n">Model</span><span class="p">.</span><span class="nf">train</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">epochs</span><span class="p">,</span><span class="n">batch_size</span><span class="p">)</span>
-</code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Final Loss :  0.07868940383195877
-</code></pre></div></div>
+```python
+Model = LinearRegressionModel(num_inputs,learning_rate)
+Model.train(X,y,epochs,batch_size)
+```
 
-<p><img src="/assets/images/output_21_1.png" alt="png" /></p>
+    Final Loss :  0.07868940383195877
 
-<h2 id="conclusion">Conclusion</h2>
-<p>This example, while simple, highlights some key concepts: we can view a linear regression model as a neural network, and we built this model from scratch without relying on the high-level APIs provided by PyTorch. In this second part of our machine learning series, we’ve taken a step toward higher-level abstraction. In the first post, we explored how each component of a neural network is built under the hood. Here, we leveraged PyTorch’s tensor implementation but still created the model from scratch with everything we needed to train it on our data.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[Introduction In this second post, we will take another step forward. We’ll dive into the concept of linear regression, explore its connection to neural networks, and demonstrate how to build a model from scratch. This approach will help us gain a deeper understanding of the core concepts behind both linear regression and neural networks.]]></summary></entry><entry><title type="html">Building a Simple Web App with Firebase Authentication and Firestore: A Step-by-Step Guide</title><link href="http://localhost:4001/blog/post/2024/08/28/Eisenhower_Matrix.html" rel="alternate" type="text/html" title="Building a Simple Web App with Firebase Authentication and Firestore: A Step-by-Step Guide" /><published>2024-08-28T00:00:00+02:00</published><updated>2024-08-28T00:00:00+02:00</updated><id>http://localhost:4001/blog/post/2024/08/28/Eisenhower_Matrix</id><content type="html" xml:base="http://localhost:4001/blog/post/2024/08/28/Eisenhower_Matrix.html"><![CDATA[In today’s post, I’ll walk you through the development of a simple web application, showcasing how to leverage Firebase Authentication and Firestore Database. This guide will help you understand how to:
+
+
+    
+![png](/assets/images/output_21_1.png)
+    
+
+
+## Conclusion
+This example, while simple, highlights some key concepts: we can view a linear regression model as a neural network, and we built this model from scratch without relying on the high-level APIs provided by PyTorch. In this second part of our machine learning series, we’ve taken a step toward higher-level abstraction. In the first post, we explored how each component of a neural network is built under the hood. Here, we leveraged PyTorch’s tensor implementation but still created the model from scratch with everything we needed to train it on our data.]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[Introduction In this second post, we will take another step forward. We’ll dive into the concept of linear regression, explore its connection to neural networks, and demonstrate how to build a model from scratch. This approach will help us gain a deeper understanding of the core concepts behind both linear regression and neural networks.]]></summary></entry><entry><title type="html">Building a Simple Web App with Firebase Authentication and Firestore: A Step-by-Step Guide</title><link href="http://localhost:4001/blog/post/2024/08/28/Eisenhower_Matrix.html" rel="alternate" type="text/html" title="Building a Simple Web App with Firebase Authentication and Firestore: A Step-by-Step Guide" /><published>2024-08-28T00:00:00+02:00</published><updated>2024-08-28T00:00:00+02:00</updated><id>http://localhost:4001/blog/post/2024/08/28/Eisenhower_Matrix</id><content type="html" xml:base="http://localhost:4001/blog/post/2024/08/28/Eisenhower_Matrix.html"><![CDATA[In today’s post, I’ll walk you through the development of a simple web application, showcasing how to leverage Firebase Authentication and Firestore Database. This guide will help you understand how to:
 
 1. Authenticate users with Firebase Authentication.
 2. Store and retrieve data in real time using Firestore.
