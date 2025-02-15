@@ -1,24 +1,40 @@
 /* =========================================
+   Variables
+   ========================================= */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #2980b9;
+    --light-color: #ecf0f1;
+    --background-color: #e0e0e0;
+    --white-color: #fff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --transition-duration: 0.3s;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+/* =========================================
    Base Styles
    ========================================= */
-   body {
+body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #e0e0e0;
-    color: #2c3e50;
+    background-color: var(--background-color);
+    color: var(--primary-color);
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 header, footer {
-    background-color: #2c3e50;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--white-color);
     text-align: center;
 }
 
 header {
     padding: 40px 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px var(--shadow-color);
 }
 
 footer {
@@ -28,31 +44,31 @@ footer {
 nav {
     display: flex;
     justify-content: space-around;
-    background-color: #34495e;
+    background-color: var(--secondary-color);
     padding: 15px 0;
     box-sizing: border-box; /* Include padding in width calculations */
 }
 
 nav a {
-    color: #ecf0f1;
+    color: var(--light-color);
     padding: 12px 20px;
     text-decoration: none;
     text-transform: uppercase;
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transition-duration) ease;
+    border-radius: var(--border-radius);
 }
 
 nav a:hover {
-    background-color: #2c3e50;
-    border-radius: 5px;
+    background-color: var(--primary-color);
 }
 
 section {
     padding: 30px;
     margin: 50px auto;
     max-width: 1200px;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    background-color: var(--white-color);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
 }
 
 /* =========================================
@@ -66,19 +82,19 @@ section {
 }
 
 .project {
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    background-color: var(--white-color);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
     padding: 20px;
-    flex: 1 1 calc(33.333% - 20px); /* 3 colonne */
+    flex: 1 1 calc(33.333% - 20px); /* 3 columns */
     box-sizing: border-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
     text-align: center;
 }
 
 .project:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px var(--shadow-color);
     background-color: #f8f8f8;
 }
 
@@ -92,34 +108,33 @@ section {
 .project h2 {
     font-size: 1.5em;
     margin-bottom: 10px;
-    color: #2c3e50;
+    color: var(--primary-color);
     text-transform: uppercase;
 }
 
 .project a {
     text-decoration: none;
-    color: #2980b9;
+    color: var(--accent-color);
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: color var(--transition-duration) ease;
 }
 
 .project a:hover {
     color: #3498db;
 }
 
-
 /* =========================================
    Responsive Design
    ========================================= */
 @media (max-width: 1024px) {
     .project {
-        flex: 1 1 calc(50% - 20px); /* 2 colonne per schermi medi */
+        flex: 1 1 calc(50% - 20px); /* 2 columns for medium screens */
     }
 }
 
 @media (max-width: 768px) {
     .project {
-        flex: 1 1 100%; /* 1 colonna per schermi piccoli */
+        flex: 1 1 100%; /* 1 column for small screens */
     }
 
     .project h2 {
@@ -137,10 +152,12 @@ section {
         display: block;
         text-align: center;
     }
+
     .highlight pre {
-        white-space: pre; /* Mantiene il codice intero senza wrapping */
-        word-break: normal; /* Disabilita il word-break per il codice */
+        white-space: pre; /* Maintain code on a single line if necessary */
+        word-break: normal; /* Disable word-break for code */
     }
+
     .mathjax-latex {
         overflow-x: auto; /* Allow horizontal scrolling for LaTeX formulas */
         white-space: nowrap; /* Prevent wrapping of LaTeX formulas */
@@ -151,15 +168,15 @@ section {
    Typography
    ========================================= */
 h2 {
-    color: #2c3e50;
-    border-bottom: 2px solid #34495e;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
     padding-bottom: 15px;
     margin-bottom: 25px;
 }
 
 .post-title {
     font-size: 2em;
-    color: #2c3e50;
+    color: var(--primary-color);
     margin-bottom: 20px;
 }
 
@@ -169,11 +186,10 @@ h2 {
     max-width: 150px;
     height: 150px; /* Ensure height matches width */
     border-radius: 50%;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: var(--box-shadow);
     object-fit: cover; /* Ensures the image fills the circle */
     object-position: center center; /* Adjust these values as needed */
 }
-
 
 /* =========================================
    Skills List
@@ -188,7 +204,7 @@ h2 {
     margin: 15px 0;
     padding: 15px;
     border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px var(--shadow-color);
 }
 
 /* =========================================
@@ -197,13 +213,13 @@ h2 {
 .footer-content {
     background-color: #333;
     padding: 25px;
-    color: #ecf0f1;
+    color: var(--light-color);
 }
 
 .footer-content p, .footer-content a {
     margin: 10px 0;
     color: inherit;
-    transition: color 0.3s ease;
+    transition: color var(--transition-duration) ease;
 }
 
 .footer-content a:hover {
@@ -225,26 +241,26 @@ h2 {
     text-align: center;
     margin-bottom: 30px;
     padding: 20px 25px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
+    background-color: var(--white-color);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
 }
 
 .post-listing:hover {
     transform: translateY(-15px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px var(--shadow-color);
     background-color: #f8f8f8;
 }
 
 .post-listing h2 {
     font-size: 1.75em;
     margin-bottom: 10px;
-    transition: color 0.3s ease;
+    transition: color var(--transition-duration) ease;
 }
 
 .post-listing h2 a {
-    color: #2c3e50;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: bold;
 }
@@ -267,18 +283,18 @@ h2 {
 /* =========================================
    Code Block Styles
    ========================================= */
-   .highlight pre {
+.highlight pre {
     background-color: #282c34;
     border: 1px solid #333;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     padding: 1.5rem;
-    overflow-x: auto; /* Permette lo scorrimento orizzontale */
+    overflow-x: auto; /* Allow horizontal scrolling */
     color: #f8f8f2;
     font-size: 15px;
     line-height: 1.6;
     font-family: 'Source Code Pro', monospace;
-    white-space: pre; /* Mantiene il codice su una singola riga se necessario */
-    word-break: normal; /* Evita di spezzare parole lunghe */
+    white-space: pre; /* Maintain code on a single line if necessary */
+    word-break: normal; /* Avoid breaking long words */
 }
 
 /* Syntax Highlighting */
