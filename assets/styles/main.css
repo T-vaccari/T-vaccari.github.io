@@ -141,6 +141,10 @@ section {
         white-space: pre; /* Mantiene il codice intero senza wrapping */
         word-break: normal; /* Disabilita il word-break per il codice */
     }
+    .mathjax-latex {
+        overflow-x: auto; /* Allow horizontal scrolling for LaTeX formulas */
+        white-space: nowrap; /* Prevent wrapping of LaTeX formulas */
+    }
 }
 
 /* =========================================
@@ -294,4 +298,3 @@ h2 {
 
 
 
-  

@@ -11,14 +11,7 @@ layout: default
     <!-- Inserisci qui la tua foto -->
     <!--<img src="img.jpeg" alt="Foto di Tommaso" class="profile-pic"> -->
     <p>
-        I am a Software Engineering student at the Politecnico di Milano, currently about to start my second year. 
-        I am characterized by a strong curiosity, especially in the tech field, and I enjoy expanding my knowledge,
-         particularly through reading books.
-
-        Since the beginning of my academic journey, I have developed a passion for programming. 
-        I have experience with various programming languages, including Python, Java, and C++,
-        and I am constantly exploring new tools and methodologies to improve my skills.
-
+      I am a Software Engineering student at Politecnico di Milano, deeply fascinated by machine learning and software development. I enjoy exploring new technologies and finding creative solutions to complex problems. My goal is to continually learn and grow in this ever-evolving field.
     </p>
 </section>
 
