@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-02-15T10:17:39+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My portfolio</title><subtitle>Tommaso Vaccari&apos;s Portfolio</subtitle><entry><title type="html">Neural Network : Part Two</title><link href="http://localhost:4000/blog/post/2025/01/25/NeuralNetworkP2.html" rel="alternate" type="text/html" title="Neural Network : Part Two" /><published>2025-01-25T00:00:00+01:00</published><updated>2025-01-25T00:00:00+01:00</updated><id>http://localhost:4000/blog/post/2025/01/25/NeuralNetworkP2</id><content type="html" xml:base="http://localhost:4000/blog/post/2025/01/25/NeuralNetworkP2.html"><![CDATA[<h1 id="introduction">Introduction</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-02-15T11:07:01+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My portfolio</title><subtitle>Tommaso Vaccari&apos;s Portfolio</subtitle><entry><title type="html">Neural Network : Part Two</title><link href="http://localhost:4000/blog/post/2025/01/25/NeuralNetworkP2.html" rel="alternate" type="text/html" title="Neural Network : Part Two" /><published>2025-01-25T00:00:00+01:00</published><updated>2025-01-25T00:00:00+01:00</updated><id>http://localhost:4000/blog/post/2025/01/25/NeuralNetworkP2</id><content type="html" xml:base="http://localhost:4000/blog/post/2025/01/25/NeuralNetworkP2.html"><![CDATA[<h1 id="introduction">Introduction</h1>
 <p>In this second post, we will take another step forward. We’ll dive into the concept of linear regression, explore its connection to neural networks, and demonstrate how to build a model from scratch. This approach will help us gain a deeper understanding of the core concepts behind both linear regression and neural networks.</p>
 
 <h2 id="linear-regression">Linear Regression</h2>
@@ -8,21 +8,29 @@
 
 <p>We want to predict a  target, $ \hat{y}$, based on a set of features grouped in a vector called ${X}$. To make the prediction, we need to find the weight vector ${W}$ and the bias $ B $ that give us the most accurate predictions. This relationship can be expressed using the dot product:</p>
 
-\[\hat{y} = W \cdot X + b\]
+<div class="mathjax-latex">
+$$\hat{y} = W \cdot X + b $$
+</div>
 
 <p>If we want to group everything together, we can define the X matrix, having along the lines the features of a single label, so we have the $\hat{y}$ vector that represents the vector of the prediction given the matrix features and the bias vector:</p>
 
-\[\hat{y} = X \cdot W + b\]
+<div class="mathjax-latex">
+$$\hat{y} = X \cdot W + b$$
+</div>
 
 <p>Now we need to define a loss function to evaluate the model. The most common is the squared error, where $\hat{y}_i$ is the prediction and $y_i$ is the corresponding true label.</p>
 
-\[L_i(W, b)= \frac{1}{2} (\hat{y}_i-y_i)^2\]
+<div class="mathjax-latex">
+$$L_i(W, b)= \frac{1}{2} (\hat{y}_i-y_i)^2$$
+</div>
 
 <p>We can observe that the loss is a function of weight and bias.</p>
 
 <p>Now we can extend the evaluation of the loss along all the predictions, averaging it to obtain an intuitive idea of how our model is performing.</p>
 
-\[L_i (W,B) =\frac{1}{n} \sum_{i=1}^{n} L_i(W,B) = \frac{1}{n} \sum_{i=1}^{n} \frac{1}{2} (X^{(i)} \cdot W + b - y^{(i)})^2\]
+<div class="mathjax-latex">
+$$L_i (W,B) =\frac{1}{n} \sum_{i=1}^{n} L_i(W,B) = \frac{1}{n} \sum_{i=1}^{n} \frac{1}{2} (X^{(i)} \cdot W + b - y^{(i)})^2$$
+</div>
 
 <p>We have to keep in mind our goal: we want to find W and B that give us the minimum value of loss along all the predictions.</p>
 
@@ -47,12 +55,20 @@ Measure how far the model’s predictions are from the true values for each exam
 
 <p>1) The weights update:</p>
 
-\[\mathbf{w} \gets \mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \frac{\partial L^{(i)} (\mathbf{w}, b)}{\partial \mathbf{w}} = \mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \left( \mathbf{x}^{(i)} \cdot \mathbf{w} + b - y^{(i)} \right) \mathbf{x}^{(i)}.\]
+<div class="mathjax-latex">
+$$
+\mathbf{w} \gets \mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \frac{\partial L^{(i)} (\mathbf{w}, b)}{\partial \mathbf{w}} = \mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \left( \mathbf{x}^{(i)} \cdot \mathbf{w} + b - y^{(i)} \right) \mathbf{x^{(i)}}.
+$$
+</div>
 
 <p>2) The Bias Update:</p>
 
-\[b \gets b - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \frac{\partial L^{(i)} (\mathbf{w}, b)}{\partial b} 
-= b - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \left( \mathbf{x}^{(i)} \cdot \mathbf{w} + b - y^{(i)} \right).\]
+<div class="mathjax-latex">
+$$
+b \gets b - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \frac{\partial L^{(i)} (\mathbf{w}, b)}{\partial b} 
+= b - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \left( \mathbf{x}^{(i)} \cdot \mathbf{w} + b - y^{(i)} \right).
+$$
+</div>
 
 <h3 id="linear-regression-as-a-neural-network">Linear Regression as a Neural Network</h3>
 

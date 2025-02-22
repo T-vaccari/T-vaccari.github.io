@@ -15,22 +15,29 @@ Before starting, we need to define some terminology. When we want to predict a v
 
 We want to predict a  target, $ \hat{y}$, based on a set of features grouped in a vector called ${X}$. To make the prediction, we need to find the weight vector ${W}$ and the bias $ B $ that give us the most accurate predictions. This relationship can be expressed using the dot product:
 
+<div class="mathjax-latex">
 $$\hat{y} = W \cdot X + b $$
+</div>
 
 If we want to group everything together, we can define the X matrix, having along the lines the features of a single label, so we have the $\hat{y}$ vector that represents the vector of the prediction given the matrix features and the bias vector:
 
+<div class="mathjax-latex">
 $$\hat{y} = X \cdot W + b$$
+</div>
 
 Now we need to define a loss function to evaluate the model. The most common is the squared error, where $\hat{y}_i$ is the prediction and $y_i$ is the corresponding true label. 
 
+<div class="mathjax-latex">
 $$L_i(W, b)= \frac{1}{2} (\hat{y}_i-y_i)^2$$
+</div>
 
 We can observe that the loss is a function of weight and bias.
 
 Now we can extend the evaluation of the loss along all the predictions, averaging it to obtain an intuitive idea of how our model is performing.
 
-
+<div class="mathjax-latex">
 $$L_i (W,B) =\frac{1}{n} \sum_{i=1}^{n} L_i(W,B) = \frac{1}{n} \sum_{i=1}^{n} \frac{1}{2} (X^{(i)} \cdot W + b - y^{(i)})^2$$
+</div>
 
 We have to keep in mind our goal: we want to find W and B that give us the minimum value of loss along all the predictions.
 
@@ -53,16 +60,20 @@ If we want to express this in formulas we have:
 
 1) The weights update:
 
+<div class="mathjax-latex">
 $$
-\mathbf{w} \gets \mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \frac{\partial L^{(i)} (\mathbf{w}, b)}{\partial \mathbf{w}} = \mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \left( \mathbf{x}^{(i)} \cdot \mathbf{w} + b - y^{(i)} \right) \mathbf{x}^{(i)}.
+\mathbf{w} \gets \mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \frac{\partial L^{(i)} (\mathbf{w}, b)}{\partial \mathbf{w}} = \mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \left( \mathbf{x}^{(i)} \cdot \mathbf{w} + b - y^{(i)} \right) \mathbf{x^{(i)}}.
 $$
+</div>
 
 2) The Bias Update:
 
+<div class="mathjax-latex">
 $$
 b \gets b - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \frac{\partial L^{(i)} (\mathbf{w}, b)}{\partial b} 
 = b - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \left( \mathbf{x}^{(i)} \cdot \mathbf{w} + b - y^{(i)} \right).
 $$
+</div>
 
 
 
