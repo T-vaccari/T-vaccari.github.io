@@ -11,7 +11,7 @@ layout: default
     <!-- Inserisci qui la tua foto -->
     <!--<img src="img.jpeg" alt="Foto di Tommaso" class="profile-pic"> -->
     <p>
-      I am a Software Engineering student at Politecnico di Milano, deeply fascinated by machine learning and software development. I enjoy exploring new technologies and finding creative solutions to complex problems. My goal is to continually learn and grow in this ever-evolving field.
+      Hey, I'm Tommaso 👋! I’m a Software Engineering student at Politecnico di Milano, with a strong interest in machine learning and software development. I enjoy working with new technologies and solving practical problems, combining my lifelong passion for programming and mathematics to build solutions.
     </p>
 </section>
 
