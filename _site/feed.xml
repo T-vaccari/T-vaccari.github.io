@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-02-24T14:01:29+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My portfolio</title><subtitle>Tommaso Vaccari&apos;s Portfolio</subtitle><entry><title type="html">Neural Network : Part Two</title><link href="http://localhost:4000/blog/post/2025/01/25/NeuralNetworkP2.html" rel="alternate" type="text/html" title="Neural Network : Part Two" /><published>2025-01-25T00:00:00+01:00</published><updated>2025-01-25T00:00:00+01:00</updated><id>http://localhost:4000/blog/post/2025/01/25/NeuralNetworkP2</id><content type="html" xml:base="http://localhost:4000/blog/post/2025/01/25/NeuralNetworkP2.html"><![CDATA[# Introduction
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4001/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4001/" rel="alternate" type="text/html" /><updated>2025-03-14T20:13:55+01:00</updated><id>http://localhost:4001/feed.xml</id><title type="html">My portfolio</title><subtitle>Tommaso Vaccari&apos;s Portfolio</subtitle><entry><title type="html">Neural Networks : Linear Regression</title><link href="http://localhost:4001/blog/post/2025/01/25/NeuralNetworkP2.html" rel="alternate" type="text/html" title="Neural Networks : Linear Regression" /><published>2025-01-25T00:00:00+01:00</published><updated>2025-01-25T00:00:00+01:00</updated><id>http://localhost:4001/blog/post/2025/01/25/NeuralNetworkP2</id><content type="html" xml:base="http://localhost:4001/blog/post/2025/01/25/NeuralNetworkP2.html"><![CDATA[# Introduction
+
 In this second post, we will take another step forward. We’ll dive into the concept of linear regression, explore its connection to neural networks, and demonstrate how to build a model from scratch. This approach will help us gain a deeper understanding of the core concepts behind both linear regression and neural networks.
 
 ## Linear Regression
 
-
 ### Model and Loss function
+
 Before starting, we need to define some terminology. When we want to predict a value, we call it a label or target. Each label is associated with its own features. The model makes predictions based solely on these features. Therefore, we need to refine the model to accurately predict the correct label based on the provided input features.
 
 We want to predict a  target, $ \hat{y}$, based on a set of features grouped in a vector called ${X}$. To make the prediction, we need to find the weight vector ${W}$ and the bias $ B $ that give us the most accurate predictions. This relationship can be expressed using the dot product:
@@ -19,7 +20,7 @@ If we want to group everything together, we can define the X matrix, having alon
 $$\hat{y} = X \cdot W + b$$
 </div>
 
-Now we need to define a loss function to evaluate the model. The most common is the squared error, where $\hat{y}_i$ is the prediction and $y_i$ is the corresponding true label. 
+Now we need to define a loss function to evaluate the model. The most common is the squared error, where $\hat{y}_i$ is the prediction and $y_i$ is the corresponding true label.
 
 <div class="mathjax-latex">
 $$L_i(W, b)= \frac{1}{2} (\hat{y}_i-y_i)^2$$
@@ -43,10 +44,10 @@ To optimize the process, we do not update the model using the entire dataset at 
 
 To keep it simple we can break down this process into four steps:
 
-1. Batch Selection: 
-Randomly choose a small subset of training data. This approach balances computational efficiency with learning effectiveness. Instead of processing the entire dataset, which would be slow and memory-intensive, we sample a representative mini-batch that captures the overall data characteristics.
+1. Batch Selection:
+   Randomly choose a small subset of training data. This approach balances computational efficiency with learning effectiveness. Instead of processing the entire dataset, which would be slow and memory-intensive, we sample a representative mini-batch that captures the overall data characteristics.
 2. Loss Calculation:
-Measure how far the model's predictions are from the true values for each example in the batch. Compute the average loss, which serves as a performance metric. This average loss quantifies the model's current error, providing a clear signal about how well (or poorly) the model is performing on this particular set of examples.
+   Measure how far the model's predictions are from the true values for each example in the batch. Compute the average loss, which serves as a performance metric. This average loss quantifies the model's current error, providing a clear signal about how well (or poorly) the model is performing on this particular set of examples.
 3. Gradient Computation: Calculate the derivative of the loss with respect to each model parameter. This gradient acts like a compass, pointing to the direction that would most quickly increase the loss. By understanding how each weight contributes to the model's error, we can intelligently adjust the model's internal representation to improve its predictive capabilities.
 4. Parameter Update: Move the model's parameters in the opposite direction of the gradient, scaled by a small learning rate. This is akin to taking careful steps down a complex landscape, where each step aims to reduce the overall error. The learning rate determines the size of these steps – too large, and you might overshoot the optimal solution; too small, and progress becomes painfully slow.
 
@@ -69,18 +70,13 @@ b \gets b - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}_t} \frac{\partial
 $$
 </div>
 
-
-
 ### Linear Regression as a Neural Network
 
 While linear models are not sufficiently rich to express complex relationships between features, we can introduce neural networks to obtain a more expressive model. Nevertheless, we can also view a linear model as a neural network where every input feature corresponds to a neuron with its own weight and bias.
 
-
-
-
 ## Implementation using object-oriented design
-To gain a deeper understanding of how a model is created and trained, we aim to implement the classes and methods from scratch. We are following this approach because, in my opinion, using machine learning libraries like PyTorch directly does not provide a comprehensive understanding of what happens under the hood.
 
+To gain a deeper understanding of how a model is created and trained, we aim to implement the classes and methods from scratch. We are following this approach because, in my opinion, using machine learning libraries like PyTorch directly does not provide a comprehensive understanding of what happens under the hood.
 
 ```python
 %matplotlib inline
@@ -89,14 +85,14 @@ import numpy as np
 import torch
 ```
 
-Now we are ready to implement from scratch our model for linear regression, we need : 
+Now we are ready to implement from scratch our model for linear regression, we need :
+
 1. The model
 2. The loss function
 3. The optimization algorithm
 4. The training function
 
-### Building the model 
-
+### Building the model
 
 ```python
 class LinearRegressionModel:
@@ -111,17 +107,16 @@ class LinearRegressionModel:
             """
             self.num_inputs = num_inputs
             self.learning_rate = learning_rate
-            
+        
             # Initialize weights and bias
             self.w = torch.normal(mean=0.0, std=sigma, size=(num_inputs, 1), requires_grad=True)
             self.b = torch.zeros(1, requires_grad=True)
-        
+    
 ```
 
 Here we have created a class that contains the weights and bias. Additionally, we have introduced the hyperparameters, which are typically user-defined and used to adjust various aspects during the training phase. The weights are sampled from a [normal distribution with a mean of 0 and a standard deviation of 0.01](https://en.wikipedia.org/wiki/Normal_distribution), while the bias is initialized to zero.
 
 Now we can add the method to obtain the forward pass:
-
 
 ```python
 @add_to_class(LinearRegressionModel) 
@@ -131,7 +126,7 @@ def forward(self, X):
 
         Args:
         - X (torch.Tensor): Input tensor of shape (batch_size, num_inputs).
-        
+    
         Returns:
         - torch.Tensor: Predicted values of shape (batch_size, 1).
         """
@@ -142,7 +137,6 @@ def forward(self, X):
 
 Now we add the method to calculate the loss for a single batch of examples by using the squared loss function and then returning the mean.
 
-
 ```python
 @add_to_class(LinearRegressionModel)
 def compute_loss(self, y_pred, y_true):
@@ -152,7 +146,7 @@ def compute_loss(self, y_pred, y_true):
         Args:
         - y_pred (torch.Tensor): Predicted values.
         - y_true (torch.Tensor): True values.
-        
+    
         Returns:
         - torch.Tensor: Scalar loss value.
         """
@@ -164,12 +158,12 @@ def compute_loss(self, y_pred, y_true):
 This is the fundamental part of our model—the algorithm that allows us to improve its predictions. We are going to implement Stochastic Gradient Descent (SGD), as discussed earlier.
 
 The steps we want to follow are:
-1.	Randomly select a batch from the training set.
-2.	Make predictions using the selected batch.
-3.	Compute the loss of the predictions.
-4.	Calculate the gradient of the loss with respect to the weights and bias.
-5.	Update the parameters (weights and bias) using the learning rate and computed gradients.
 
+1. Randomly select a batch from the training set.
+2. Make predictions using the selected batch.
+3. Compute the loss of the predictions.
+4. Calculate the gradient of the loss with respect to the weights and bias.
+5. Update the parameters (weights and bias) using the learning rate and computed gradients.
 
 ```python
 @add_to_class(LinearRegressionModel) 
@@ -193,7 +187,7 @@ def train_step(self, X, y, batch_size):
     - X (torch.Tensor): Input data of shape (num_samples, num_inputs).
     - y (torch.Tensor): Target data of shape (num_samples, 1).
     - batch_size (int): Number of samples per batch.
-    
+  
     Returns:
     - float: Loss value for the batch.
     """
@@ -221,8 +215,8 @@ def train_step(self, X, y, batch_size):
 ```
 
 ### Building the training method
-The last step to complete our model is to implement a method that allows us to train it. It would be useful to visualize how the weights, bias, and learning rate change throughout the training process, so we can also add a method to plot this information.
 
+The last step to complete our model is to implement a method that allows us to train it. It would be useful to visualize how the weights, bias, and learning rate change throughout the training process, so we can also add a method to plot this information.
 
 ```python
 @add_to_class(LinearRegressionModel)
@@ -235,7 +229,7 @@ def train(self, X, y, epochs, batch_size):
         - y (torch.Tensor): Target data of shape (num_samples, 1).
         - epochs (int): Number of training epochs.
         - batch_size (int): Number of samples per batch.
-        
+    
         Returns:
         - list: List of loss values for each epoch.
         """
@@ -251,20 +245,21 @@ def train(self, X, y, epochs, batch_size):
                 print(f"Epoch {epoch}, Loss: {loss:.6f}")
 
         return losses
-    
+  
 ```
 
 ## Testing The model
+
 Now that the class is built from scratch, we can proceed with testing it to verify if everything works correctly. Testing the model typically involves the following steps:
-1.	Creating synthetic data (or retrieving real data)
-2.	Instantiating the model
-3.	Training the model
-4.	Testing the model on the evaluation set
+
+1. Creating synthetic data (or retrieving real data)
+2. Instantiating the model
+3. Training the model
+4. Testing the model on the evaluation set
 
 Now, we initialize a vector to represent the weights that our model needs to learn from the data during the training process, and we follow the same process for the bias.
 Then we compute the target that we are going to use, with the features to train our model.
 We can also adjust hyperparameters as needed.
-
 
 ```python
 # Define hyperparameters
@@ -282,6 +277,7 @@ y = torch.matmul(X, true_w) + true_b + torch.randn((num_samples, 1)) * 0.01
 ```
 
 #### Define hyperparameters:
+
 - **num_samples**: The number of data samples to generate.
 - **num_inputs**: The number of input features for each sample.
 - **learning_rate**: The rate at which the model learns during training.
@@ -289,13 +285,13 @@ y = torch.matmul(X, true_w) + true_b + torch.randn((num_samples, 1)) * 0.01
 - **batch_size**: The number of samples processed before the model's internal parameters are updated.
 
 #### Generate synthetic data:
+
 - **true_w**: Randomly generated weights for the input features.
 - **true_b**: Randomly generated bias term.
 - **X**: Randomly generated input data with `num_samples` rows and `num_inputs` columns.
 - **y**: The target values calculated by multiplying `X` with `true_w`, adding `true_b`, and adding a small amount of random noise to simulate real-world data.
 
-Now we can look at the complete class with all the methods : 
-
+Now we can look at the complete class with all the methods :
 
 ```python
 class LinearRegressionModel:
@@ -310,7 +306,7 @@ class LinearRegressionModel:
         """
         self.num_inputs = num_inputs
         self.learning_rate = learning_rate
-        
+    
         # Initialize weights and bias
         self.w = torch.normal(mean=0.0, std=sigma, size=(num_inputs, 1), requires_grad=True)
         self.b = torch.zeros(1, requires_grad=True)
@@ -322,7 +318,7 @@ class LinearRegressionModel:
 
         Args:
         - X (torch.Tensor): Input tensor of shape (batch_size, num_inputs).
-        
+    
         Returns:
         - torch.Tensor: Predicted values of shape (batch_size, 1).
         """
@@ -335,7 +331,7 @@ class LinearRegressionModel:
         Args:
         - y_pred (torch.Tensor): Predicted values.
         - y_true (torch.Tensor): True values.
-        
+    
         Returns:
         - torch.Tensor: Scalar loss value.
         """
@@ -361,7 +357,7 @@ class LinearRegressionModel:
         - X (torch.Tensor): Input data of shape (num_samples, num_inputs).
         - y (torch.Tensor): Target data of shape (num_samples, 1).
         - batch_size (int): Number of samples per batch.
-        
+    
         Returns:
         - float: Loss value for the batch.
         """
@@ -395,11 +391,11 @@ class LinearRegressionModel:
         - y (torch.Tensor): Target data of shape (num_samples, 1).
         - epochs (int): Number of training epochs.
         - batch_size (int): Number of samples per batch.
-        
+    
         Returns:
         - list: List of loss values for each epoch.
         """
-        
+    
 
         for epoch in range(epochs):
             # Perform a training step and compute the average loss for the epoch
@@ -407,7 +403,7 @@ class LinearRegressionModel:
             self.losses.append(loss)
 
             #print(loss)
-        
+    
         print("Final Loss : ",loss)
         self.plot_training_results()
 
@@ -416,7 +412,7 @@ class LinearRegressionModel:
 
     def plot_training_results(self):
         plt.figure(figsize=(25, 8))
-        
+    
         # First subplot: Training loss 
         plt.subplot(1, 3, 1)
         plt.plot(np.log(self.losses), label="Log Loss", color="blue")
@@ -426,47 +422,46 @@ class LinearRegressionModel:
         plt.title('Training Loss Over Time')
         plt.legend()
         plt.grid(True)
-        
+    
         # Second subplot: weight comparison
         plt.subplot(1, 3, 2)
         learned_weights = self.w.detach().numpy().flatten()
         true_weights = true_w.numpy().flatten()
-        
+    
         # Create a scatter plot comparing true vs learned weights
         plt.scatter(true_weights, learned_weights, alpha=0.5, color='blue')
-        
+    
         # Add a diagonal line representing perfect prediction
         max_val = max(np.max(true_weights), np.max(learned_weights))
         min_val = min(np.min(true_weights), np.min(learned_weights))
         plt.plot([min_val, max_val], [min_val, max_val], 'r--', label='Perfect Match')
-        
-        
+    
+    
         plt.xlabel('True Weights')
         plt.ylabel('Learned Weights')
         plt.title('True vs Learned Weights')
         plt.legend()
         plt.grid(True)
-        
+    
         # Third subplot: Bias comparison 
         plt.subplot(1, 3, 3)
         true_bias = float(true_b.numpy().flatten()[0])
         learned_bias = float(self.b.detach().numpy().flatten()[0])
-        
+    
         x = ['True Bias', 'Learned Bias']
         y = [true_bias, learned_bias]
         plt.bar(x, y, color=['blue', 'orange'], alpha=0.7)
-        
+    
         for i, val in enumerate(y):
             plt.text(i, val + 0.02, f'{val:.2f}', ha='center', fontsize=10)
-            
+        
         plt.ylabel('Bias Value')
         plt.title('True vs Learned Bias')
         plt.grid(axis='y')
-        
+    
         plt.tight_layout()
         plt.show()
 ```
-
 
 ```python
 Model = LinearRegressionModel(num_inputs,learning_rate)
@@ -475,15 +470,11 @@ Model.train(X,y,epochs,batch_size)
 
     Final Loss :  0.07868940383195877
 
-
-
-    
 ![png](/assets/images/output_21_1.png)
-    
-
 
 ## Conclusion
-This example, while simple, highlights some key concepts: we can view a linear regression model as a neural network, and we built this model from scratch without relying on the high-level APIs provided by PyTorch. In this second part of our machine learning series, we’ve taken a step toward higher-level abstraction. In the first post, we explored how each component of a neural network is built under the hood. Here, we leveraged PyTorch’s tensor implementation but still created the model from scratch with everything we needed to train it on our data.]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[Introduction In this second post, we will take another step forward. We’ll dive into the concept of linear regression, explore its connection to neural networks, and demonstrate how to build a model from scratch. This approach will help us gain a deeper understanding of the core concepts behind both linear regression and neural networks.]]></summary></entry><entry><title type="html">Building a Simple Web App with Firebase Authentication and Firestore: A Step-by-Step Guide</title><link href="http://localhost:4000/blog/post/2024/08/28/Eisenhower_Matrix.html" rel="alternate" type="text/html" title="Building a Simple Web App with Firebase Authentication and Firestore: A Step-by-Step Guide" /><published>2024-08-28T00:00:00+02:00</published><updated>2024-08-28T00:00:00+02:00</updated><id>http://localhost:4000/blog/post/2024/08/28/Eisenhower_Matrix</id><content type="html" xml:base="http://localhost:4000/blog/post/2024/08/28/Eisenhower_Matrix.html"><![CDATA[In today’s post, I’ll walk you through the development of a simple web application, showcasing how to leverage Firebase Authentication and Firestore Database. This guide will help you understand how to:
+
+This example, while simple, highlights some key concepts: we can view a linear regression model as a neural network, and we built this model from scratch without relying on the high-level APIs provided by PyTorch. In this second part of our machine learning series, we’ve taken a step toward higher-level abstraction. In the first post, we explored how each component of a neural network is built under the hood. Here, we leveraged PyTorch’s tensor implementation but still created the model from scratch with everything we needed to train it on our data.]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[Introduction]]></summary></entry><entry><title type="html">Building a Simple Web App with Firebase Authentication and Firestore: A Step-by-Step Guide</title><link href="http://localhost:4001/blog/post/2024/08/28/Eisenhower_Matrix.html" rel="alternate" type="text/html" title="Building a Simple Web App with Firebase Authentication and Firestore: A Step-by-Step Guide" /><published>2024-08-28T00:00:00+02:00</published><updated>2024-08-28T00:00:00+02:00</updated><id>http://localhost:4001/blog/post/2024/08/28/Eisenhower_Matrix</id><content type="html" xml:base="http://localhost:4001/blog/post/2024/08/28/Eisenhower_Matrix.html"><![CDATA[In today’s post, I’ll walk you through the development of a simple web application, showcasing how to leverage Firebase Authentication and Firestore Database. This guide will help you understand how to:
 
 1. Authenticate users with Firebase Authentication.
 2. Store and retrieve data in real time using Firestore.
@@ -705,7 +696,7 @@ What makes Firebase especially appealing is its simplicity and scalability—whe
 
 If you're looking to expand beyond this, Firebase offers a rich ecosystem of services, including Cloud Functions, Hosting, and Analytics, which can further enhance your app's functionality and performance. These tools, combined with Firebase’s real-time synchronization and seamless cross-platform support, can significantly reduce development time and effort, while ensuring a robust and scalable application.
 
-Explore Firebase’s extensive [documentation](https://firebase.google.com/docs/) to dive deeper into these tools, and take your web app to the next level. Happy coding!]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[In today’s post, I’ll walk you through the development of a simple web application, showcasing how to leverage Firebase Authentication and Firestore Database. This guide will help you understand how to:]]></summary></entry><entry><title type="html">Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets</title><link href="http://localhost:4000/blog/post/2024/08/21/EnglishNewsletter.html" rel="alternate" type="text/html" title="Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets" /><published>2024-08-21T00:00:00+02:00</published><updated>2024-08-21T00:00:00+02:00</updated><id>http://localhost:4000/blog/post/2024/08/21/EnglishNewsletter</id><content type="html" xml:base="http://localhost:4000/blog/post/2024/08/21/EnglishNewsletter.html"><![CDATA[In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers  vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I've already studied.
+Explore Firebase’s extensive [documentation](https://firebase.google.com/docs/) to dive deeper into these tools, and take your web app to the next level. Happy coding!]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[In today’s post, I’ll walk you through the development of a simple web application, showcasing how to leverage Firebase Authentication and Firestore Database. This guide will help you understand how to:]]></summary></entry><entry><title type="html">Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets</title><link href="http://localhost:4001/blog/post/2024/08/21/EnglishNewsletter.html" rel="alternate" type="text/html" title="Building a Daily Vocabulary Newsletter with Python, Google Docs, and Google Sheets" /><published>2024-08-21T00:00:00+02:00</published><updated>2024-08-21T00:00:00+02:00</updated><id>http://localhost:4001/blog/post/2024/08/21/EnglishNewsletter</id><content type="html" xml:base="http://localhost:4001/blog/post/2024/08/21/EnglishNewsletter.html"><![CDATA[In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers  vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I've already studied.
 
 I decided to create this tool because I’m actively learning English and wanted an automated way to refresh and expand my vocabulary. Since I have experience with Python and APIs, I took the opportunity to integrate Google Docs and Google Sheets APIs to store and manage vocabulary words and user data.
 
@@ -958,7 +949,7 @@ Developing this daily vocabulary newsletter has been both a fulfilling and insig
 
 Beyond enhancing my English vocabulary, this tool showcases the practical benefits of leveraging APIs to streamline workflows and automate repetitive tasks. Whether you're exploring new ways to master a language or seeking methods to boost productivity, this project underscores the potential of technology to create tailored and efficient solutions.
 
-If you found value in this article, I encourage you to explore similar integrations and push the boundaries of API-driven applications. Don’t hesitate to reach out if you have any questions or want to share your own experiences with building automated tools — the possibilities are endless, and innovation is just a step away.]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I’ve already studied.]]></summary></entry><entry><title type="html">Neural Network: Part One</title><link href="http://localhost:4000/blog/post/2024/07/20/NeuralNetworkP1.html" rel="alternate" type="text/html" title="Neural Network: Part One" /><published>2024-07-20T00:00:00+02:00</published><updated>2024-07-20T00:00:00+02:00</updated><id>http://localhost:4000/blog/post/2024/07/20/NeuralNetworkP1</id><content type="html" xml:base="http://localhost:4000/blog/post/2024/07/20/NeuralNetworkP1.html"><![CDATA[## Introduction
+If you found value in this article, I encourage you to explore similar integrations and push the boundaries of API-driven applications. Don’t hesitate to reach out if you have any questions or want to share your own experiences with building automated tools — the possibilities are endless, and innovation is just a step away.]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[In today’s post, I’d like to share a simple app I developed to improve my English vocabulary. This app is a daily newsletter that sends me and to other subscribers vocabulary words, and the twist is that it uses Google Docs as the database for storing the vocabulary words and their meanings, while Google Sheets is used to manage user subscriptions and track the words I’ve already studied.]]></summary></entry><entry><title type="html">Neural Networks : Introduction</title><link href="http://localhost:4001/blog/post/2024/07/20/NeuralNetworkP1.html" rel="alternate" type="text/html" title="Neural Networks : Introduction" /><published>2024-07-20T00:00:00+02:00</published><updated>2024-07-20T00:00:00+02:00</updated><id>http://localhost:4001/blog/post/2024/07/20/NeuralNetworkP1</id><content type="html" xml:base="http://localhost:4001/blog/post/2024/07/20/NeuralNetworkP1.html"><![CDATA[## Introduction
 
 In this post, I would like to introduce how neural networks are built under the hood. I will explore the essential components and mechanisms that enable neural networks to learn and make predictions. By the end of this article, you should have a clearer understanding of how these powerful models work under the hood.
 
@@ -1001,9 +992,9 @@ Now I will start to implement in code what we have seen in the foundational conc
 
 ```python
 class Value: 
-    
+  
     def __init__(self, data, _children=(), _op=''):
-        
+    
         self.data = data
         self._previously = set(_children)
         self._operations = _op
@@ -1038,12 +1029,12 @@ class Value:
 
     def __add__(self, other):
         out = Value(self.data + other.data, (self, other), '+')
-    
+  
         def _backward():
             self.grad += 1.0 * out.grad
             other.grad += 1.0 * out.grad
         out._backward = _backward
-    
+  
         return out
 ```
 
@@ -1069,12 +1060,12 @@ class Value:
 
     def __mul__(self, other):
         out = Value(self.data * other.data, (self, other), '*')
-        
+    
         def _backward():
             self.grad += other.data * out.grad
             other.grad += self.data * out.grad
         out._backward = _backward
-        
+    
         return out
 ```
 
@@ -1091,11 +1082,11 @@ class Value:
         t = (math.exp(2*x) - 1) / (math.exp(2*x) + 1)
 
         out = Value(t, (self,), 'tanh')
-    
+  
         def _backward():
             self.grad += (1 - t**2) * out.grad
         out._backward = _backward
-        
+    
         return out
 ```
 
@@ -1120,11 +1111,11 @@ class Value:
     def exp(self):
         x = self.data
         out = Value(math.exp(x), (self,), 'exp')
-        
+    
         def _backward():
             self.grad += out.data * out.grad 
         out._backward = _backward
-        
+    
         return out
 ```
 
@@ -1139,7 +1130,7 @@ class Value:
     ... # existing code
 
     def backward(self):
-    
+  
         topo = []
         visited = set()
         def build_topo(v):
@@ -1149,7 +1140,7 @@ class Value:
                     build_topo(child)
                 topo.append(v)
         build_topo(self)
-        
+    
         self.grad = 1.0
         for node in reversed(topo):
             node._backward()
@@ -1239,7 +1230,7 @@ class Layer:
   
     def __call__(self, x):
         outs = list()
-        
+    
         for neuron in self.neurons:
             outs.append(neuron(x))
 
@@ -1264,7 +1255,7 @@ class MLP:
 
         for i in range(len(nouts)):
             self.layers.append(Layer(sz[i], sz[i+1]))
-    
+  
     def __call__(self, x):
         for layer in self.layers:
             x = layer(x)
