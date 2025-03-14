@@ -1,9 +1,8 @@
 ---
 layout: post
-title: "Neural Network: Part One"
+title: "Neural Networks : Introduction"
 categories: jekyll update
 ---
-
 ## Introduction
 
 In this post, I would like to introduce how neural networks are built under the hood. I will explore the essential components and mechanisms that enable neural networks to learn and make predictions. By the end of this article, you should have a clearer understanding of how these powerful models work under the hood.
@@ -47,9 +46,9 @@ Now I will start to implement in code what we have seen in the foundational conc
 
 ```python
 class Value: 
-    
+  
     def __init__(self, data, _children=(), _op=''):
-        
+    
         self.data = data
         self._previously = set(_children)
         self._operations = _op
@@ -84,12 +83,12 @@ class Value:
 
     def __add__(self, other):
         out = Value(self.data + other.data, (self, other), '+')
-    
+  
         def _backward():
             self.grad += 1.0 * out.grad
             other.grad += 1.0 * out.grad
         out._backward = _backward
-    
+  
         return out
 ```
 
@@ -115,12 +114,12 @@ class Value:
 
     def __mul__(self, other):
         out = Value(self.data * other.data, (self, other), '*')
-        
+    
         def _backward():
             self.grad += other.data * out.grad
             other.grad += self.data * out.grad
         out._backward = _backward
-        
+    
         return out
 ```
 
@@ -137,11 +136,11 @@ class Value:
         t = (math.exp(2*x) - 1) / (math.exp(2*x) + 1)
 
         out = Value(t, (self,), 'tanh')
-    
+  
         def _backward():
             self.grad += (1 - t**2) * out.grad
         out._backward = _backward
-        
+    
         return out
 ```
 
@@ -166,11 +165,11 @@ class Value:
     def exp(self):
         x = self.data
         out = Value(math.exp(x), (self,), 'exp')
-        
+    
         def _backward():
             self.grad += out.data * out.grad 
         out._backward = _backward
-        
+    
         return out
 ```
 
@@ -185,7 +184,7 @@ class Value:
     ... # existing code
 
     def backward(self):
-    
+  
         topo = []
         visited = set()
         def build_topo(v):
@@ -195,7 +194,7 @@ class Value:
                     build_topo(child)
                 topo.append(v)
         build_topo(self)
-        
+    
         self.grad = 1.0
         for node in reversed(topo):
             node._backward()
@@ -285,7 +284,7 @@ class Layer:
   
     def __call__(self, x):
         outs = list()
-        
+    
         for neuron in self.neurons:
             outs.append(neuron(x))
 
@@ -310,7 +309,7 @@ class MLP:
 
         for i in range(len(nouts)):
             self.layers.append(Layer(sz[i], sz[i+1]))
-    
+  
     def __call__(self, x):
         for layer in self.layers:
             x = layer(x)
