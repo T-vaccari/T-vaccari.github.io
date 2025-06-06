@@ -14,7 +14,7 @@ The frontend of the application is built using traditional web technologies, off
 - Initial capital
 - Monthly contribution : low stake and high stake
 - Duration of the investment
-- Inflaction
+- Inflation
 
 Once the parameters are set, the frontend interacts with a backend API developed in Flask. The backend processes these inputs and executes the core investment logic, which involves calculating the growth of the investment using the PAC approach. The backend performs the necessary computations and returns detailed results, including:
 
