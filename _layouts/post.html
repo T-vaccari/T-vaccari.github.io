@@ -3,9 +3,6 @@ title: Post
 layout: default
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<!-- Removed unnecessary comment -->
 <script>
   window.MathJax = {
     tex: {
@@ -18,18 +15,12 @@ layout: default
 </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-<body>
-  <section class="post-container">
+<section class="post-container">
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="date">{{ page.date | date_to_string }}</p>
     <div class="post-content">
       {{ content }}
     </div>
-  </section>
-
-  
-</body>
-
-</html>
+</section>
 
 
