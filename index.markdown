@@ -42,7 +42,7 @@ layout: default
         
     </p>
     <p>
-        GitHub: <a href="https://github.com/T-vaccari" target="_blank" id="linkedin-link">T-vaccari</a>
+        GitHub: <a href="https://github.com/T-vaccari" target="_blank" id="github-link">T-vaccari</a>
     </p>
     <p>You can reach me via email at: <a href="mailto:tommaso.vaccari@mail.polimi.it">tommaso.vaccari@mail.polimi.it</a></p>
 </section>
