@@ -4,7 +4,7 @@ layout: default
 ---
 
 
-<img src="assets/images/IMG_4406.jpeg" alt=" Photo" class="profile-pic">
+<img src="assets/images/IMG_4406.jpeg" alt="Tommaso Vaccari profile picture" class="profile-pic">
 
 <section id="Biography">
     <h2>Biography</h2>
